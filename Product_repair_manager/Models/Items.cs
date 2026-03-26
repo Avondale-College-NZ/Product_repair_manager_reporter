@@ -2,7 +2,9 @@
 {
     public class Items
     {
-        public int itemsId {  get; set; }
+        public int ItemsId {  get; set; }
+        public string items_Name { get; set; }
+        public int CatagoryId { get; set; }
 
     }
 }

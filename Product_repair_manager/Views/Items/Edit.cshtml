@@ -1,0 +1,39 @@
+﻿@model Product_repair_manager.Models.Items
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Items</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ItemsId" />
+            <div class="form-group">
+                <label asp-for="items_Name" class="control-label"></label>
+                <input asp-for="items_Name" class="form-control" />
+                <span asp-validation-for="items_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CatagoryId" class="control-label"></label>
+                <input asp-for="CatagoryId" class="form-control" />
+                <span asp-validation-for="CatagoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

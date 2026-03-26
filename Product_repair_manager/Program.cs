@@ -1,4 +1,8 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<Product_repair_managerContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Product_repair_managerContext") ?? throw new InvalidOperationException("Connection string 'Product_repair_managerContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

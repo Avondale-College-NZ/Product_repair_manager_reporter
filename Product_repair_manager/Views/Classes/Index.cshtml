@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Product_repair_manager.Models.Classes>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.block)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.classroom)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.block)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.classroom)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ClassesId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ClassesId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ClassesId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
