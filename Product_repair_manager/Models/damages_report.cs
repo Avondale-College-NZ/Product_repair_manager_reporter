@@ -2,6 +2,7 @@
 {
     public class damages_report
     {
+        public int damages_reportId { get; set; }
         public int UserId { get; set; }
         public string fixed_report { get; set; }
         public string item_status { get; set; }

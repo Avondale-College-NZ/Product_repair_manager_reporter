@@ -23,4 +23,6 @@ public DbSet<Product_repair_manager.Models.Catagory> Catagory { get; set; } = de
 public DbSet<Product_repair_manager.Models.Classes> Classes { get; set; } = default!;
 
 public DbSet<Product_repair_manager.Models.Item_damages> Item_damages { get; set; } = default!;
+
+public DbSet<Product_repair_manager.Models.damages_report> damages_report { get; set; } = default!;
     }

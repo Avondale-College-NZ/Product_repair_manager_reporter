@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Product_repair_manager.Models.damages_report>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fixed_report)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.item_status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClassId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Item_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.item_damages_id)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fixed_report)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.item_status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClassId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Item_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.item_damages_id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.damages_reportId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.damages_reportId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.damages_reportId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
