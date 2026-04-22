@@ -22,13 +22,13 @@
                 @Html.DisplayNameFor(model => model.item_status)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ClassId)
+                @Html.DisplayNameFor(model => model.ClassesId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Item_date)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.item_damages_id)
+                @Html.DisplayNameFor(model => model.Item_damagesId)
             </th>
             <th></th>
         </tr>
@@ -46,13 +46,13 @@
                 @Html.DisplayFor(modelItem => item.item_status)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ClassId)
+                    @Html.DisplayFor(modelItem => item.ClassesId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Item_date)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.item_damages_id)
+                    @Html.DisplayFor(modelItem => item.Item_damagesId)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.damages_reportId">Edit</a> |
