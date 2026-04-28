@@ -177,36 +177,35 @@ namespace Product_repair_manager.Data
             context.SaveChanges();
 
 
-          //  var Item_damages = new Item_damages[]
-          //{
-          //    new Item_damages { ItemId = 1, damage_report = "Screen cracked", Item_date = DateOnly.Parse("2024-01-15") },
-          //    new Item_damages { ItemId = 2, damage_report = "Battery not charging", Item_date = DateOnly.Parse("2024-01-18") },
-          //      new Item_damages { ItemId = 3, damage_report = "Keyboard not working", Item_date = DateOnly.Parse("2024-01-20") },
-          //      new Item_damages { ItemId = 4, damage_report = "Screen flickering", Item_date = DateOnly.Parse("2024-01-22") },
-          //      new Item_damages { ItemId = 5, damage_report = "Overheating issue", Item_date = DateOnly.Parse("2024-01-25") },
-          //      new Item_damages { ItemId = 6, damage_report = "Broken USB port", Item_date = DateOnly.Parse("2024-01-28") },
-          //      new Item_damages { ItemId = 7, damage_report = "Audio not working", Item_date = DateOnly.Parse("2024-02-01") },
-          //      new Item_damages { ItemId = 8, damage_report = "WiFi connectivity issue", Item_date = DateOnly.Parse("2024-02-03") },
-          //      new Item_damages { ItemId = 9, damage_report = "Touchscreen unresponsive", Item_date = DateOnly.Parse("2024-02-05") },
-          //      new Item_damages { ItemId = 10, damage_report = "Camera not functioning", Item_date = DateOnly.Parse("2024-02-07") },
-          //      new Item_damages { ItemId = 11, damage_report = "Slow performance", Item_date = DateOnly.Parse("2024-02-10") },
-          //      new Item_damages { ItemId = 12, damage_report = "Hard drive failure", Item_date = DateOnly.Parse("2024-02-12") },
-          //      new Item_damages { ItemId = 13, damage_report = "Fan noise issue", Item_date = DateOnly.Parse("2024-02-15") },
-          //      new Item_damages { ItemId = 14, damage_report = "Power button stuck", Item_date = DateOnly.Parse("2024-02-18") },
-          //      new Item_damages { ItemId = 15, damage_report = "Display discoloration", Item_date = DateOnly.Parse("2024-02-20") },
-          //      new Item_damages { ItemId = 16, damage_report = "Bluetooth not working", Item_date = DateOnly.Parse("2024-02-22") },
-          //      new Item_damages { ItemId = 17, damage_report = "Charging port loose", Item_date = DateOnly.Parse("2024-02-25") },
-          //      new Item_damages { ItemId = 18, damage_report = "System crashes frequently", Item_date = DateOnly.Parse("2024-02-28") },
-          //      new Item_damages { ItemId = 19, damage_report = "Speaker distortion", Item_date = DateOnly.Parse("2024-03-02") },
-          //      new Item_damages { ItemId = 20, damage_report = "Software not updating", Item_date = DateOnly.Parse("2024-03-05") },
-          //      new Item_damages { ItemId = 21, damage_report = "Screen brightness issue", Item_date = DateOnly.Parse("2024-03-08") }
-          //                };
+            var Item_damages = new Item_damages[]
+          {
+            new Item_damages { Item_damagesId = 1, ItemsId = 101, damage_type = "Scratch", severity = "Low", date = new DateOnly(2025, 1, 1) },
+            new Item_damages { Item_damagesId = 2, ItemsId = 102, damage_type = "Dent", severity = "Medium", date = new DateOnly(2025, 1, 2) },
+            new Item_damages { Item_damagesId = 3, ItemsId = 103, damage_type = "Crack", severity = "High", date = new DateOnly(2025, 1, 3) },
+            new Item_damages { Item_damagesId = 4, ItemsId = 104, damage_type = "Break", severity = "Critical", date = new DateOnly(2025, 1, 4) },
+            new Item_damages { Item_damagesId = 5, ItemsId = 105, damage_type = "Rust", severity = "Low", date = new DateOnly(2025, 1, 5) },
+            new Item_damages { Item_damagesId = 6, ItemsId = 106, damage_type = "Corrosion", severity = "Medium", date = new DateOnly(2025, 1, 6) },
+            new Item_damages { Item_damagesId = 7, ItemsId = 107, damage_type = "Burn", severity = "High", date = new DateOnly(2025, 1, 7) },
+            new Item_damages { Item_damagesId = 8, ItemsId = 108, damage_type = "Water Damage", severity = "Critical", date = new DateOnly(2025, 1, 8) },
+            new Item_damages { Item_damagesId = 9, ItemsId = 109, damage_type = "Tear", severity = "Low", date = new DateOnly(2025, 1, 9) },
+            new Item_damages { Item_damagesId = 10, ItemsId = 110, damage_type = "Loose Part", severity = "Medium", date = new DateOnly(2025, 1, 10) },
+            new Item_damages { Item_damagesId = 11, ItemsId = 111, damage_type = "Discoloration", severity = "Low", date = new DateOnly(2025, 1, 11) },
+            new Item_damages { Item_damagesId = 12, ItemsId = 112, damage_type = "Fracture", severity = "High", date = new DateOnly(2025, 1, 12) },
+            new Item_damages { Item_damagesId = 13, ItemsId = 113, damage_type = "Chip", severity = "Low", date = new DateOnly(2025, 1, 13) },
+            new Item_damages { Item_damagesId = 14, ItemsId = 114, damage_type = "Warp", severity = "Medium", date = new DateOnly(2025, 1, 14) },
+            new Item_damages { Item_damagesId = 15, ItemsId = 115, damage_type = "Leak", severity = "High", date = new DateOnly(2025, 1, 15) },
+            new Item_damages { Item_damagesId = 16, ItemsId = 116, damage_type = "Malfunction", severity = "Critical", date = new DateOnly(2025, 1, 16) },
+            new Item_damages { Item_damagesId = 17, ItemsId = 117, damage_type = "Bent", severity = "Medium", date = new DateOnly(2025, 1, 17) },
+            new Item_damages { Item_damagesId = 18, ItemsId = 118, damage_type = "Crush", severity = "High", date = new DateOnly(2025, 1, 18) },
+            new Item_damages { Item_damagesId = 19, ItemsId = 119, damage_type = "Peeling", severity = "Low", date = new DateOnly(2025, 1, 19) },
+            new Item_damages { Item_damagesId = 20, ItemsId = 120, damage_type = "Short Circuit", severity = "Critical", date = new DateOnly(2025, 1, 20) }
+                          };
 
-          //  foreach (Item_damages D in Item_damages)
-          //  {
-          //      context.Item_damages.Add(D);
-          //  }
-          //  context.SaveChanges();
+            foreach (Item_damages D in Item_damages)
+            {
+                context.Item_damages.Add(D);
+            }
+            context.SaveChanges();
 
 
             //var damages_report = new damages_report[]
@@ -240,6 +239,6 @@ namespace Product_repair_manager.Data
             //}
             //context.SaveChanges();
 
-    }
+        }
     }
 }
