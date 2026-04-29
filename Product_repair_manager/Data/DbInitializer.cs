@@ -208,36 +208,35 @@ namespace Product_repair_manager.Data
             context.SaveChanges();
 
 
-            //var damages_report = new damages_report[]
-            //  {
-            // new damages_report { UserId = 1, fixed_report = "Screen replaced", item_status = "Fixed", ClassId = 1, Item_date = DateOnly.Parse("2024-02-01"), item_damages_id = 1 },
-            // new damages_report { UserId = 2, fixed_report = "Battery replaced", item_status = "Fixed", ClassId = 2, Item_date = DateOnly.Parse("2024-02-03"), item_damages_id = 2 },
-            //new damages_report { UserId = 3, fixed_report = "Keyboard repaired", item_status = "Fixed", ClassId = 3, Item_date = DateOnly.Parse("2024-02-05"), item_damages_id = 3 },
-            //new damages_report { UserId = 4, fixed_report = "Display cable adjusted", item_status = "Fixed", ClassId = 4, Item_date = DateOnly.Parse("2024-02-07"), item_damages_id = 4 },
-            //new damages_report { UserId = 5, fixed_report = "Cooling system cleaned", item_status = "Fixed", ClassId = 5, Item_date = DateOnly.Parse("2024-02-09"), item_damages_id = 5 },
-            //new damages_report { UserId = 6, fixed_report = "USB port replaced", item_status = "Fixed", ClassId = 6, Item_date = DateOnly.Parse("2024-02-11"), item_damages_id = 6 },
-            //new damages_report { UserId = 7, fixed_report = "Audio drivers reinstalled", item_status = "Fixed", ClassId = 7, Item_date = DateOnly.Parse("2024-02-13"), item_damages_id = 7 },
-            //new damages_report { UserId = 8, fixed_report = "Network adapter reset", item_status = "Fixed", ClassId = 8, Item_date = DateOnly.Parse("2024-02-15"), item_damages_id = 8 },
-            //new damages_report { UserId = 9, fixed_report = "Touch panel replaced", item_status = "Fixed", ClassId = 9, Item_date = DateOnly.Parse("2024-02-17"), item_damages_id = 9 },
-            //new damages_report { UserId = 10, fixed_report = "Camera module replaced", item_status = "Fixed", ClassId = 10, Item_date = DateOnly.Parse("2024-02-19"), item_damages_id = 10 },
-            //new damages_report { UserId = 11, fixed_report = "System optimized", item_status = "Fixed", ClassId = 11, Item_date = DateOnly.Parse("2024-02-21"), item_damages_id = 11 },
-            //new damages_report { UserId = 12, fixed_report = "Hard drive replaced", item_status = "Fixed", ClassId = 12, Item_date = DateOnly.Parse("2024-02-23"), item_damages_id = 12 },
-            //new damages_report { UserId = 13, fixed_report = "Fan replaced", item_status = "Fixed", ClassId = 13, Item_date = DateOnly.Parse("2024-02-25"), item_damages_id = 13 },
-            //new damages_report { UserId = 14, fixed_report = "Power button fixed", item_status = "Fixed", ClassId = 14, Item_date = DateOnly.Parse("2024-02-27"), item_damages_id = 14 },
-            //new damages_report { UserId = 15, fixed_report = "Screen recalibrated", item_status = "Fixed", ClassId = 15, Item_date = DateOnly.Parse("2024-03-01"), item_damages_id = 15 },
-            //new damages_report { UserId = 16, fixed_report = "Bluetooth module reset", item_status = "Fixed", ClassId = 16, Item_date = DateOnly.Parse("2024-03-03"), item_damages_id = 16 },
-            //new damages_report { UserId = 17, fixed_report = "Charging port tightened", item_status = "Fixed", ClassId = 17, Item_date = DateOnly.Parse("2024-03-05"), item_damages_id = 17 },
-            //new damages_report { UserId = 18, fixed_report = "OS reinstalled", item_status = "Fixed", ClassId = 18, Item_date = DateOnly.Parse("2024-03-07"), item_damages_id = 18 },
-            //new damages_report { UserId = 19, fixed_report = "Speaker replaced", item_status = "Fixed", ClassId = 19, Item_date = DateOnly.Parse("2024-03-09"), item_damages_id = 19 },
-            //new damages_report { UserId = 20, fixed_report = "Software updated", item_status = "Fixed", ClassId = 20, Item_date = DateOnly.Parse("2024-03-11"), item_damages_id = 20 },
-            //new damages_report { UserId = 21, fixed_report = "Brightness settings fixed", item_status = "Fixed", ClassId = 1, Item_date = DateOnly.Parse("2024-03-13"), item_damages_id = 21 }
-            //  };
+            var damages_report = new damages_report[]
+              {
+                new damages_report { damages_reportId = 1, UserId = 101, ClassesId = 1, fixed_report = "Repaired screen", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 1), Item_damagesId = 201 },
+                new damages_report { damages_reportId = 2, UserId = 102, ClassesId = 1, fixed_report = "Replaced battery", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 2), Item_damagesId = 202 },
+                new damages_report { damages_reportId = 3, UserId = 103, ClassesId = 2, fixed_report = "Broken keyboard", item_status = "Pending", Item_date = new DateOnly(2026, 1, 3), Item_damagesId = 203 },
+                new damages_report { damages_reportId = 4, UserId = 104, ClassesId = 2, fixed_report = "Water damage cleaned", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 4), Item_damagesId = 204 },
+                new damages_report { damages_reportId = 5, UserId = 105, ClassesId = 3, fixed_report = "Cracked casing", item_status = "Pending", Item_date = new DateOnly(2026, 1, 5), Item_damagesId = 205 },
+                new damages_report { damages_reportId = 6, UserId = 106, ClassesId = 3, fixed_report = "Screen flickering", item_status = "In Progress", Item_date = new DateOnly(2026, 1, 6), Item_damagesId = 206 },
+                new damages_report { damages_reportId = 7, UserId = 107, ClassesId = 4, fixed_report = "Loose hinge fixed", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 7), Item_damagesId = 207 },
+                new damages_report { damages_reportId = 8, UserId = 108, ClassesId = 4, fixed_report = "Touchpad not working", item_status = "Pending", Item_date = new DateOnly(2026, 1, 8), Item_damagesId = 208 },
+                new damages_report { damages_reportId = 9, UserId = 109, ClassesId = 5, fixed_report = "Speaker issue resolved", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 9), Item_damagesId = 209 },
+                new damages_report { damages_reportId = 10, UserId = 110, ClassesId = 5, fixed_report = "Overheating problem", item_status = "In Progress", Item_date = new DateOnly(2026, 1, 10), Item_damagesId = 210 },
+                new damages_report { damages_reportId = 11, UserId = 111, ClassesId = 6, fixed_report = "Fan replaced", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 11), Item_damagesId = 211 },
+                new damages_report { damages_reportId = 12, UserId = 112, ClassesId = 6, fixed_report = "Motherboard issue", item_status = "Pending", Item_date = new DateOnly(2026, 1, 12), Item_damagesId = 212 },
+                new damages_report { damages_reportId = 13, UserId = 113, ClassesId = 7, fixed_report = "Software reinstall", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 13), Item_damagesId = 213 },
+                new damages_report { damages_reportId = 14, UserId = 114, ClassesId = 7, fixed_report = "Virus removed", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 14), Item_damagesId = 214 },
+                new damages_report { damages_reportId = 15, UserId = 115, ClassesId = 8, fixed_report = "Network card issue", item_status = "In Progress", Item_date = new DateOnly(2026, 1, 15), Item_damagesId = 215 },
+                new damages_report { damages_reportId = 16, UserId = 116, ClassesId = 8, fixed_report = "Charging port replaced", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 16), Item_damagesId = 216 },
+                new damages_report { damages_reportId = 17, UserId = 117, ClassesId = 9, fixed_report = "Display cable issue", item_status = "Pending", Item_date = new DateOnly(2026, 1, 17), Item_damagesId = 217 },
+                new damages_report { damages_reportId = 18, UserId = 118, ClassesId = 9, fixed_report = "RAM upgraded", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 18), Item_damagesId = 218 },
+                new damages_report { damages_reportId = 19, UserId = 119, ClassesId = 10, fixed_report = "Hard drive failure", item_status = "In Progress", Item_date = new DateOnly(2026, 1, 19), Item_damagesId = 219 },
+                new damages_report { damages_reportId = 20, UserId = 120, ClassesId = 10, fixed_report = "SSD installed", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 20), Item_damagesId = 220 }
+                  };
 
-            //foreach (damages_report R in damages_report)
-            //{
-            //    context.damages_report.Add(R);
-            //}
-            //context.SaveChanges();
+            foreach (damages_report R in damages_report)
+            {
+                context.damages_report.Add(R);
+            }
+            context.SaveChanges();
 
         }
     }
