@@ -178,28 +178,28 @@ namespace Product_repair_manager.Data
 
 
             var Item_damages = new Item_damages[]
-          {
-            new Item_damages { Item_damagesId = 1, ItemsId = 101, damage_type = "Scratch", severity = "Low", date = new DateOnly(2025, 1, 1) },
-            new Item_damages { Item_damagesId = 2, ItemsId = 102, damage_type = "Dent", severity = "Medium", date = new DateOnly(2025, 1, 2) },
-            new Item_damages { Item_damagesId = 3, ItemsId = 103, damage_type = "Crack", severity = "High", date = new DateOnly(2025, 1, 3) },
-            new Item_damages { Item_damagesId = 4, ItemsId = 104, damage_type = "Break", severity = "Critical", date = new DateOnly(2025, 1, 4) },
-            new Item_damages { Item_damagesId = 5, ItemsId = 105, damage_type = "Rust", severity = "Low", date = new DateOnly(2025, 1, 5) },
-            new Item_damages { Item_damagesId = 6, ItemsId = 106, damage_type = "Corrosion", severity = "Medium", date = new DateOnly(2025, 1, 6) },
-            new Item_damages { Item_damagesId = 7, ItemsId = 107, damage_type = "Burn", severity = "High", date = new DateOnly(2025, 1, 7) },
-            new Item_damages { Item_damagesId = 8, ItemsId = 108, damage_type = "Water Damage", severity = "Critical", date = new DateOnly(2025, 1, 8) },
-            new Item_damages { Item_damagesId = 9, ItemsId = 109, damage_type = "Tear", severity = "Low", date = new DateOnly(2025, 1, 9) },
-            new Item_damages { Item_damagesId = 10, ItemsId = 110, damage_type = "Loose Part", severity = "Medium", date = new DateOnly(2025, 1, 10) },
-            new Item_damages { Item_damagesId = 11, ItemsId = 111, damage_type = "Discoloration", severity = "Low", date = new DateOnly(2025, 1, 11) },
-            new Item_damages { Item_damagesId = 12, ItemsId = 112, damage_type = "Fracture", severity = "High", date = new DateOnly(2025, 1, 12) },
-            new Item_damages { Item_damagesId = 13, ItemsId = 113, damage_type = "Chip", severity = "Low", date = new DateOnly(2025, 1, 13) },
-            new Item_damages { Item_damagesId = 14, ItemsId = 114, damage_type = "Warp", severity = "Medium", date = new DateOnly(2025, 1, 14) },
-            new Item_damages { Item_damagesId = 15, ItemsId = 115, damage_type = "Leak", severity = "High", date = new DateOnly(2025, 1, 15) },
-            new Item_damages { Item_damagesId = 16, ItemsId = 116, damage_type = "Malfunction", severity = "Critical", date = new DateOnly(2025, 1, 16) },
-            new Item_damages { Item_damagesId = 17, ItemsId = 117, damage_type = "Bent", severity = "Medium", date = new DateOnly(2025, 1, 17) },
-            new Item_damages { Item_damagesId = 18, ItemsId = 118, damage_type = "Crush", severity = "High", date = new DateOnly(2025, 1, 18) },
-            new Item_damages { Item_damagesId = 19, ItemsId = 119, damage_type = "Peeling", severity = "Low", date = new DateOnly(2025, 1, 19) },
-            new Item_damages { Item_damagesId = 20, ItemsId = 120, damage_type = "Short Circuit", severity = "Critical", date = new DateOnly(2025, 1, 20) }
-                          };
+       {
+          new Item_damages { ItemsId = 1, damage_type = "Scratch", severity = "Low", date = new DateOnly(2025, 1, 1) },
+          new Item_damages { ItemsId = 2, damage_type = "Dent", severity = "Medium", date = new DateOnly(2025, 1, 2) },
+          new Item_damages { ItemsId = 3, damage_type = "Crack", severity = "High", date = new DateOnly(2025, 1, 3) },
+          new Item_damages { ItemsId = 4, damage_type = "Break", severity = "Critical", date = new DateOnly(2025, 1, 4) },
+          new Item_damages { ItemsId = 5, damage_type = "Rust", severity = "Low", date = new DateOnly(2025, 1, 5) },
+          new Item_damages { ItemsId = 6, damage_type = "Corrosion", severity = "Medium", date = new DateOnly(2025, 1, 6) },
+          new Item_damages { ItemsId = 7, damage_type = "Burn", severity = "High", date = new DateOnly(2025, 1, 7) },
+          new Item_damages { ItemsId = 8, damage_type = "Water Damage", severity = "Critical", date = new DateOnly(2025, 1, 8) },
+          new Item_damages { ItemsId = 9, damage_type = "Tear", severity = "Low", date = new DateOnly(2025, 1, 9) },
+          new Item_damages { ItemsId = 10, damage_type = "Loose Part", severity = "Medium", date = new DateOnly(2025, 1, 10) },
+          new Item_damages { ItemsId = 11, damage_type = "Discoloration", severity = "Low", date = new DateOnly(2025, 1, 11) },
+          new Item_damages { ItemsId = 12, damage_type = "Fracture", severity = "High", date = new DateOnly(2025, 1, 12) },
+          new Item_damages { ItemsId = 13, damage_type = "Chip", severity = "Low", date = new DateOnly(2025, 1, 13) },
+          new Item_damages { ItemsId = 14, damage_type = "Warp", severity = "Medium", date = new DateOnly(2025, 1, 14) },
+          new Item_damages { ItemsId = 15, damage_type = "Leak", severity = "High", date = new DateOnly(2025, 1, 15) },
+          new Item_damages { ItemsId = 16, damage_type = "Malfunction", severity = "Critical", date = new DateOnly(2025, 1, 16) },
+          new Item_damages { ItemsId = 17, damage_type = "Bent", severity = "Medium", date = new DateOnly(2025, 1, 17) },
+          new Item_damages { ItemsId = 18, damage_type = "Crush", severity = "High", date = new DateOnly(2025, 1, 18) },
+          new Item_damages { ItemsId = 19, damage_type = "Peeling", severity = "Low", date = new DateOnly(2025, 1, 19) },
+          new Item_damages { ItemsId = 20, damage_type = "Short Circuit", severity = "Critical", date = new DateOnly(2025, 1, 20) }
+       };
 
             foreach (Item_damages D in Item_damages)
             {
@@ -210,27 +210,27 @@ namespace Product_repair_manager.Data
 
             var damages_report = new damages_report[]
               {
-                new damages_report { damages_reportId = 1, UserId = 101, ClassesId = 1, fixed_report = "Repaired screen", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 1), Item_damagesId = 201 },
-                new damages_report { damages_reportId = 2, UserId = 102, ClassesId = 1, fixed_report = "Replaced battery", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 2), Item_damagesId = 202 },
-                new damages_report { damages_reportId = 3, UserId = 103, ClassesId = 2, fixed_report = "Broken keyboard", item_status = "Pending", Item_date = new DateOnly(2026, 1, 3), Item_damagesId = 203 },
-                new damages_report { damages_reportId = 4, UserId = 104, ClassesId = 2, fixed_report = "Water damage cleaned", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 4), Item_damagesId = 204 },
-                new damages_report { damages_reportId = 5, UserId = 105, ClassesId = 3, fixed_report = "Cracked casing", item_status = "Pending", Item_date = new DateOnly(2026, 1, 5), Item_damagesId = 205 },
-                new damages_report { damages_reportId = 6, UserId = 106, ClassesId = 3, fixed_report = "Screen flickering", item_status = "In Progress", Item_date = new DateOnly(2026, 1, 6), Item_damagesId = 206 },
-                new damages_report { damages_reportId = 7, UserId = 107, ClassesId = 4, fixed_report = "Loose hinge fixed", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 7), Item_damagesId = 207 },
-                new damages_report { damages_reportId = 8, UserId = 108, ClassesId = 4, fixed_report = "Touchpad not working", item_status = "Pending", Item_date = new DateOnly(2026, 1, 8), Item_damagesId = 208 },
-                new damages_report { damages_reportId = 9, UserId = 109, ClassesId = 5, fixed_report = "Speaker issue resolved", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 9), Item_damagesId = 209 },
-                new damages_report { damages_reportId = 10, UserId = 110, ClassesId = 5, fixed_report = "Overheating problem", item_status = "In Progress", Item_date = new DateOnly(2026, 1, 10), Item_damagesId = 210 },
-                new damages_report { damages_reportId = 11, UserId = 111, ClassesId = 6, fixed_report = "Fan replaced", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 11), Item_damagesId = 211 },
-                new damages_report { damages_reportId = 12, UserId = 112, ClassesId = 6, fixed_report = "Motherboard issue", item_status = "Pending", Item_date = new DateOnly(2026, 1, 12), Item_damagesId = 212 },
-                new damages_report { damages_reportId = 13, UserId = 113, ClassesId = 7, fixed_report = "Software reinstall", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 13), Item_damagesId = 213 },
-                new damages_report { damages_reportId = 14, UserId = 114, ClassesId = 7, fixed_report = "Virus removed", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 14), Item_damagesId = 214 },
-                new damages_report { damages_reportId = 15, UserId = 115, ClassesId = 8, fixed_report = "Network card issue", item_status = "In Progress", Item_date = new DateOnly(2026, 1, 15), Item_damagesId = 215 },
-                new damages_report { damages_reportId = 16, UserId = 116, ClassesId = 8, fixed_report = "Charging port replaced", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 16), Item_damagesId = 216 },
-                new damages_report { damages_reportId = 17, UserId = 117, ClassesId = 9, fixed_report = "Display cable issue", item_status = "Pending", Item_date = new DateOnly(2026, 1, 17), Item_damagesId = 217 },
-                new damages_report { damages_reportId = 18, UserId = 118, ClassesId = 9, fixed_report = "RAM upgraded", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 18), Item_damagesId = 218 },
-                new damages_report { damages_reportId = 19, UserId = 119, ClassesId = 10, fixed_report = "Hard drive failure", item_status = "In Progress", Item_date = new DateOnly(2026, 1, 19), Item_damagesId = 219 },
-                new damages_report { damages_reportId = 20, UserId = 120, ClassesId = 10, fixed_report = "SSD installed", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 20), Item_damagesId = 220 }
-                  };
+                 new damages_report { UserId = 1, ClassesId = 1, fixed_report = "Repaired screen", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 1), Item_damagesId = 1 },
+                new damages_report { UserId = 2, ClassesId = 1, fixed_report = "Replaced battery", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 2), Item_damagesId = 2 },
+                new damages_report { UserId = 3, ClassesId = 2, fixed_report = "Broken keyboard", item_status = "Pending", Item_date = new DateOnly(2026, 1, 3), Item_damagesId = 3 },
+                new damages_report { UserId = 4, ClassesId = 2, fixed_report = "Water damage cleaned", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 4), Item_damagesId = 4 },
+                new damages_report { UserId = 5, ClassesId = 3, fixed_report = "Cracked casing", item_status = "Pending", Item_date = new DateOnly(2026, 1, 5), Item_damagesId = 5 },
+                new damages_report { UserId = 6, ClassesId = 3, fixed_report = "Screen flickering", item_status = "In Progress", Item_date = new DateOnly(2026, 1, 6), Item_damagesId = 6 },
+                new damages_report { UserId = 7, ClassesId = 4, fixed_report = "Loose hinge fixed", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 7), Item_damagesId = 7 },
+                new damages_report { UserId = 8, ClassesId = 4, fixed_report = "Touchpad not working", item_status = "Pending", Item_date = new DateOnly(2026, 1, 8), Item_damagesId = 8 },
+                new damages_report { UserId = 9, ClassesId = 5, fixed_report = "Speaker issue resolved", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 9), Item_damagesId = 9 },
+                new damages_report { UserId = 10, ClassesId = 5, fixed_report = "Overheating problem", item_status = "In Progress", Item_date = new DateOnly(2026, 1, 10), Item_damagesId = 10 },
+                new damages_report { UserId = 11, ClassesId = 6, fixed_report = "Fan replaced", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 11), Item_damagesId = 11 },
+                new damages_report { UserId = 12, ClassesId = 6, fixed_report = "Motherboard issue", item_status = "Pending", Item_date = new DateOnly(2026, 1, 12), Item_damagesId = 12 },
+                new damages_report { UserId = 13, ClassesId = 7, fixed_report = "Software reinstall", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 13), Item_damagesId = 13 },
+                new damages_report { UserId = 14, ClassesId = 7, fixed_report = "Virus removed", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 14), Item_damagesId = 14 },
+                new damages_report { UserId = 15, ClassesId = 8, fixed_report = "Network card issue", item_status = "In Progress", Item_date = new DateOnly(2026, 1, 15), Item_damagesId = 15 },
+                new damages_report { UserId = 16, ClassesId = 8, fixed_report = "Charging port replaced", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 16), Item_damagesId = 16 },
+                new damages_report { UserId = 17, ClassesId = 9, fixed_report = "Display cable issue", item_status = "Pending", Item_date = new DateOnly(2026, 1, 17), Item_damagesId = 17 },
+                new damages_report { UserId = 18, ClassesId = 9, fixed_report = "RAM upgraded", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 18), Item_damagesId = 18 },
+                new damages_report { UserId = 19, ClassesId = 10, fixed_report = "Hard drive failure", item_status = "In Progress", Item_date = new DateOnly(2026, 1, 19), Item_damagesId = 19 },
+                new damages_report { UserId = 20, ClassesId = 10, fixed_report = "SSD installed", item_status = "Fixed", Item_date = new DateOnly(2026, 1, 20), Item_damagesId = 20 }
+            };
 
             foreach (damages_report R in damages_report)
             {
