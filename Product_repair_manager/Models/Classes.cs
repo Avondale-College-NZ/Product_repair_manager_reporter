@@ -8,11 +8,12 @@ namespace Product_repair_manager.Models
         public string block { get; set; }
         public int classroom { get; set; }
     }
-    public class block
+    public class room
     {
         [ScaffoldColumn(false)]
-        publicblockId{  get; set; }
+        block { get; set; }
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "unkown class block please enter the correct one"), MaxLength(1)]
     }
+
 }
