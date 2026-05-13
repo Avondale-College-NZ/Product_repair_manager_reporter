@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Linq.Expressions;
 
 namespace Product_repair_manager.Models
 {
@@ -8,12 +9,24 @@ namespace Product_repair_manager.Models
         public string block { get; set; }
         public int classroom { get; set; }
     }
-    public class room
+
+    public class Room
     {
         [ScaffoldColumn(false)]
-        block { get; set; }
+        Classes ClassesId { get; set; }
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "unkown class block please enter the correct one"), MaxLength(1)]
+        [StringLength(1, ErrorMessage = "try again")]
+
+
+        public string block { get; set; }
+        [DataType(DataType.Text)]
+        [StringLength(1, ErrorMessage = "no such as the you wrote dosent exist please try again")]
+        [MaxLength(1), MinLength(1)]
+
+        public int classroom { get; set; }
+        [DataType(DataType.Text)]
+        [StringLength(54, ErrorMessage = "no know number exist try again")]
     }
+
 
 }
