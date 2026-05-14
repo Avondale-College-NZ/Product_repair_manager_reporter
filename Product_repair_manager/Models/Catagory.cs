@@ -8,12 +8,13 @@ namespace Product_repair_manager.Models
         public string Catagory_Name { get; set; }
     }
 
-    public class cata
+    public class catagory
     {
         [ScaffoldColumn(false)]
-        Catagory ClassesId { get; set; }
+        Catagory CatagoryId { get; set; }
         [DataType(DataType.Text)]
         [StringLength(1, ErrorMessage = "try again")]
+        [Display(Name = "enter a Catagory")]
 
 
         public string Catagory_Name { get; set; }

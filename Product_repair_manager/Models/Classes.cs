@@ -16,10 +16,10 @@ namespace Product_repair_manager.Models
         Classes ClassesId { get; set; }
         [DataType(DataType.Text)]
         [StringLength(1, ErrorMessage = "try again")]
+        [Display(Name="enter school area")]
 
 
         public string block { get; set; }
-        [DataType(DataType.Text)]
         [StringLength(1, ErrorMessage = "no such as the you wrote dosent exist please try again")]
         [MaxLength(1), MinLength(1)]
 
