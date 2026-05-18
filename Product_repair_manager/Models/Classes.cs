@@ -5,28 +5,29 @@ namespace Product_repair_manager.Models
 {
     public class Classes
     {
-        public int ClassesId { get; set; }
-        public string block { get; set; }
-        public int classroom { get; set; }
-    }
+        //public int ClassesId { get; set; }
+        //public string block { get; set; }
+        //public int classroom { get; set; }
 
-    public class Room
-    {
         [ScaffoldColumn(false)]
-        Classes ClassesId { get; set; }
+        
         [DataType(DataType.Text)]
         [StringLength(1, ErrorMessage = "try again")]
-        [Display(Name="enter school area")]
+        [Display(Name = "enter school area")]
+        public int ClassesId { get; set; }
 
 
-        public string block { get; set; }
+
         [StringLength(1, ErrorMessage = "no such as the you wrote dosent exist please try again")]
         [MaxLength(1), MinLength(1)]
+        public string block { get; set; }
 
-        public int classroom { get; set; }
+        
         [DataType(DataType.Text)]
         [StringLength(54, ErrorMessage = "no know number exist try again")]
+        public int classroom { get; set; }
     }
+
 
 
 }
