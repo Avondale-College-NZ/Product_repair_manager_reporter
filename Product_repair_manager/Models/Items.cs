@@ -10,11 +10,14 @@ namespace Product_repair_manager.Models
 
         [ScaffoldColumn(false)]
 
+        //[DataType(DataType.Custom)]
+        //[StringLength(1, ErrorMessage = "try again")]
+        //[Display(Name = "enter a report")]
         public int CatagoryId { get; set; }
 
-        [DataType(DataType.Text)]
-        [StringLength(1, ErrorMessage = "try again")]
-        [Display(Name = "enter a report")]
+        //[DataType(DataType.Custom)]
+        //[StringLength(1, ErrorMessage = "try again")]
+        //[Display(Name = "enter a report")]
         public int ItemsId { get; set; }
 
         [DataType(DataType.Text)]

@@ -18,9 +18,9 @@ namespace Product_repair_manager.Models
         public int ClassesId { get; set; }
         public int Item_damagesId { get; set; }
 
-        [DataType(DataType.Text)]
-        [StringLength(1, ErrorMessage = "try again")]
-        [Display(Name = "enter a report")]
+        //[DataType(DataType.Text)]
+        //[StringLength(1, ErrorMessage = "try again")]
+        //[Display(Name = "enter a report")]
         public int damages_reportId { get; set; }
 
         

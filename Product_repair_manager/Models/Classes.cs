@@ -11,9 +11,9 @@ namespace Product_repair_manager.Models
 
         [ScaffoldColumn(false)]
         
-        [DataType(DataType.Text)]
-        [StringLength(1, ErrorMessage = "try again")]
-        [Display(Name = "enter school area")]
+        //[DataType(DataType.Text)]
+        //[StringLength(1, ErrorMessage = "try again")]
+        //[Display(Name = "enter school area")]
         public int ClassesId { get; set; }
 
 
@@ -23,8 +23,8 @@ namespace Product_repair_manager.Models
         public string block { get; set; }
 
         
-        [DataType(DataType.Text)]
-        [StringLength(54, ErrorMessage = "no know number exist try again")]
+        //[DataType(DataType.)]
+        //[StringLength(1, ErrorMessage = "no know number exist try again")]
         public int classroom { get; set; }
     }
 
