@@ -7,9 +7,9 @@ namespace Product_repair_manager.Models
 
         [ScaffoldColumn(false)]
         
-        [DataType(DataType.Text)]
-        [StringLength(1, ErrorMessage = "try again")]
-        [Display(Name = "enter a Catagory")]
+        //[DataType(DataType.Text)]
+        //[StringLength(1, ErrorMessage = "try again")]
+        //[Display(Name = "enter a Catagory")]
         public int CatagoryId { get; set; }
 
 
