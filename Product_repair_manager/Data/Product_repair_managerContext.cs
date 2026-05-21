@@ -12,7 +12,7 @@ using Product_repair_manager.Models;
         {
         }
 
-        public DbSet<Product_repair_manager.Models.User> User { get; set; } = default!;
+        public DbSet<Product_repair_manager.Models.Users> User { get; set; } = default!;
 
 public DbSet<Product_repair_manager.Models.Staff> Staff { get; set; } = default!;
 

@@ -14,34 +14,34 @@ namespace Product_repair_manager.Data
             {
                 return;   // DB has been seeded
             }
-            var user = new User[]
+            var user = new Users[]
             {
-             new User { FirstName = "Admin", LastName = "blocks", Email = "admin@test.com", role = "student" },
-            new User { FirstName = "John", LastName = "pork", Email = "john@test.com", role = "teacher" },
-             new User { FirstName = "Jane", LastName = "iornlung", Email = "jane@test.com", role = "student" },
-             new User { FirstName = "Alex", LastName = "Turner", Email = "alex.turner@test.com", role = "student" },
-            new User { FirstName = "Bella", LastName = "Scott", Email = "bella.scott@test.com", role = "student" },
-            new User { FirstName = "Chris", LastName = "Adams", Email = "chris.adams@test.com", role = "student" },
-            new User { FirstName = "Diana", LastName = "Baker", Email = "diana.baker@test.com", role = "student" },
-            new User { FirstName = "Ethan", LastName = "Clark", Email = "ethan.clark@test.com", role = "student" },
-            new User { FirstName = "Fiona", LastName = "Hall", Email = "fiona.hall@test.com", role = "student" },
-            new User { FirstName = "George", LastName = "Allen", Email = "george.allen@test.com", role = "student" },
-            new User { FirstName = "Hannah", LastName = "Young", Email = "hannah.young@test.com", role = "student" },
-            new User { FirstName = "Isaac", LastName = "King", Email = "isaac.king@test.com", role = "student" },
-            new User { FirstName = "Julia", LastName = "Wright", Email = "julia.wright@test.com", role = "student" },
-            new User { FirstName = "Kevin", LastName = "Green", Email = "kevin.green@test.com", role = "student" },
-            new User { FirstName = "Lily", LastName = "Hill", Email = "lily.hill@test.com", role = "student" },
-            new User { FirstName = "Mason", LastName = "Nelson", Email = "mason.nelson@test.com", role = "student" },
-            new User { FirstName = "Nora", LastName = "Carter", Email = "nora.carter@test.com", role = "student" },
-            new User { FirstName = "Oscar", LastName = "Mitchell", Email = "oscar.mitchell@test.com", role = "student" },
-            new User { FirstName = "Penny", LastName = "Perez", Email = "penny.perez@test.com", role = "student" },
-            new User { FirstName = "Ryan", LastName = "Roberts", Email = "ryan.roberts@test.com", role = "student" },
-            new User { FirstName = "Sophia", LastName = "Campbell", Email = "sophia.campbell@test.com", role = "student" },
-            new User { FirstName = "Tom", LastName = "Phillips", Email = "tom.phillips@test.com", role = "student" },
-            new User { FirstName = "Uma", LastName = "Evans", Email = "uma.evans@test.com", role = "student" }
+             new Users { FirstName = "Admin", LastName = "blocks", Email = "admin@test.com", role = "student" },
+            new Users { FirstName = "John", LastName = "pork", Email = "john@test.com", role = "teacher" },
+             new Users { FirstName = "Jane", LastName = "iornlung", Email = "jane@test.com", role = "student" },
+             new Users { FirstName = "Alex", LastName = "Turner", Email = "alex.turner@test.com", role = "student" },
+            new Users { FirstName = "Bella", LastName = "Scott", Email = "bella.scott@test.com", role = "student" },
+            new Users { FirstName = "Chris", LastName = "Adams", Email = "chris.adams@test.com", role = "student" },
+            new Users { FirstName = "Diana", LastName = "Baker", Email = "diana.baker@test.com", role = "student" },
+            new Users { FirstName = "Ethan", LastName = "Clark", Email = "ethan.clark@test.com", role = "student" },
+            new Users { FirstName = "Fiona", LastName = "Hall", Email = "fiona.hall@test.com", role = "student" },
+            new Users { FirstName = "George", LastName = "Allen", Email = "george.allen@test.com", role = "student" },
+            new Users { FirstName = "Hannah", LastName = "Young", Email = "hannah.young@test.com", role = "student" },
+            new Users { FirstName = "Isaac", LastName = "King", Email = "isaac.king@test.com", role = "student" },
+            new Users { FirstName = "Julia", LastName = "Wright", Email = "julia.wright@test.com", role = "student" },
+            new Users { FirstName = "Kevin", LastName = "Green", Email = "kevin.green@test.com", role = "student" },
+            new Users { FirstName = "Lily", LastName = "Hill", Email = "lily.hill@test.com", role = "student" },
+            new Users { FirstName = "Mason", LastName = "Nelson", Email = "mason.nelson@test.com", role = "student" },
+            new Users { FirstName = "Nora", LastName = "Carter", Email = "nora.carter@test.com", role = "student" },
+            new Users { FirstName = "Oscar", LastName = "Mitchell", Email = "oscar.mitchell@test.com", role = "student" },
+            new Users { FirstName = "Penny", LastName = "Perez", Email = "penny.perez@test.com", role = "student" },
+            new Users { FirstName = "Ryan", LastName = "Roberts", Email = "ryan.roberts@test.com", role = "student" },
+            new Users { FirstName = "Sophia", LastName = "Campbell", Email = "sophia.campbell@test.com", role = "student" },
+            new Users { FirstName = "Tom", LastName = "Phillips", Email = "tom.phillips@test.com", role = "student" },
+            new Users { FirstName = "Uma", LastName = "Evans", Email = "uma.evans@test.com", role = "student" }
                         };
 
-            foreach (User s in user)
+            foreach (Users s in user)
             {
                 context.User.Add(s);
             }
@@ -147,27 +147,27 @@ namespace Product_repair_manager.Data
 
            var Classes = new Classes[]
            {
-                new Classes { block = "A", classroom = 27},
-                new Classes { block = "A", classroom = 28 },
-                new Classes { block = "A", classroom = 29 },
-                new Classes { block = "A", classroom = 30 },
-                new Classes { block = "B", classroom = 1 },
-                new Classes { block = "B", classroom = 2 },
-                new Classes { block = "B", classroom = 3 },
-                new Classes { block = "B", classroom = 4 },
-                new Classes { block = "C", classroom = 5 },
-                new Classes { block = "C", classroom = 6 },
-                new Classes { block = "C", classroom = 7 },
-                new Classes { block = "C", classroom = 8 },
-                new Classes { block = "D", classroom = 9 },
-                new Classes { block = "D", classroom = 10 },
-                new Classes { block = "D", classroom = 11 },
-                new Classes { block = "D", classroom = 12 },
-                new Classes { block = "E", classroom = 13 },
-                new Classes { block = "E", classroom = 14 },
-                new Classes { block = "E", classroom = 15 },
-                new Classes { block = "F", classroom = 16 },
-                new Classes { block = "F", classroom = 17 }
+                new Classes { blocks = "A", classroom = 27},
+                new Classes { blocks = "A", classroom = 28 },
+                new Classes { blocks = "A", classroom = 29 },
+                new Classes { blocks = "A", classroom = 30 },
+                new Classes { blocks = "B", classroom = 1 },
+                new Classes { blocks = "B", classroom = 2 },
+                new Classes { blocks = "B", classroom = 3 },
+                new Classes { blocks = "B", classroom = 4 },
+                new Classes { blocks = "C", classroom = 5 },
+                new Classes { blocks = "C", classroom = 6 },
+                new Classes { blocks = "C", classroom = 7 },
+                new Classes { blocks = "C", classroom = 8 },
+                new Classes { blocks = "D", classroom = 9 },
+                new Classes { blocks = "D", classroom = 10 },
+                new Classes { blocks = "D", classroom = 11 },
+                new Classes { blocks = "D", classroom = 12 },
+                new Classes { blocks = "E", classroom = 13 },
+                new Classes { blocks = "E", classroom = 14 },
+                new Classes { blocks = "E", classroom = 15 },
+                new Classes { blocks = "F", classroom = 16 },
+                new Classes { blocks = "F", classroom = 17 }
            };
 
             foreach (Classes e in Classes)

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Product_repair_manager.Models.User>
+﻿@model IEnumerable<Product_repair_manager.Models.Users>
 
 @{
     ViewData["Title"] = "Index";
@@ -43,9 +43,9 @@
                 @Html.DisplayFor(modelItem => item.role)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.UserId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.UserId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.UsersId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.UsersId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.UsersId">Delete</a>
             </td>
         </tr>
 }

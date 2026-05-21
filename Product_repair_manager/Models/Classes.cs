@@ -14,7 +14,7 @@ namespace Product_repair_manager.Models
         [Display(Name = "enter school area")]
         [StringLength(1, ErrorMessage = "no such as the you wrote dosent exist please try again")]
         [MaxLength(1), MinLength(1)]
-        public string block { get; set; }
+        public string blocks { get; set; }
 
         [Display(Name = "enter classroom number")]
         [DataType(DataType.Text)]

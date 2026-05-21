@@ -33,7 +33,7 @@ namespace Product_repair_manager.Controllers
             }
 
             var user = await _context.User
-                .FirstOrDefaultAsync(m => m.UserId == id);
+                .FirstOrDefaultAsync(m => m.UsersId == id);
             if (user == null)
             {
                 return NotFound();
@@ -53,7 +53,7 @@ namespace Product_repair_manager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UserId,FirstName,LastName,Email,role")] User user)
+        public async Task<IActionResult> Create([Bind("UserId,FirstName,LastName,Email,role")] Users user)
         {
             if (ModelState.IsValid)
             {
@@ -85,9 +85,9 @@ namespace Product_repair_manager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UserId,FirstName,LastName,Email,role")] User user)
+        public async Task<IActionResult> Edit(int id, [Bind("UsersId,FirstName,LastName,Email,role")] Users user)
         {
-            if (id != user.UserId)
+            if (id != user.UsersId)
             {
                 return NotFound();
             }
@@ -101,7 +101,7 @@ namespace Product_repair_manager.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserExists(user.UserId))
+                    if (!UserExists(user.UsersId))
                     {
                         return NotFound();
                     }
@@ -124,7 +124,7 @@ namespace Product_repair_manager.Controllers
             }
 
             var user = await _context.User
-                .FirstOrDefaultAsync(m => m.UserId == id);
+                .FirstOrDefaultAsync(m => m.UsersId == id);
             if (user == null)
             {
                 return NotFound();
@@ -150,7 +150,7 @@ namespace Product_repair_manager.Controllers
 
         private bool UserExists(int id)
         {
-            return _context.User.Any(e => e.UserId == id);
+            return _context.User.Any(e => e.UsersId == id);
         }
     }
 }

@@ -2,9 +2,9 @@
 
 namespace Product_repair_manager.Models
 {
-    public class User
+    public class Users
     {
-        public int UserId { get; set; }
+        public int UsersId { get; set; }
         public int StaffId { get; set; }
 
         [DataType(DataType.Text)]
