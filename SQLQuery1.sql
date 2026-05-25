@@ -2,7 +2,7 @@ select
 item_status,
 Item_date
 from
-damages_report;
+damages_report
 
 
 select
@@ -10,13 +10,13 @@ FirstName,
 LastName
 from
 Staff
+order by
 
 select
 blocks,
 Classroom
 from
 Classes
-where
-blocks = 'A'
 order by
-Classroom | expression [desc];
+blocks asc,
+Classroom desc;
