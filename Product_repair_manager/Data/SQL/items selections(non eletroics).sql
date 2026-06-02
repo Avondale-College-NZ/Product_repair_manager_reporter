@@ -1,4 +1,3 @@
-
 select
 Catagory_Name,
 CatagoryId
@@ -13,8 +12,6 @@ from
 Items
 
 where
-CatagoryId in (1,4)
+CatagoryId in (2,3)
 order by
 CatagoryId desc;
-
-

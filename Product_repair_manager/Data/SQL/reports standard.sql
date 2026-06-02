@@ -15,12 +15,4 @@ FirstName,
 LastName
 from
 Staff
-order by
- LastName asc,
-LEN(FirstName) desc
 
-select
-blocks,
-Classroom
-from
-Classes;
