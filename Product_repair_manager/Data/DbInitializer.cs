@@ -180,31 +180,32 @@ namespace Product_repair_manager.Data
             
 
             var Item_damages = new Item_damages[]
-        {
-            new Item_damages { ItemsId = 1, Item_damagesId = 1, damage_type = "Cracked Screen", severity = "High", date = "0:{2025-01-10}" },
-            new Item_damages { ItemsId = 2, Item_damagesId = 2, damage_type = "Loose Hinge", severity = "Medium", date = "0:{2025-01-15}" },
-            new Item_damages { ItemsId = 3, Item_damagesId = 3, damage_type = "Liquid Damage", severity = "High", date = "0:{2025-01-20}" },
-            new Item_damages { ItemsId = 4, Item_damagesId = 4, damage_type = "Missing Keycaps", severity = "Low", date = "0:{2025-01-25}" },
-            new Item_damages { ItemsId = 5, Item_damagesId = 5, damage_type = "Casing Crack", severity = "Medium", date = "0:{2025-02-01}" },
-            new Item_damages { ItemsId = 6, Item_damagesId = 6, damage_type = "Power Jack Issue", severity = "High", date = "0:{2025-02-05}" },
-            new Item_damages { ItemsId = 7, Item_damagesId = 7, damage_type = "Noisy Fan", severity = "Medium", date = "0:{2025-02-10}" },
-            new Item_damages { ItemsId = 8, Item_damagesId = 8, damage_type = "Firmware Corruption", severity = "Medium", date = "0:{2025-02-15}" },
-            new Item_damages { ItemsId = 9, Item_damagesId = 9, damage_type = "Battery Failure", severity = "High", date = "0:{2025-02-20}" },
-            new Item_damages { ItemsId = 10, Item_damagesId = 10, damage_type = "Charging Cable Issue", severity = "Medium", date = "0:{2025-02-25}" },
-            new Item_damages { ItemsId = 11, Item_damagesId = 11, damage_type = "Camera Misalignment", severity = "Medium", date = "0:{2025-03-01}" },
-            new Item_damages { ItemsId = 12, Item_damagesId = 12, damage_type = "Broken Port Cover", severity = "Low", date = "0:{2025-03-05}" },
-            new Item_damages { ItemsId = 13, Item_damagesId = 13, damage_type = "Overheating", severity = "High", date = "0:{2025-03-10}" },
-            new Item_damages { ItemsId = 14, Item_damagesId = 14, damage_type = "Loose Wiring", severity = "Medium", date = "0:{2025-03-15}" },
-            new Item_damages { ItemsId = 15, Item_damagesId = 15, damage_type = "Damaged Cable", severity = "High", date = "0:{2025-03-20}" },
-            new Item_damages { ItemsId = 16, Item_damagesId = 16, damage_type = "Track Mechanism Lubrication", severity = "Low", date = "0:{2025-03-25}" },
-            new Item_damages { ItemsId = 17, Item_damagesId = 17, damage_type = "Fuse Replacement", severity = "Medium", date = "2025-04-01}" },
-            new Item_damages { ItemsId = 18, Item_damagesId = 18, damage_type = "RAM Reseat", severity = "Medium", date = "0:{2025-04-05}" },
-            new Item_damages { ItemsId = 19, Item_damagesId = 19, damage_type = "HDMI Port Replacement", severity = "High", date = "0:{2025-04-10}" },
-            new Item_damages { ItemsId = 20, Item_damagesId = 20, damage_type = "Alignment Check", severity = "Low", date = "0:{2025-04-15}" },
+         {
+            new Item_damages { ItemsId = 1, Item_damagesId = 1, damage_type = "Scratch", severity = "Low", date = DateTime.Now.AddDays(-10) },
+            new Item_damages { ItemsId = 2, Item_damagesId = 2, damage_type = "Dent", severity = "Medium", date = DateTime.Now.AddDays(-9) },
+            new Item_damages { ItemsId = 3, Item_damagesId = 3, damage_type = "Break", severity = "High", date = DateTime.Now.AddDays(-8) },
+            new Item_damages { ItemsId = 4, Item_damagesId = 4, damage_type = "Crack", severity = "Medium", date = DateTime.Now.AddDays(-7) },
+            new Item_damages { ItemsId = 5, Item_damagesId = 5, damage_type = "Rust", severity = "Low", date = DateTime.Now.AddDays(-6) },
+            new Item_damages { ItemsId = 6, Item_damagesId = 6, damage_type = "Shattered", severity = "High", date = DateTime.Now.AddDays(-5) },
+            new Item_damages { ItemsId = 7, Item_damagesId = 7, damage_type = "Tear", severity = "Medium", date = DateTime.Now.AddDays(-4) },
+            new Item_damages { ItemsId = 8, Item_damagesId = 8, damage_type = "Bend", severity = "Low", date = DateTime.Now.AddDays(-3) },
+            new Item_damages { ItemsId = 9, Item_damagesId = 9, damage_type = "Peel", severity = "Medium", date = DateTime.Now.AddDays(-2) },
+            new Item_damages { ItemsId = 10, Item_damagesId = 10, damage_type = "Dirt", severity = "Low", date = DateTime.Now.AddDays(-1) },
+            new Item_damages { ItemsId = 11, Item_damagesId = 11, damage_type = "Chip", severity = "Medium", date = DateTime.Now.AddDays(-4)},
+            new Item_damages { ItemsId = 12, Item_damagesId = 12, damage_type = "Scratch", severity = "Low", date = DateTime.Now.AddDays(1) },
+            new Item_damages { ItemsId = 13, Item_damagesId = 13, damage_type = "Leak", severity = "High", date = DateTime.Now.AddDays(2) },
+            new Item_damages { ItemsId = 14, Item_damagesId = 14, damage_type = "Fade", severity = "Medium", date = DateTime.Now.AddDays(3) },
+            new Item_damages { ItemsId = 15, Item_damagesId = 15, damage_type = "Stain", severity = "Medium", date = DateTime.Now.AddDays(4) },
+            new Item_damages { ItemsId = 16, Item_damagesId = 16, damage_type = "Warp", severity = "High", date = DateTime.Now.AddDays(5) },
+            new Item_damages { ItemsId = 17, Item_damagesId = 17, damage_type = "Dirt", severity = "Low", date = DateTime.Now.AddDays(6) },
+            new Item_damages { ItemsId = 18, Item_damagesId = 18, damage_type = "Rust", severity = "Critical", date = DateTime.Now.AddDays(7) },
+            new Item_damages { ItemsId = 19, Item_damagesId = 19, damage_type = "Crack", severity = "Medium", date = DateTime.Now.AddDays(8) },
+            new Item_damages { ItemsId = 20, Item_damagesId = 20, damage_type = "Shatter", severity = "High", date = DateTime.Now.AddDays(9) }
+
         };
-            foreach (Item_damages b in Item_damages)
+            foreach (Item_damages i in Item_damages)
             {
-                context.Item_damages.Add(b);
+                context.Item_damages.Add(i);
             }
             context.SaveChanges();
 
@@ -233,7 +234,7 @@ namespace Product_repair_manager.Data
             new damages_report { UserId = 17, ClassesId = 9, Item_damagesId = 17, damages_reportId = 17, fixed_report = "Replaced fuse", item_status = "Fixed", Item_date = "2025-06-20" },
             new damages_report { UserId = 18, ClassesId = 9, Item_damagesId = 18, damages_reportId = 18, fixed_report = "Reseated RAM", item_status = "Operational", Item_date = "2025-07-05" },
             new damages_report { UserId = 19, ClassesId = 10, Item_damagesId = 19, damages_reportId = 19, fixed_report = "Replaced HDMI port", item_status = "Fixed", Item_date = "2025-07-18" },
-            new damages_report { UserId = 20, ClassesId = 10, Item_damagesId = 20, damages_reportId = 20, fixed_report = "Adjusted alignment", item_status = "Operational", Item_date = "2025-07-28" },
+            new damages_report { UserId = 20, ClassesId = 10, Item_damagesId = 20, damages_reportId = 20, fixed_report = "Adjusted alignment", item_status = "Operational", Item_date = "2025-07-28" }
         };
             foreach (damages_report d in damages_report)
             {
@@ -244,3 +245,24 @@ namespace Product_repair_manager.Data
         }
     }
 }
+
+//new Item_damages { ItemsId = 1, Item_damagesId = 1, damage_type = "Cracked Screen", severity = "High", date = 20250110 },
+//new Item_damages { ItemsId = 2, Item_damagesId = 2, damage_type = "Loose Hinge", severity = "Medium", date = 20250115 },
+//new Item_damages { ItemsId = 3, Item_damagesId = 3, damage_type = "Liquid Damage", severity = "High", date = 20250120 },
+//new Item_damages { ItemsId = 4, Item_damagesId = 4, damage_type = "Missing Keycaps", severity = "Low", date = 20250125 },
+//new Item_damages { ItemsId = 5, Item_damagesId = 5, damage_type = "Casing Crack", severity = "Medium", date = 20250201 },
+//new Item_damages { ItemsId = 6, Item_damagesId = 6, damage_type = "Power Jack Issue", severity = "High", date = 20250205 },
+//new Item_damages { ItemsId = 7, Item_damagesId = 7, damage_type = "Noisy Fan", severity = "Medium", date = 20250210 },
+//new Item_damages { ItemsId = 8, Item_damagesId = 8, damage_type = "Firmware Corruption", severity = "Medium", date = 20250215 },
+//new Item_damages { ItemsId = 9, Item_damagesId = 9, damage_type = "Battery Failure", severity = "High", date = 20250220 },
+//new Item_damages { ItemsId = 10, Item_damagesId = 10, damage_type = "Charging Cable Issue", severity = "Medium", date = 20250225 },
+//new Item_damages { ItemsId = 11, Item_damagesId = 11, damage_type = "Camera Misalignment", severity = "Medium", date = 20250301 },
+//new Item_damages { ItemsId = 12, Item_damagesId = 12, damage_type = "Broken Port Cover", severity = "Low", date = 20250305 },
+//new Item_damages { ItemsId = 13, Item_damagesId = 13, damage_type = "Overheating", severity = "High", date = 20250310 },
+//new Item_damages { ItemsId = 14, Item_damagesId = 14, damage_type = "Loose Wiring", severity = "Medium", date = 20250315 },
+//new Item_damages { ItemsId = 15, Item_damagesId = 15, damage_type = "Damaged Cable", severity = "High", date = 20250320 },
+//new Item_damages { ItemsId = 16, Item_damagesId = 16, damage_type = "Track Mechanism Lubrication", severity = "Low", date = 20250325 },
+//new Item_damages { ItemsId = 17, Item_damagesId = 17, damage_type = "Fuse Replacement", severity = "Medium", date = 20250401 },
+//new Item_damages { ItemsId = 18, Item_damagesId = 18, damage_type = "RAM Reseat", severity = "Medium", date = 20250405 },
+//new Item_damages { ItemsId = 19, Item_damagesId = 19, damage_type = "HDMI Port Replacement", severity = "High", date = 20250410 },
+//new Item_damages { ItemsId = 20, Item_damagesId = 20, damage_type = "Alignment Check", severity = "Low", date = 20250415 },
