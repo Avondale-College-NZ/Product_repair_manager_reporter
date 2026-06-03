@@ -11,16 +11,16 @@ from
 Items
 
 select
-FirstName,
-LastName
-from
-Staff
-
-select
 blocks,
 Classroom
 from
 Classes;
+
+select
+FirstName,
+LastName
+from
+Staff
 
 order by
  LastName asc,

@@ -3,7 +3,7 @@ select
 from
 staff
 where
-role = IT
-and role = teacher
+role = 2
+and role = 1
 order by
 role asc;
