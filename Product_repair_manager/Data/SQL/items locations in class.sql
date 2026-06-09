@@ -27,5 +27,5 @@ classroom,
 C.blocks
 from
 Classes C
-inner join Catagory A on C.Classroom = A.CatagoryId
+inner join catagory A on C.Classroom = A.CatagoryId
 inner join Items B on A.CatagoryId = B.CatagoryId
