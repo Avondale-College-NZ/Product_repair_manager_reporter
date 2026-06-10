@@ -41,9 +41,9 @@ namespace Product_repair_manager.Data
             new Users { FirstName = "Uma", LastName = "Evans", Email = "uma.evans@test.com", role = "student" }
                         };
 
-            foreach (Users s in user)
+            foreach (Users u in user)
             {
-                context.User.Add(s);
+                context.User.Add(u);
             }
             context.SaveChanges();
             
@@ -74,41 +74,40 @@ namespace Product_repair_manager.Data
             new Staff { FirstName = "Tina", LastName = "Martin", Email = "tina.martin@test.com", role = "teacher" }
             };
 
-            foreach (Staff a in Staff)
+            foreach (Staff S in Staff)
             {
-                context.Staff.Add(a);
+                context.Staff.Add(S);
             }
             context.SaveChanges();
 
+            var Classes = new Classes[]
+{
+                new Classes { blocks = "A", classroom = 27},
+                new Classes { blocks = "A", classroom = 28 },
+                new Classes { blocks = "A", classroom = 29 },
+                new Classes { blocks = "A", classroom = 30 },
+                new Classes { blocks = "B", classroom = 1 },
+                new Classes { blocks = "B", classroom = 2 },
+                new Classes { blocks = "B", classroom = 3 },
+                new Classes { blocks = "B", classroom = 4 },
+                new Classes { blocks = "C", classroom = 5 },
+                new Classes { blocks = "C", classroom = 6 },
+                new Classes { blocks = "C", classroom = 7 },
+                new Classes { blocks = "C", classroom = 8 },
+                new Classes { blocks = "D", classroom = 9 },
+                new Classes { blocks = "D", classroom = 10 },
+                new Classes { blocks = "D", classroom = 11 },
+                new Classes { blocks = "D", classroom = 12 },
+                new Classes { blocks = "E", classroom = 13 },
+                new Classes { blocks = "E", classroom = 14 },
+                new Classes { blocks = "E", classroom = 15 },
+                new Classes { blocks = "F", classroom = 16 },
+                new Classes { blocks = "F", classroom = 17 }
+};
 
-            var Items = new Items[]
-           {
-           new Items { items_Name = "Laptop", CatagoryId = 1 },
-           new Items { items_Name = "Desktop Computer", CatagoryId = 1 },
-            new Items { items_Name = "Tablet", CatagoryId = 1 },
-            new Items { items_Name = "Smartphone", CatagoryId = 1 },
-            new Items { items_Name = "Monitor", CatagoryId = 1 },
-            new Items { items_Name = "Keyboard", CatagoryId = 2 },
-            new Items { items_Name = "Mouse", CatagoryId = 2 },
-            new Items { items_Name = "Printer", CatagoryId = 3 },
-            new Items { items_Name = "Scanner", CatagoryId = 3 },
-            new Items { items_Name = "Projector", CatagoryId = 4 },
-            new Items { items_Name = "Webcam", CatagoryId = 2 },
-            new Items { items_Name = "Headphones", CatagoryId = 2 },
-            new Items { items_Name = "Speakers", CatagoryId = 2 },
-            new Items { items_Name = "External Hard Drive", CatagoryId = 5 },
-            new Items { items_Name = "USB Flash Drive", CatagoryId = 5 },
-            new Items { items_Name = "Router", CatagoryId = 6 },
-            new Items { items_Name = "Modem", CatagoryId = 6 },
-            new Items { items_Name = "Microphone", CatagoryId = 2 },
-            new Items { items_Name = "Graphics Tablet", CatagoryId = 1 },
-            new Items { items_Name = "Laptop Stand", CatagoryId = 2 },
-            new Items { items_Name = "Docking Station", CatagoryId = 5 }
-           };
-
-            foreach (Items I in Items)
+            foreach (Classes L in Classes)
             {
-                context.Items.Add(I);
+                context.Classes.Add(L);
             }
             context.SaveChanges();
 
@@ -145,39 +144,37 @@ namespace Product_repair_manager.Data
             context.SaveChanges();
 
 
-           var Classes = new Classes[]
+            var Items = new Items[]
            {
-                new Classes { blocks = "A", classroom = 27},
-                new Classes { blocks = "A", classroom = 28 },
-                new Classes { blocks = "A", classroom = 29 },
-                new Classes { blocks = "A", classroom = 30 },
-                new Classes { blocks = "B", classroom = 1 },
-                new Classes { blocks = "B", classroom = 2 },
-                new Classes { blocks = "B", classroom = 3 },
-                new Classes { blocks = "B", classroom = 4 },
-                new Classes { blocks = "C", classroom = 5 },
-                new Classes { blocks = "C", classroom = 6 },
-                new Classes { blocks = "C", classroom = 7 },
-                new Classes { blocks = "C", classroom = 8 },
-                new Classes { blocks = "D", classroom = 9 },
-                new Classes { blocks = "D", classroom = 10 },
-                new Classes { blocks = "D", classroom = 11 },
-                new Classes { blocks = "D", classroom = 12 },
-                new Classes { blocks = "E", classroom = 13 },
-                new Classes { blocks = "E", classroom = 14 },
-                new Classes { blocks = "E", classroom = 15 },
-                new Classes { blocks = "F", classroom = 16 },
-                new Classes { blocks = "F", classroom = 17 }
+           new Items { items_Name = "Laptop", CatagoryId = 1 },
+           new Items { items_Name = "Desktop Computer", CatagoryId = 1 },
+            new Items { items_Name = "Tablet", CatagoryId = 1 },
+            new Items { items_Name = "Smartphone", CatagoryId = 1 },
+            new Items { items_Name = "Monitor", CatagoryId = 1 },
+            new Items { items_Name = "Keyboard", CatagoryId = 2 },
+            new Items { items_Name = "Mouse", CatagoryId = 2 },
+            new Items { items_Name = "Printer", CatagoryId = 3 },
+            new Items { items_Name = "Scanner", CatagoryId = 3 },
+            new Items { items_Name = "Projector", CatagoryId = 4 },
+            new Items { items_Name = "Webcam", CatagoryId = 2 },
+            new Items { items_Name = "Headphones", CatagoryId = 2 },
+            new Items { items_Name = "Speakers", CatagoryId = 2 },
+            new Items { items_Name = "External Hard Drive", CatagoryId = 5 },
+            new Items { items_Name = "USB Flash Drive", CatagoryId = 5 },
+            new Items { items_Name = "Router", CatagoryId = 6 },
+            new Items { items_Name = "Modem", CatagoryId = 6 },
+            new Items { items_Name = "Microphone", CatagoryId = 2 },
+            new Items { items_Name = "Graphics Tablet", CatagoryId = 1 },
+            new Items { items_Name = "Laptop Stand", CatagoryId = 2 },
+            new Items { items_Name = "Docking Station", CatagoryId = 5 }
            };
 
-            foreach (Classes e in Classes)
+            foreach (Items I in Items)
             {
-                context.Classes.Add(e);
+                context.Items.Add(I);
             }
             context.SaveChanges();
 
-
-            
 
             var Item_damages = new Item_damages[]
          {
@@ -203,16 +200,14 @@ namespace Product_repair_manager.Data
             new Item_damages { ItemsId = 20, Item_damagesId = 20, damage_type = "Shatter", severity = "High", date = DateTime.Now.AddDays(9) }
 
         };
-            foreach (Item_damages i in Item_damages)
+            foreach (Item_damages t in Item_damages)
             {
-                context.Item_damages.Add(i);
+                context.Item_damages.Add(t);
             }
             context.SaveChanges();
 
 
 
-
-            
             var damages_report = new damages_report[]
         {
             new damages_report { UserId = 1, ClassesId = 1, Item_damagesId = 1, damages_reportId = 1, fixed_report = "Replaced cracked screen", item_status = "Fixed", Item_date = "2025-01-10" },
@@ -231,7 +226,7 @@ namespace Product_repair_manager.Data
             new damages_report { UserId = 14, ClassesId = 7, Item_damagesId = 14, damages_reportId = 14, fixed_report = "Secured loose wiring", item_status = "Operational", Item_date = "2025-05-20" },
             new damages_report { UserId = 15, ClassesId = 8, Item_damagesId = 15, damages_reportId = 15, fixed_report = "Replaced damaged cable", item_status = "Fixed", Item_date = "2025-06-01" },
             new damages_report { UserId = 16, ClassesId = 8, Item_damagesId = 16, damages_reportId = 16, fixed_report = "Lubricated track mechanism", item_status = "Operational", Item_date = "2025-06-12" },
-            new damages_report { UserId = 17, ClassesId = 9, Item_damagesId = 17, damages_reportId = 17, fixed_report = "Replaced fuse", item_status = "Fixed", Item_date = "2025-06-20" },
+            new damages_report { UserId = 17, ClassesId = 9, Item_damagesId = 17, damages_reportId = 17, fixed_report = "Replaced fuse", item_status = "Fixed", Item_date = "0:2025-06-20" },
             new damages_report { UserId = 18, ClassesId = 9, Item_damagesId = 18, damages_reportId = 18, fixed_report = "Reseated RAM", item_status = "Operational", Item_date = "2025-07-05" },
             new damages_report { UserId = 19, ClassesId = 10, Item_damagesId = 19, damages_reportId = 19, fixed_report = "Replaced HDMI port", item_status = "Fixed", Item_date = "2025-07-18" },
             new damages_report { UserId = 20, ClassesId = 10, Item_damagesId = 20, damages_reportId = 20, fixed_report = "Adjusted alignment", item_status = "Operational", Item_date = "2025-07-28" }
@@ -241,6 +236,8 @@ namespace Product_repair_manager.Data
                 context.damages_report.Add(d);
             }
             context.SaveChanges();
+
+
 
         }
     }
