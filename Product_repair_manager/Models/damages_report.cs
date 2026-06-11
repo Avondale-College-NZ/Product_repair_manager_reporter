@@ -24,6 +24,7 @@ namespace Product_repair_manager.Models
         [MaxLength(100), MinLength(1)]
         public string item_status { get; set; }
 
+
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         public string Item_date { get; set; }
