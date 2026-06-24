@@ -7,4 +7,13 @@
     console.log(isdark);
 
 const changefavIcon = () => {
+    if (isdark) favIcontag.href = "favicon-dark.ico";
+    else favIcontag.href = 'favicon-light.ico';
+};
+changefavIcon();
+isdark.addEventListener('change', changefavIcon);
+
+function swap() {
+    var element = document.body;
+    element.classList.toggle("darkmode");
 }

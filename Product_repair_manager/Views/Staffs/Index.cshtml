@@ -1,16 +1,16 @@
 ﻿@model IEnumerable<Product_repair_manager.Models.Staff>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "staff";
 }
 
-<h1>Index</h1>
-
-<p>
+<h1>staff</h1>
+<div class="container p- my-5 border">
+<p class="accordion-button">
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
-    <thead>
+    <thead class="table-bordered table-dark">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.FirstName)
@@ -48,6 +48,15 @@
                 <a asp-action="Delete" asp-route-id="@item.StaffId">Delete</a>
             </td>
         </tr>
-}
-    </tbody>
+        
+} 
+</div>
+<ul class="pagination">
+   <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+   <li class="page-item"><a class="page-link" href="#">1</a></li>
+   <li class="page-item"><a class="page-link" href="#">2</a></li>
+   <li class="page-item"><a class="page-link" href="#">3</a></li>
+   <li class="page-item"><a class="page-link" href="#">Next</a></li>
+</ul>
+</tbody>
 </table>
