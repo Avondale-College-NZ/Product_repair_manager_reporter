@@ -9,20 +9,30 @@
 <p class="accordion-button">
     <a asp-action="Create">Create New</a>
 </p>
+    <form asp-action="Index" method="get">
+        <div class="form-actions no-color">
+            <p>
+                <label>Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" /></label>
+                <input type="submit" value="Search" class="btn btn-default" /> |
+                <a asp-action="Index">Back to Full List</a>
+            </p>
+        </div>
+    </form>
 <table class="table">
     <thead class="table-bordered table-dark">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FirstName)
+
+               <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.FirstName)</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LastName)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]">@Html.DisplayNameFor(model => model.LastName)</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["EmailSortParm"]">@Html.DisplayNameFor(model => model.Email)</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.role)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["RoleSortParm"]">@Html.DisplayNameFor(model => model.role)</a>
             </th>
             <th></th>
         </tr>
@@ -48,15 +58,14 @@
                 <a asp-action="Delete" asp-route-id="@item.StaffId">Delete</a>
             </td>
         </tr>
-        
 } 
 </div>
-<ul class="pagination">
-   <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-   <li class="page-item"><a class="page-link" href="#">1</a></li>
-   <li class="page-item"><a class="page-link" href="#">2</a></li>
-   <li class="page-item"><a class="page-link" href="#">3</a></li>
-   <li class="page-item"><a class="page-link" href="#">Next</a></li>
-</ul>
 </tbody>
 </table>
+<ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+</ul>

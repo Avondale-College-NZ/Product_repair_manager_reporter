@@ -19,11 +19,42 @@ namespace Product_repair_manager.Controllers
         }
 
         // GET: Staffs
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Staff.ToListAsync());
-        }
 
+        //public async Task<IActionResult> Index()
+        //{
+        //    return View(await _context.Staff.ToListAsync());
+        //}
+        public async Task<IActionResult> Index(string sortOrder, string searchString)
+        {
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["LastNameSortParm"] = sortOrder == ""? "": "";
+            ViewData["EmailSortParm"] = sortOrder == "role" ? "email" : "role";
+            ViewData["RoleSortParm"] = sortOrder == "name_desc" ? "role" : "name_desc";
+            ViewData["CurrentFilter"] = searchString;
+            var staff = from s in _context.Staff
+                        select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                staff = staff.Where(s => s.LastName.Contains(searchString)
+                                       || s.FirstName.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    staff = staff.OrderByDescending(s => s.LastName);
+                    break;
+                case "email":
+                    staff = staff.OrderBy(s => s.Email);
+                    break;
+                case "role":
+                    staff = staff.OrderByDescending(s => s.role);
+                    break;
+                default:
+                    staff = staff.OrderBy(s => s.LastName);
+                    break;
+            }
+            return View(await staff.AsNoTracking().ToListAsync());
+        }
         // GET: Staffs/Details/5
         public async Task<IActionResult> Details(int? id)
         {
