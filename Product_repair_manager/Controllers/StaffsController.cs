@@ -24,8 +24,9 @@ namespace Product_repair_manager.Controllers
         //{
         //    return View(await _context.Staff.ToListAsync());
         //}
-        public async Task<IActionResult> Index(string sortOrder, string searchString)
+        public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter, int pageNumber)
         {
+            ViewData["CurrentSort"] = sortOrder;
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["LastNameSortParm"] = sortOrder == ""? "": "";
             ViewData["EmailSortParm"] = sortOrder == "role" ? "email" : "role";
@@ -33,6 +34,17 @@ namespace Product_repair_manager.Controllers
             ViewData["CurrentFilter"] = searchString;
             var staff = from s in _context.Staff
                         select s;
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            
+            ViewData["CurrentFilter"] = searchString;
+
             if (!String.IsNullOrEmpty(searchString))
             {
                 staff = staff.Where(s => s.LastName.Contains(searchString)
@@ -53,8 +65,10 @@ namespace Product_repair_manager.Controllers
                     staff = staff.OrderBy(s => s.LastName);
                     break;
             }
-            return View(await staff.AsNoTracking().ToListAsync());
+            int pageSize = 15;
+            return View(await PaginatedList<Staff>.CreateAsync(staff.AsNoTracking(), pageNumber = 1, pageSize));
         }
+
         // GET: Staffs/Details/5
         public async Task<IActionResult> Details(int? id)
         {
