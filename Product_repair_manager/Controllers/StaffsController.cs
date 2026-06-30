@@ -24,7 +24,7 @@ namespace Product_repair_manager.Controllers
         //{
         //    return View(await _context.Staff.ToListAsync());
         //}
-        public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter, int pageNumber)
+        public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter, int? pageNumber)
         {
             ViewData["CurrentSort"] = sortOrder;
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
@@ -66,7 +66,7 @@ namespace Product_repair_manager.Controllers
                     break;
             }
             int pageSize = 15;
-            return View(await PaginatedList<Staff>.CreateAsync(staff.AsNoTracking(), pageNumber = 1, pageSize));
+            return View(await PaginatedList<Staff>.CreateAsync(staff.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
         // GET: Staffs/Details/5
