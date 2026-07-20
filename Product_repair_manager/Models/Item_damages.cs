@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualBasic;
 using System.ComponentModel.DataAnnotations;
 
+
 namespace Product_repair_manager.Models
 {
     public class Item_damages

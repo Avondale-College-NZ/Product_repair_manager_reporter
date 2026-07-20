@@ -1,11 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Product_repair_manager.Models;
+using System;
+using System.Collections.Generic;
+//using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+//using static System.Runtime.InteropServices.JavaScript.JSType;
+using Microsoft.EntityFrameworkCore;
+using Product_repair_manager.Models;
+
 
 namespace Product_repair_manager.Controllers
 {
@@ -19,9 +25,9 @@ namespace Product_repair_manager.Controllers
         }
 
         // GET: Item_damages
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter, int? pageNumber)
         {
-            return View(await _context.Item_damages.ToListAsync());
+            ViewData["CurrentSort"] = sortOrder;
         }
 
         // GET: Item_damages/Details/5
