@@ -19,11 +19,46 @@ namespace Product_repair_manager.Controllers
         }
 
         // GET: damages_report
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter, int? pageNumber)
         {
-            return View(await _context.damages_report.ToListAsync());
-        }
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["severitySortParm"] = String.IsNullOrEmpty(sortOrder) ? "severity" : "";
+            ViewData["damage_typeSortParm"] = sortOrder == "damage_type" ? "date" : "";
+            ViewData["dateSortParm"] = sortOrder == "date" ? "" : "";
 
+            var Item_damages = from s in _context.Item_damages
+                               select s;
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                Item_damages = Item_damages.Where(s => s.severity.Contains(searchString)
+                                       || s.damage_type.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "severity":
+                    Item_damages = Item_damages.OrderByDescending(s => s.severity);
+                    break;
+                case "damage_type":
+                    Item_damages = Item_damages.OrderBy(s => s.damage_type);
+                    break;
+                default:
+                    Item_damages = Item_damages.OrderByDescending(s => s.date);
+                    break;
+            }
+            int pageSize = 15;
+            return View(await PaginatedList<Item_damages>.CreateAsync(Item_damages.AsNoTracking(), pageNumber ?? 1, pageSize));
+        }
         // GET: damages_report/Details/5
         public async Task<IActionResult> Details(int? id)
         {
