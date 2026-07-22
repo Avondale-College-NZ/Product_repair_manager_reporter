@@ -22,9 +22,9 @@ namespace Product_repair_manager.Controllers
         public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter, int? pageNumber)
         {
             ViewData["CurrentSort"] = sortOrder;
-            ViewData["severitySortParm"] = String.IsNullOrEmpty(sortOrder) ? "severity" : "";
-            ViewData["damage_typeSortParm"] = sortOrder == "damage_type" ? "date" : "";
-            ViewData["dateSortParm"] = sortOrder == "date" ? "" : "";
+            ViewData["fixed_reportSortParm"] = String.IsNullOrEmpty(sortOrder) ? "fixed_report" : "";
+            ViewData["item_statusSortParm"] = sortOrder == "item_status" ? "Item_date" : "";
+            ViewData["Item_dateSortParm"] = sortOrder == "Item_date" ? "" : "";
 
             var Item_damages = from s in _context.Item_damages
                                select s;
@@ -46,14 +46,14 @@ namespace Product_repair_manager.Controllers
             }
             switch (sortOrder)
             {
-                case "severity":
-                    Item_damages = Item_damages.OrderByDescending(s => s.severity);
+                case "fixed_report":
+                    Item_damages = Item_damages.OrderByDescending(s => s.fixed_report);
                     break;
-                case "damage_type":
-                    Item_damages = Item_damages.OrderBy(s => s.damage_type);
+                case "item_status":
+                    Item_damages = Item_damages.OrderBy(s => s.item_status);
                     break;
                 default:
-                    Item_damages = Item_damages.OrderByDescending(s => s.date);
+                    Item_damages = Item_damages.OrderByDescending(s => s.Item_date);
                     break;
             }
             int pageSize = 15;

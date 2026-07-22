@@ -24,24 +24,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.UserId)
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["fixed_reportSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">report</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.fixed_report)
-            </th>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["fixed_reportSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">report</a>
             <th>
-                @Html.DisplayNameFor(model => model.item_status)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["item_statusSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Status</a>
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClassesId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Item_date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Item_damagesId)
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
