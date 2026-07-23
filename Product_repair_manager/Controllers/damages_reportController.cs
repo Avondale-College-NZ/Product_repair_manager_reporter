@@ -26,8 +26,8 @@ namespace Product_repair_manager.Controllers
             ViewData["item_statusSortParm"] = sortOrder == "item_status" ? "Item_date" : "";
             ViewData["Item_dateSortParm"] = sortOrder == "Item_date" ? "" : "";
 
-            var Item_damages = from s in _context.Item_damages
-                               select s;
+            var damages_report = from s in _context.damages_report
+                                 select s;
             if (searchString != null)
             {
                 pageNumber = 1;
@@ -41,23 +41,24 @@ namespace Product_repair_manager.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                Item_damages = Item_damages.Where(s => s.severity.Contains(searchString)
-                                       || s.damage_type.Contains(searchString));
+                damages_report = damages_report.Where(s => s.fixed_report.Contains(searchString)
+                                       || s.item_status.Contains(searchString)
+                                       || s.Item_date.ToString().Contains(searchString));
             }
             switch (sortOrder)
             {
                 case "fixed_report":
-                    Item_damages = Item_damages.OrderByDescending(s => s.fixed_report);
+                    damages_report = damages_report.OrderByDescending(s => s.fixed_report);
                     break;
                 case "item_status":
-                    Item_damages = Item_damages.OrderBy(s => s.item_status);
+                    damages_report = damages_report.OrderBy(s => s.item_status);
                     break;
                 default:
-                    Item_damages = Item_damages.OrderByDescending(s => s.Item_date);
+                    damages_report = damages_report.OrderByDescending(s => s.Item_date);
                     break;
             }
             int pageSize = 15;
-            return View(await PaginatedList<Item_damages>.CreateAsync(Item_damages.AsNoTracking(), pageNumber ?? 1, pageSize));
+            return View(await PaginatedList<damages_report>.CreateAsync(damages_report.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
         // GET: damages_report/Details/5
         public async Task<IActionResult> Details(int? id)
