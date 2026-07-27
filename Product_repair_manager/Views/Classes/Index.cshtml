@@ -4,24 +4,35 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Classes</h1>
+<div class="container p- my-5 border border-4">
 
+    <form asp-action="Index" method="get">
+        <div class="form-actions no-color">
+            <p>
+                <label>Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" /></label>
+                <input type="submit" value="Search" class="btn btn-default" /> |
+                <a asp-action="Index">Back to Full List</a> |
+                <a class="button" asp-action="Create">Create New</a>
+            </p>
+        </div>
+    </form>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.blocks)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.classroom)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+    <table class="table">
+        <thead class="table-bordered table-dark">
+            <tr>
+                <th>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["severitySortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">severity</a>
+                </th>
+                <th>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewData["damage_typeSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">damage_type</a>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>

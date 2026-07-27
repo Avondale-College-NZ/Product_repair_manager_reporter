@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,9 +20,50 @@ namespace Product_repair_manager.Controllers
         }
 
         // GET: Classes
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string searchString, int searchint, string currentFilter, int? pageNumber)
         {
-            return View(await _context.Classes.ToListAsync());
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["blocksSortParm"] = String.IsNullOrEmpty(sortOrder) ? "blocks" : "";
+            ViewData["classroomSortParm"] = sortOrder == "classroom" ? "blocks" : "";
+
+
+            var Classes = from s in _context.Classes
+                          select s;
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+
+            }
+            else
+            {  currentFilter = searchint; 
+            
+            
+            
+            }
+
+            ViewData["CurrentFilter"] = searchString ;
+            ViewData["CurrentFilter"] =  searchint;
+            if (!String.IsNullOrEmpty(searchString)&& searchint == 0)
+            {
+                Classes = Classes.Where(s => s.blocks.Contains(searchString)
+                                       || s.classroom.Contains(searchint));
+            }
+            switch (sortOrder)
+            {
+                case "blocks":
+                    Classes = Classes.OrderByDescending(s => s.blocks);
+                    break;
+                case "classroom":
+                default:
+                    Classes = Classes.OrderBy(s => s.classroom);
+                    break;
+            }
+            int pageSize = 15;
+            return View(await PaginatedList<Classes>.CreateAsync(Classes.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
         // GET: Classes/Details/5
