@@ -20,7 +20,7 @@ namespace Product_repair_manager.Controllers
         }
 
         // GET: Classes
-        public async Task<IActionResult> Index(string sortOrder, string searchString, int searchint, string currentFilter, int? pageNumber)
+        public async Task<IActionResult> Index(string sortOrder, string searchString, int searchint, string currentFilter, int currentFilteri, int? pageNumber)
         {
             ViewData["CurrentSort"] = sortOrder;
             ViewData["blocksSortParm"] = String.IsNullOrEmpty(sortOrder) ? "blocks" : "";
@@ -38,15 +38,7 @@ namespace Product_repair_manager.Controllers
                 searchString = currentFilter;
 
             }
-            else
-            {  currentFilter = searchint; 
-            
-            
-            
-            }
-
             ViewData["CurrentFilter"] = searchString ;
-            ViewData["CurrentFilter"] =  searchint;
             if (!String.IsNullOrEmpty(searchString)&& searchint == 0)
             {
                 Classes = Classes.Where(s => s.blocks.Contains(searchString)
