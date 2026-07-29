@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Buffers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Product_repair_manager.Models;
+
 
 namespace Product_repair_manager.Controllers
 {
@@ -41,8 +41,7 @@ namespace Product_repair_manager.Controllers
             ViewData["CurrentFilter"] = searchString ;
             if (!String.IsNullOrEmpty(searchString)&& searchint == 0)
             {
-                Classes = Classes.Where(s => s.blocks.Contains(searchString)
-                                       || s.classroom.Contains(searchint));
+                Classes = Classes.Where(s => s.blocks.Contains(searchString) || s.classroom.ToString().Contains(searchint.ToString()));
             }
             switch (sortOrder)
             {
