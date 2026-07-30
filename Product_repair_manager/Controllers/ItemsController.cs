@@ -4,6 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Product_repair_manager.Models;
 
@@ -19,10 +25,41 @@ namespace Product_repair_manager.Controllers
         }
 
         // GET: Items
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter, int? pageNumber)
         {
-            return View(await _context.Items.ToListAsync());
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["items_NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "items_Name" : "";
+            ViewData["itemsNameSortParm"] = sortOrder == "items_Name" ? "" : "";
+
+
+            var Items = from s in _context.Items
+                          select s;
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+
+            }
+            ViewData["CurrentFilter"] = searchString ;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                Items = Items.Where(s => s.items_Name.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "items_Name":
+                    Items = Items.OrderByDescending(s => s.items_Name);
+                    break;
+
+                  
+            }
+            int pageSize = 15;
+            return View(await PaginatedList<Items>.CreateAsync(Items.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
+
 
         // GET: Items/Details/5
         public async Task<IActionResult> Details(int? id)
