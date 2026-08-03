@@ -19,9 +19,39 @@ namespace Product_repair_manager.Controllers
         }
 
         // GET: Catagories
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string searchString, string currentFilter, int? pageNumber)
         {
-            return View(await _context.Catagory.ToListAsync());
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["Catagory_NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "Catagory_Name" : "";
+            ViewData["CatagoryNameSortParm"] = sortOrder == "Catagory_Name" ? "" : "";
+
+
+            var Catagory = from s in _context.Catagory
+                           select s;
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+
+            }
+            ViewData["CurrentFilter"] = searchString;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                Catagory = Catagory.Where(s => s.Catagory_Name.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "Catagory_Name":
+                    Catagory = Catagory.OrderByDescending(s => s.Catagory_Name);
+                    break;
+
+
+            }
+            int pageSize = 15;
+            return View(await PaginatedList<Catagory>.CreateAsync(Catagory.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
         // GET: Catagories/Details/5
