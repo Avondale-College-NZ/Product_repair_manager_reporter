@@ -4,13 +4,14 @@ namespace Product_repair_manager.Models
 {
     public class Catagory
     {
+        public int CatagoryId { get; set; }
+
 
         [ScaffoldColumn(false)]
         
         //[DataType(DataType.Text)]
         //[StringLength(1, ErrorMessage = "try again")]
         //[Display(Name = "enter a Catagory")]
-        public int CatagoryId { get; set; }
 
 
         [DataType(DataType.Text)]

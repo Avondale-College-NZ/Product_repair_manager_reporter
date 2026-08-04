@@ -5,7 +5,16 @@
 }
 
 <h1>Details</h1>
+<div class="container p- my-5 border border-4">
 
+    <form asp-action="Index" method="get">
+        <div class="form-actions no-color">
+            <p>
+                <a class="button" asp-action="Edit" asp-route-id="@Model?.Item_damagesId">Edit</a>
+            </p>
+        </div>
+    </form>
+    <p>
 <div>
     <h4>Item_damages</h4>
     <hr />

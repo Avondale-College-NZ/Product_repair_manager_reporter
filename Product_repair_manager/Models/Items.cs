@@ -4,6 +4,7 @@ namespace Product_repair_manager.Models
 {
     public class Items
     {
+        public int CatagoryId { get; set; }
         //public int ItemsId {  get; set; }
         //public string items_Name { get; set; }
         //public int CatagoryId { get; set; }
@@ -13,7 +14,6 @@ namespace Product_repair_manager.Models
         //[DataType(DataType.Custom)]
         //[StringLength(1, ErrorMessage = "try again")]
         //[Display(Name = "enter a report")]
-        public int CatagoryId { get; set; }
 
 
         //[DataType(DataType.Custom)]
