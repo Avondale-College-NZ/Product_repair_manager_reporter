@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Product_repair_manager.Migrations
 {
-    [DbContext(typeof(Product_repair_managerContext))]
+    [DbContext(typeof(ProductrepairmanagerContext   ))]
     [Migration("20260330021437_productinitial")]
     partial class productinitial
     {

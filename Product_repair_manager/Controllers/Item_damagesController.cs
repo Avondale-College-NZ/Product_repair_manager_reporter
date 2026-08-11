@@ -12,11 +12,11 @@ namespace Product_repair_manager.Controllers
 {
     public class Item_damagesController : Controller
     {
-        private readonly Product_repair_managerContext _context;
+        private readonly ProductrepairmanagerContext _context;
 
-        public Item_damagesController(Product_repair_managerContext context)
+        public Item_damagesController(ProductrepairmanagerContext _context)
         {
-            _context = context;
+            this._context = _context;
         }
 
         // GET: Item_damages

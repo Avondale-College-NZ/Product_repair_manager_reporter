@@ -11,9 +11,9 @@ namespace Product_repair_manager.Controllers
 {
     public class CatagoriesController : Controller
     {
-        private readonly Product_repair_managerContext _context;
+        private readonly ProductrepairmanagerContext _context;
 
-        public CatagoriesController(Product_repair_managerContext context)
+        public CatagoriesController(ProductrepairmanagerContext context)
         {
             _context = context;
         }

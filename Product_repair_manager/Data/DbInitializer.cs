@@ -6,7 +6,7 @@ namespace Product_repair_manager.Data
 {
     public class DbInitializer
     {
-        public static void Initialize(Product_repair_managerContext context)
+        public static void Initialize(ProductrepairmanagerContext context)
         {
             context.Database.EnsureCreated();
             // Look for any User.

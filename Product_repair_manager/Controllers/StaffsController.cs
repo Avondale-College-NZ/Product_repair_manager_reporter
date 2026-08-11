@@ -11,9 +11,9 @@ namespace Product_repair_manager.Controllers
 {
     public class StaffsController : Controller
     {
-        private readonly Product_repair_managerContext _context;
+        private readonly ProductrepairmanagerContext _context;
 
-        public StaffsController(Product_repair_managerContext context)
+        public StaffsController(ProductrepairmanagerContext context)
         {
             _context = context;
         }

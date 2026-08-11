@@ -12,9 +12,9 @@ namespace Product_repair_manager.Controllers
 {
     public class ClassesController : Controller
     {
-        private readonly Product_repair_managerContext _context;
+        private readonly ProductrepairmanagerContext _context;
 
-        public ClassesController(Product_repair_managerContext context)
+        public ClassesController(ProductrepairmanagerContext context)
         {
             _context = context;
         }

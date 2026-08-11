@@ -1,10 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Product_repair_manager.Data;
+using Microsoft.AspNetCore.Identity;
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<Product_repair_managerContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Product_repair_managerContext") ?? throw new InvalidOperationException("Connection string 'Product_repair_managerContext' not found.")));
 
+builder.Services.AddDbContext<ProductrepairmanagerContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ProductrepairmanagerContext") ?? throw new InvalidOperationException("Connection string 'ProductrepairmanagerContext' not found.")));
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<ProductrepairmanagerContext>();   
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -23,7 +28,7 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
     try
     {
-        var context = services.GetRequiredService<Product_repair_managerContext>();
+        var context = services.GetRequiredService<ProductrepairmanagerContext>();
         DbInitializer.Initialize(context);
     }
     catch (Exception ex)
@@ -35,6 +40,7 @@ using (var scope = app.Services.CreateScope())
 
 app.UseHttpsRedirection();
 app.UseRouting();
+app.MapRazorPages();
 
 app.UseAuthorization();
 
