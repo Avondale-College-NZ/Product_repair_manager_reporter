@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Product_repair_manager.Data;
@@ -38,9 +39,11 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
+app.MapRazorPages();
+
 app.UseHttpsRedirection();
 app.UseRouting();
-app.MapRazorPages();
+
 
 app.UseAuthorization();
 
