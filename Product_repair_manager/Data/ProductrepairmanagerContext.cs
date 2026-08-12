@@ -4,9 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Product_repair_manager.Data;
 using Product_repair_manager.Models;
 
-public class ProductrepairmanagerContext : IdentityDbContext
+public class ProductrepairmanagerContext : IdentityDbContext<ApplicationUser>
 {
     public ProductrepairmanagerContext(DbContextOptions<ProductrepairmanagerContext> options)
         : base(options)
