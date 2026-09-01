@@ -14,10 +14,6 @@ public class ProductrepairmanagerContext : IdentityDbContext<ApplicationUser>
     {
     }
 
-    public DbSet<Product_repair_manager.Models.Users> User { get; set; } = default!;
-
-    public DbSet<Product_repair_manager.Models.Staff> Staff { get; set; } = default!;
-
     public DbSet<Product_repair_manager.Models.Items> Items { get; set; } = default!;
 
     public DbSet<Product_repair_manager.Models.Catagory> Catagory { get; set; } = default!;

@@ -1,6 +1,9 @@
-﻿using Product_repair_manager.Models;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.CodeAnalysis.Scripting;
+using Product_repair_manager.Models;
 using System;
 using System.Linq;
+
 
 namespace Product_repair_manager.Data
 {
@@ -10,75 +13,11 @@ namespace Product_repair_manager.Data
         {
             context.Database.EnsureCreated();
             // Look for any User.
-            if (context.User.Any())
+            if (context.Classes.Any())
             {
                 return;   // DB has been seeded
             }
-            var user = new Users[]
-            {
-             new Users { FirstName = "Admin", LastName = "blocks", Email = "admin@test.com", role = "student" },
-            new Users { FirstName = "John", LastName = "pork", Email = "john@test.com", role = "teacher" },
-             new Users { FirstName = "Jane", LastName = "iornlung", Email = "jane@test.com", role = "student" },
-             new Users { FirstName = "Alex", LastName = "Turner", Email = "alex.turner@test.com", role = "student" },
-            new Users { FirstName = "Bella", LastName = "Scott", Email = "bella.scott@test.com", role = "student" },
-            new Users { FirstName = "Chris", LastName = "Adams", Email = "chris.adams@test.com", role = "student" },
-            new Users { FirstName = "Diana", LastName = "Baker", Email = "diana.baker@test.com", role = "student" },
-            new Users { FirstName = "Ethan", LastName = "Clark", Email = "ethan.clark@test.com", role = "student" },
-            new Users { FirstName = "Fiona", LastName = "Hall", Email = "fiona.hall@test.com", role = "student" },
-            new Users { FirstName = "George", LastName = "Allen", Email = "george.allen@test.com", role = "student" },
-            new Users { FirstName = "Hannah", LastName = "Young", Email = "hannah.young@test.com", role = "student" },
-            new Users { FirstName = "Isaac", LastName = "King", Email = "isaac.king@test.com", role = "student" },
-            new Users { FirstName = "Julia", LastName = "Wright", Email = "julia.wright@test.com", role = "student" },
-            new Users { FirstName = "Kevin", LastName = "Green", Email = "kevin.green@test.com", role = "student" },
-            new Users { FirstName = "Lily", LastName = "Hill", Email = "lily.hill@test.com", role = "student" },
-            new Users { FirstName = "Mason", LastName = "Nelson", Email = "mason.nelson@test.com", role = "student" },
-            new Users { FirstName = "Nora", LastName = "Carter", Email = "nora.carter@test.com", role = "student" },
-            new Users { FirstName = "Oscar", LastName = "Mitchell", Email = "oscar.mitchell@test.com", role = "student" },
-            new Users { FirstName = "Penny", LastName = "Perez", Email = "penny.perez@test.com", role = "student" },
-            new Users { FirstName = "Ryan", LastName = "Roberts", Email = "ryan.roberts@test.com", role = "student" },
-            new Users { FirstName = "Sophia", LastName = "Campbell", Email = "sophia.campbell@test.com", role = "student" },
-            new Users { FirstName = "Tom", LastName = "Phillips", Email = "tom.phillips@test.com", role = "student" },
-            new Users { FirstName = "Uma", LastName = "Evans", Email = "uma.evans@test.com", role = "student" }
-                        };
 
-            foreach (Users u in user)
-            {
-                context.User.Add(u);
-            }
-            context.SaveChanges();
-            
-            var Staff = new Staff[]
-            {
-             new Staff { FirstName = "ice", LastName = "blocks", Email = "admin@test.com", role = "IT" },
-            new Staff { FirstName = "jake", LastName = "pork", Email = "john@test.com", role = "teacher" },
-             new Staff { FirstName = "john", LastName = "iornlung", Email = "jane@test.com", role = "teacher" },
-             new Staff { FirstName = "Alice", LastName = "Smith", Email = "alice.smith@test.com", role = "teacher" },
-            new Staff { FirstName = "Bob", LastName = "Johnson", Email = "bob.johnson@test.com", role = "teacher" },
-            new Staff { FirstName = "Carol", LastName = "Williams", Email = "carol.williams@test.com", role = "teacher" },
-            new Staff { FirstName = "David", LastName = "Brown", Email = "david.brown@test.com", role = "teacher" },
-            new Staff { FirstName = "Emma", LastName = "Jones", Email = "emma.jones@test.com", role = "teacher" },
-            new Staff { FirstName = "Frank", LastName = "Garcia", Email = "frank.garcia@test.com", role = "teacher" },
-            new Staff { FirstName = "Grace", LastName = "Miller", Email = "grace.miller@test.com", role = "teacher" },
-            new Staff { FirstName = "Henry", LastName = "Davis", Email = "henry.davis@test.com", role = "teacher" },
-            new Staff { FirstName = "Ivy", LastName = "Rodriguez", Email = "ivy.rodriguez@test.com", role = "teacher" },
-            new Staff { FirstName = "Jack", LastName = "Martinez", Email = "jack.martinez@test.com", role = "teacher" },
-            new Staff { FirstName = "Karen", LastName = "Hernandez", Email = "karen.hernandez@test.com", role = "teacher" },
-            new Staff { FirstName = "Leo", LastName = "Lopez", Email = "leo.lopez@test.com", role = "teacher" },
-            new Staff { FirstName = "Mia", LastName = "Gonzalez", Email = "mia.gonzalez@test.com", role = "teacher" },
-            new Staff { FirstName = "Nathan", LastName = "Wilson", Email = "nathan.wilson@test.com", role = "teacher" },
-            new Staff { FirstName = "Olivia", LastName = "Anderson", Email = "olivia.anderson@test.com", role = "teacher" },
-            new Staff { FirstName = "Paul", LastName = "Thomas", Email = "paul.thomas@test.com", role = "teacher" },
-            new Staff { FirstName = "Quinn", LastName = "Taylor", Email = "quinn.taylor@test.com", role = "teacher" },
-            new Staff { FirstName = "Rachel", LastName = "Moore", Email = "rachel.moore@test.com", role = "teacher" },
-            new Staff { FirstName = "Sam", LastName = "Jackson", Email = "sam.jackson@test.com", role = "teacher" },
-            new Staff { FirstName = "Tina", LastName = "Martin", Email = "tina.martin@test.com", role = "teacher" }
-            };
-
-            foreach (Staff S in Staff)
-            {
-                context.Staff.Add(S);
-            }
-            context.SaveChanges();
 
             var Classes = new Classes[]
 {
