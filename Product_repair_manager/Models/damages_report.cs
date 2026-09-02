@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Product_repair_manager.Data;
+using System.ComponentModel.DataAnnotations;
 
 namespace Product_repair_manager.Models
 {
@@ -6,12 +7,12 @@ namespace Product_repair_manager.Models
     {
 
 
-        [ScaffoldColumn(false)]
-
-        public int UserId { get; set; }
+        
+        public int damages_reportId { get; set; }
+        public string UserId { get; set; }
+        public ApplicationUser appuser { get; set; }
         public int ClassesId { get; set; }
         public int Item_damagesId { get; set; }
-        public int damages_reportId { get; set; }
 
         
         [DataType(DataType.Text)]
