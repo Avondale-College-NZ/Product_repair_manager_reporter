@@ -7,8 +7,6 @@ namespace Product_repair_manager.Models
     public class Item_damages
     {
 
-        [ScaffoldColumn(false)]
-
         public int ItemsId { get; set; }
         public int Item_damagesId { get; set; }
 

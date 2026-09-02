@@ -6,8 +6,6 @@ namespace Product_repair_manager.Models
     public class Classes
     {
 
-
-        [ScaffoldColumn(false)]
         public int ClassesId { get; set; }
 
 

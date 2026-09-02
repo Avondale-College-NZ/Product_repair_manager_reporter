@@ -10,7 +10,7 @@ using Product_repair_manager.Models;
 
 namespace Product_repair_manager.Controllers
 {
-    [Authorize(Roles = "Admin,Staff")]
+    //[Authorize(Roles = "Admin,Staff")]
     public class damages_reportController : Controller
     {
         private readonly ProductrepairmanagerContext _context;

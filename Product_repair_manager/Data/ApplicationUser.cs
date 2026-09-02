@@ -5,7 +5,11 @@ namespace Product_repair_manager.Data;
 // Add profile data for application users by adding properties to the ApplicationUser class
 public class ApplicationUser : IdentityUser
 {
-    [Required dis]
+    [Required, Display(Name = "First Name")]
+    public string FirstName { get; set; }
+
+    [Required, Display(Name = "Last Name")]
+    public string LastName { get; set; }
 
     public ICollection<damages_report> damages_Reports { get; set; }
 }
