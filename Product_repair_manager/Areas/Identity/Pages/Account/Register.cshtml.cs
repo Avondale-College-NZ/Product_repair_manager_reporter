@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using Product_repair_manager.Data;
 
+
 namespace Product_repair_manager.Areas.Identity.Pages.Account;
 
 public class RegisterModel : PageModel
@@ -132,10 +133,14 @@ public class RegisterModel : PageModel
         if (ModelState.IsValid)
         {
             var user = CreateUser();
+       user.FirstName = Input.FirstName;
+            user.LastName = Input.LastName;
 
             await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+          
             await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
             var result = await _userManager.CreateAsync(user, Input.Password);
+            
 
             if (result.Succeeded)
             {
