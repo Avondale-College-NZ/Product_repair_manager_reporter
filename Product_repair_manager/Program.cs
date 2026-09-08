@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Product_repair_manager.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Scaffolding.Metadata;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ProductrepairmanagerContext>(options =>
@@ -59,6 +60,37 @@ app.Run();
 
 using (var scope = app.Services.CreateScope())
 {
-var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var roles = new[] { "Admin", "User", "Staff" };
+    foreach (var role in roles)
+    {
+        if (await roleManager.FindByNameAsync(role) == null)
+        {
+            await roleManager.CreateAsync(new IdentityRole(role));
+        }
+    }
+}
 
+using (var scope = app.Services.CreateScope())
+{
+var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
+    string adminemail = "F2@F2.com";
+    string adminpassword = "School123!";
+
+    if (await roleManager.FindByNameAsync("F2") == null)
+    {
+        var user = new ApplicationUser
+        {
+            FirstName = "F2",
+            LastName = "F2",
+            Email = adminemail,
+            PasswordHash = adminpassword
+        };
+
+        await userManager.CreateAsync(user, adminpassword);
+
+        await userManager.AddToRoleAsync(user, "F2");
+    }
 }
