@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Product_repair_manager.Data;
@@ -58,13 +57,14 @@ app.MapControllerRoute(
 
 app.Run();
 
+
 using (var scope = app.Services.CreateScope())
 {
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
     var roles = new[] { "Admin", "User", "Staff" };
     foreach (var role in roles)
     {
-        if (await roleManager.FindByNameAsync(role) == null)
+        if (await roleManager.RoleExistsAsync(role))
         {
             await roleManager.CreateAsync(new IdentityRole(role));
         }
@@ -73,20 +73,20 @@ using (var scope = app.Services.CreateScope())
 
 using (var scope = app.Services.CreateScope())
 {
-var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
     string adminemail = "F2@F2.com";
     string adminpassword = "School123!";
 
-    if (await roleManager.FindByNameAsync("F2") == null)
+    if (await userManager.FindByEmailAsync("F2@F2.com") == null)
     {
         var user = new ApplicationUser
         {
             FirstName = "F2",
             LastName = "F2",
             Email = adminemail,
-            PasswordHash = adminpassword
+            PasswordHash = adminpassword,
+            EmailConfirmed = true,
         };
 
         await userManager.CreateAsync(user, adminpassword);
@@ -94,3 +94,6 @@ var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityR
         await userManager.AddToRoleAsync(user, "F2");
     }
 }
+await DbInitializer.Initialize(app);
+
+app.Run();

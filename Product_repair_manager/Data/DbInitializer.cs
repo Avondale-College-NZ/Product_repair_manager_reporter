@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.CodeAnalysis.Scripting;
+using Microsoft.Identity.Client;
 using Product_repair_manager.Models;
 using System;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace Product_repair_manager.Data
     {
         public static void Initialize(ProductrepairmanagerContext context)
         {
+
+
             context.Database.EnsureCreated();
             // Look for any User.
             if (context.Classes.Any())
@@ -178,6 +181,11 @@ namespace Product_repair_manager.Data
 
 
 
+        }
+
+        internal static async Task Initialize(WebApplication app)
+        {
+            throw new NotImplementedException();
         }
     }
 }
