@@ -2,6 +2,7 @@
 using Microsoft.CodeAnalysis.Scripting;
 using Microsoft.Identity.Client;
 using Product_repair_manager.Models;
+using Product_repair_manager.Data;
 using System;
 using System.Linq;
 
@@ -50,6 +51,17 @@ namespace Product_repair_manager.Data
             foreach (Classes L in Classes)
             {
                 context.Classes.Add(L);
+            }
+            context.SaveChanges();
+
+
+            var ApplicationUser = new ApplicationUser[]
+                {
+                new ApplicationUser { FirstName = "F3", LastName = "F3", Email = "F3@F3.com",pas}
+                };
+            foreach (ApplicationUser U in ApplicationUser)
+            {
+                context.ApplicationUser.Add(U);
             }
             context.SaveChanges();
 

@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Identity;
 using Product_repair_manager.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+
+
 namespace Product_repair_manager.Data; 
 // Add profile data for application users by adding properties to the ApplicationUser class
 public class ApplicationUser : IdentityUser

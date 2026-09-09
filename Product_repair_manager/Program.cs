@@ -55,6 +55,7 @@ app.MapControllerRoute(
     .WithStaticAssets();
 
 
+
 app.Run();
 
 
@@ -78,22 +79,18 @@ using (var scope = app.Services.CreateScope())
     string adminemail = "F2@F2.com";
     string adminpassword = "School123!";
 
-    if (await userManager.FindByEmailAsync("F2@F2.com") == null)
+    if (await userManager.FindByEmailAsync(adminemail) == null)
     {
-        var user = new ApplicationUser
-        {
-            FirstName = "F2",
-            LastName = "F2",
-            Email = adminemail,
-            PasswordHash = adminpassword,
-            EmailConfirmed = true,
-        };
+        var user = new ApplicationUser();
+        user.FirstName = "F2";
+        user.LastName = "F2";
+        user.Email = adminemail;
+        
 
         await userManager.CreateAsync(user, adminpassword);
 
         await userManager.AddToRoleAsync(user, "F2");
-    }
+    };
 }
 await DbInitializer.Initialize(app);
-
 app.Run();

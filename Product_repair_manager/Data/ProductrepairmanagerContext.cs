@@ -23,4 +23,6 @@ public class ProductrepairmanagerContext : IdentityDbContext<ApplicationUser>
     public DbSet<Product_repair_manager.Models.Item_damages> Item_damages { get; set; } = default!;
 
     public DbSet<Product_repair_manager.Models.damages_report> damages_report { get; set; } = default!;
+
+    public DbSet<Product_repair_manager.Data.ApplicationUser> ApplicationUser { get; set; } = default!;
 }
