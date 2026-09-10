@@ -9,8 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ProductrepairmanagerContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ProductrepairmanagerContext") ?? throw new InvalidOperationException("Connection string 'ProductrepairmanagerContext' not found.")));
 
-builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ProductrepairmanagerContext>();   
+builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = false;
+})
+.AddRoles<IdentityRole>()
+.AddEntityFrameworkStores<ProductrepairmanagerContext>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -44,7 +48,7 @@ app.MapRazorPages();
 app.UseHttpsRedirection();
 app.UseRouting();
 
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();
@@ -55,17 +59,13 @@ app.MapControllerRoute(
     .WithStaticAssets();
 
 
-
-app.Run();
-
-
 using (var scope = app.Services.CreateScope())
 {
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
     var roles = new[] { "Admin", "User", "Staff" };
     foreach (var role in roles)
     {
-        if (await roleManager.RoleExistsAsync(role))
+        if (!await roleManager.RoleExistsAsync(role))
         {
             await roleManager.CreateAsync(new IdentityRole(role));
         }
@@ -85,12 +85,17 @@ using (var scope = app.Services.CreateScope())
         user.FirstName = "F2";
         user.LastName = "F2";
         user.Email = adminemail;
-        
+        user.EmailConfirmed = true;
 
-        await userManager.CreateAsync(user, adminpassword);
 
-        await userManager.AddToRoleAsync(user, "F2");
-    };
+        await userManager.CreateAsync(user, "F2@F2.com");
+
+        await userManager.AddToRoleAsync(user, "School123!");
+    }
+    ;
 }
-await DbInitializer.Initialize(app);
+await DbInitializer.Initialize(context);
+
 app.Run();
+
+

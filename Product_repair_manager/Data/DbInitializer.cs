@@ -57,7 +57,7 @@ namespace Product_repair_manager.Data
 
             var ApplicationUser = new ApplicationUser[]
                 {
-                new ApplicationUser { FirstName = "F3", LastName = "F3", Email = "F3@F3.com",pas}
+                new ApplicationUser { FirstName = "F3", LastName = "F3", Email = "F3@F3.com", PasswordHash = "F3@F3.com" }
                 };
             foreach (ApplicationUser U in ApplicationUser)
             {
