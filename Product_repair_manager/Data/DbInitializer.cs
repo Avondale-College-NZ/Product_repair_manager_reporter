@@ -55,15 +55,15 @@ namespace Product_repair_manager.Data
             context.SaveChanges();
 
 
-            var ApplicationUser = new ApplicationUser[]
-                {
-                new ApplicationUser { FirstName = "F3", LastName = "F3", Email = "F3@F3.com", PasswordHash = "F3@F3.com" }
-                };
-            foreach (ApplicationUser U in ApplicationUser)
-            {
-                context.ApplicationUser.Add(U);
-            }
-            context.SaveChanges();
+            //var ApplicationUser = new ApplicationUser[]
+            //    {
+            //    new ApplicationUser { FirstName = "F3", LastName = "F3", Email = "F3@F3.com", PasswordHash = "F3@F3.com" }
+            //    };
+            //foreach (ApplicationUser U in ApplicationUser)
+            //{
+            //    context.ApplicationUser.Add(U);
+            //}
+            //context.SaveChanges();
 
 
             var Catagory = new Catagory[]
@@ -193,11 +193,6 @@ namespace Product_repair_manager.Data
 
 
 
-        }
-
-        internal static async Task Initialize(WebApplication app)
-        {
-            throw new NotImplementedException();
         }
     }
 }

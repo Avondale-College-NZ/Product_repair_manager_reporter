@@ -88,13 +88,13 @@ using (var scope = app.Services.CreateScope())
         user.EmailConfirmed = true;
 
 
-        await userManager.CreateAsync(user, "F2@F2.com");
+        await userManager.CreateAsync(user, "School123!");
 
-        await userManager.AddToRoleAsync(user, "School123!");
+        await userManager.AddToRoleAsync(user, "Admin");
     }
     ;
 }
-await DbInitializer.Initialize(context);
+
 
 app.Run();
 
