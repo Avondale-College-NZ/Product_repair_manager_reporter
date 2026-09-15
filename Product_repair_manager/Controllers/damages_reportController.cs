@@ -91,7 +91,7 @@ namespace Product_repair_manager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("damages_reportId,UserId,fixed_report,item_status,ClassId,Item_date,item_damages_id")] damages_report damages_report)
+        public async Task<IActionResult> Create([Bind("damages_reportId,UserId,ClassId,item_damages_id,fixed_report,item_status,ClassId,Item_date")] damages_report damages_report)
         {
             if (ModelState.IsValid)
             {
@@ -123,7 +123,7 @@ namespace Product_repair_manager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("damages_reportId,UserId,fixed_report,item_status,ClassId,Item_date,item_damages_id")] damages_report damages_report)
+        public async Task<IActionResult> Edit(int id, [Bind("damages_reportId,UserId,ClassId,item_damages_id,fixed_report,item_status,ClassId,Item_date")] damages_report damages_report)
         {
             if (id != damages_report.damages_reportId)
             {

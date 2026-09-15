@@ -86,7 +86,7 @@ namespace Product_repair_manager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ClassesId,block,classroom")] Classes classes)
+        public async Task<IActionResult> Create([Bind("ClassesId,blocks,classroom")] Classes classes)
         {
             if (ModelState.IsValid)
             {
@@ -118,7 +118,7 @@ namespace Product_repair_manager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ClassesId,block,classroom")] Classes classes)
+        public async Task<IActionResult> Edit(int id, [Bind("ClassesId,blocks,classroom")] Classes classes)
         {
             if (id != classes.ClassesId)
             {
