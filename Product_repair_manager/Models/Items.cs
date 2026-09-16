@@ -1,24 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Product_repair_manager.Models
 {
     public class Items
     {
         public int CatagoryId { get; set; }
-        //public int ItemsId {  get; set; }
-        //public string items_Name { get; set; }
-        //public int CatagoryId { get; set; }
 
-        [ScaffoldColumn(false)]
-
-        //[DataType(DataType.Custom)]
-        //[StringLength(1, ErrorMessage = "try again")]
-        //[Display(Name = "enter a report")]
-
-
-        //[DataType(DataType.Custom)]
-        //[StringLength(1, ErrorMessage = "try again")]
-        //[Display(Name = "enter a report")]
         public int ItemsId { get; set; }
 
         [DataType(DataType.Text)]
@@ -26,7 +14,25 @@ namespace Product_repair_manager.Models
         [MaxLength(100), MinLength(1)]
         public string items_Name { get; set; }
 
-        
-        
+        [NotMapped]
+        public Catagory catagory { get; set; }
+
+        [NotMapped]
+        public ICollection<Item_damages> Item_damages { get; set; }
+
     }
 }
+//public int ItemsId {  get; set; }
+//public string items_Name { get; set; }
+//public int CatagoryId { get; set; }
+
+
+
+//[DataType(DataType.Custom)]
+//[StringLength(1, ErrorMessage = "try again")]
+//[Display(Name = "enter a report")]
+
+
+//[DataType(DataType.Custom)]
+//[StringLength(1, ErrorMessage = "try again")]
+//[Display(Name = "enter a report")]

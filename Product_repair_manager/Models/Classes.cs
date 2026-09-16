@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq.Expressions;
 
 namespace Product_repair_manager.Models
@@ -18,6 +19,9 @@ namespace Product_repair_manager.Models
         [DataType(DataType.Text)]
         [Range(1, 52, ErrorMessage = "Please enter a valid classroom number")]
         public int classroom { get; set; }
+
+        [NotMapped]
+        public ICollection<damages_report> damages_reports { get; set; }
     }
 
 

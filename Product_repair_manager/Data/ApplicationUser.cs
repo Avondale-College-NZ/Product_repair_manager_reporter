@@ -14,7 +14,7 @@ public class ApplicationUser : IdentityUser
     [Required, Display(Name = "Last Name")]
     public string LastName { get; set; }
 
-    public ICollection<damages_report> damages_Reports { get; set; }
+    public ICollection<damages_report> damages_reports { get; set; }
 
     [NotMapped]
     public IList<string> rolesnames { get; set; }= null;

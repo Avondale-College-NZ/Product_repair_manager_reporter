@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace Product_repair_manager.Models
@@ -23,6 +24,12 @@ namespace Product_repair_manager.Models
 
         [DataType(DataType.DateTime)]
         public DateTime date { get; set; }
+
+        [NotMapped]
+        public Items items { get; set; }
+
+        [NotMapped]
+        public ICollection<damages_report> damages_reports { get; set; }
 
     }
 

@@ -1,5 +1,6 @@
 ﻿using Product_repair_manager.Data;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Product_repair_manager.Models
 {
@@ -29,6 +30,9 @@ namespace Product_repair_manager.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         public string Item_date { get; set; }
+        public Classes classes { get; set; }
+        public Item_damages item_damages { get; set; }
+
     }
 
     
