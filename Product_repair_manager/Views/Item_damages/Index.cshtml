@@ -1,33 +1,34 @@
-﻿@model PaginatedList<Product_repair_manager.Models.Item_damages>
+@model IEnumerable<Product_repair_manager.Models.Item_damages>
 
 @{
-    ViewData["Title"] = "Item_damages";
+    ViewData["Title"] = "Index";
 }
 
-<h1>Item_damages</h1>
-<div class="container p- my-5 border border-4">
+<h1>Index</h1>
 
-    <form asp-action="Index" method="get">
-        <div class="form-actions no-color">
-            <p>
-                <label>Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" /></label>
-                <input type="submit" value="Search" class="btn btn-default" /> |
-                <a asp-action="Index">Back to Full List</a> |
-                <a class="button" asp-action="Create">Create New</a>
-            </p>
-        </div>
-    </form>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
 <table class="table">
-        <thead class="table-bordered table-dark">
+    <thead>
         <tr>
             <th>
-                    <a asp-action="Index" asp-route-sortOrder="@ViewData["severitySortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">severity</a>
+                @Html.DisplayNameFor(model => model.ItemsId)
             </th>
             <th>
-                    <a asp-action="Index" asp-route-sortOrder="@ViewData["damage_typeSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">damage_type</a>
+                @Html.DisplayNameFor(model => model.severity)
             </th>
             <th>
-                    <a asp-action="Index" asp-route-sortOrder="@ViewData["dateSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">date</a>
+                @Html.DisplayNameFor(model => model.damage_type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.items)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.damages_reports)
             </th>
             <th></th>
         </tr>
@@ -36,16 +37,22 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ItemsId)
-            </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.damage_type)
-                </td>
-            <td>
-                    @Html.DisplayFor(modelItem => item.severity)
+                @Html.DisplayFor(model => item.ItemsId)
             </td>
             <td>
-                    @Html.DisplayFor(modelItem => item.date)
+                @Html.DisplayFor(model => item.severity)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.damage_type)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.date)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.items)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.damages_reports)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Item_damagesId">Edit</a> |
@@ -54,18 +61,5 @@
             </td>
         </tr>
 }
-        </div>
     </tbody>
 </table>
-@{
-    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-}
-
-<ul class="pagination">
-    <li class="page-item"><a asp-action="Index" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-pageNumber="@(Model.PageIndex - 1)" asp-route-currentFilter="@ViewData["CurrentFilter"]" class="page-link">Previous</a></li>
-    <li class="page-item"><a asp-action="Index" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-pageNumber="@(Model.PageIndex == 0 ? 1 : Model.PageIndex - 1)" asp-route-currentFilter="@ViewData["CurrentFilter"]" class="page-link">1</a></li>
-    <li class="page-item"><a asp-action="Index" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-pageNumber="@(Model.PageIndex == 1 ? 1 : Model.PageIndex - 1)" asp-route-currentFilter="@ViewData["CurrentFilter"]" class="page-link">2</a></li>
-    <li class="page-item"><a asp-action="Index" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-pageNumber="@(Model.PageIndex == 2 ? 1 : Model.PageIndex - 1)" asp-route-currentFilter="@ViewData["CurrentFilter"]" class="page-link">3</a></li>
-    <li class="page-item"><a asp-action="Index" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-pageNumber="@(Model.PageIndex + 1)" asp-route-currentFilter="@ViewData["CurrentFilter"]" class="page-link">Next</a> </li>
-</ul>

@@ -1,35 +1,41 @@
-﻿@model Product_repair_manager.Models.Items
+@model Product_repair_manager.Models.Items
 
 @{
     ViewData["Title"] = "Details";
 }
 
 <h1>Details</h1>
-<div class="container p- my-5 border border-4">
 
-    <form asp-action="Index" method="get">
-        <div class="form-actions no-color">
-            <p>
-                <a class="button" asp-action="Edit" asp-route-id="@Model?.ItemsId">Edit</a>
-            </p>
-        </div>
-    </form>
-    <p>
 <div>
     <h4>Items</h4>
     <hr />
     <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CatagoryId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CatagoryId)
+        </dd>
+    </dl>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.items_Name)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.items_Name)
         </dd>
+    </dl>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CatagoryId)
+            @Html.DisplayNameFor(model => model.catagory)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CatagoryId)
+            @Html.DisplayFor(model => model.catagory)
+        </dd>
+    </dl>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Item_damages)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Item_damages)
         </dd>
     </dl>
 </div>

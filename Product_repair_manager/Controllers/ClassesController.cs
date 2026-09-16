@@ -1,189 +1,149 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Product_repair_manager.Models;
 
-
-namespace Product_repair_manager.Controllers
+public class ClassesController : Controller
 {
-    public class ClassesController : Controller
+    private readonly ProductrepairmanagerContext _context;
+
+    public ClassesController(ProductrepairmanagerContext context)
     {
-        private readonly ProductrepairmanagerContext _context;
+        _context = context;
+    }
 
-        public ClassesController(ProductrepairmanagerContext context)
+    // GET: CLASSESS
+    public async Task<IActionResult> Index()    
+    {
+        return View(await _context.Classes.ToListAsync());
+    }
+
+    // GET: CLASSESS/Details/5
+    public async Task<IActionResult> Details(int? classesid)
+    {
+        if (classesid == null)
         {
-            _context = context;
+            return NotFound();
         }
 
-        // GET: Classes
-        public async Task<IActionResult> Index(string sortOrder, string searchString, int searchint, string currentFilter, int currentFilteri, int? pageNumber)
+        var classes = await _context.Classes
+            .FirstOrDefaultAsync(m => m.ClassesId == classesid);
+        if (classes == null)
         {
-            ViewData["CurrentSort"] = sortOrder;
-            ViewData["blocksSortParm"] = String.IsNullOrEmpty(sortOrder) ? "blocks" : "";
-            ViewData["classroomSortParm"] = sortOrder == "classroom" ? "blocks" : "";
-
-
-            var Classes = from s in _context.Classes
-                          select s;
-            if (searchString != null)
-            {
-                pageNumber = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-
-            }
-            ViewData["CurrentFilter"] = searchString ;
-            if (!String.IsNullOrEmpty(searchString)&& searchint == 0)
-            {
-                Classes = Classes.Where(s => s.blocks.Contains(searchString) || s.classroom.ToString().Contains(searchint.ToString()));
-            }
-            switch (sortOrder)
-            {
-                case "blocks":
-                    Classes = Classes.OrderByDescending(s => s.blocks);
-                    break;
-                case "classroom":
-                default:
-                    Classes = Classes.OrderBy(s => s.classroom);
-                    break;
-            }
-            int pageSize = 15;
-            return View(await PaginatedList<Classes>.CreateAsync(Classes.AsNoTracking(), pageNumber ?? 1, pageSize));
+            return NotFound();
         }
 
-        // GET: Classes/Details/5
-        public async Task<IActionResult> Details(int? id)
+        return View(classes);
+    }
+
+    // GET: CLASSESS/Create
+    public IActionResult Create()
+    {
+        return View();
+    }
+
+    // POST: CLASSESS/Create
+    // To protect from overposting attacks, enable the specific properties you want to bind to.
+    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Create([Bind("ClassesId,blocks,classroom,damages_reports")] Classes classes)
+    {
+        if (ModelState.IsValid)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var classes = await _context.Classes
-                .FirstOrDefaultAsync(m => m.ClassesId == id);
-            if (classes == null)
-            {
-                return NotFound();
-            }
-
-            return View(classes);
-        }
-
-        // GET: Classes/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Classes/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ClassesId,blocks,classroom")] Classes classes)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(classes);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(classes);
-        }
-
-        // GET: Classes/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var classes = await _context.Classes.FindAsync(id);
-            if (classes == null)
-            {
-                return NotFound();
-            }
-            return View(classes);
-        }
-
-        // POST: Classes/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ClassesId,blocks,classroom")] Classes classes)
-        {
-            if (id != classes.ClassesId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(classes);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ClassesExists(classes.ClassesId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(classes);
-        }
-
-        // GET: Classes/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var classes = await _context.Classes
-                .FirstOrDefaultAsync(m => m.ClassesId == id);
-            if (classes == null)
-            {
-                return NotFound();
-            }
-
-            return View(classes);
-        }
-
-        // POST: Classes/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var classes = await _context.Classes.FindAsync(id);
-            if (classes != null)
-            {
-                _context.Classes.Remove(classes);
-            }
-
+            _context.Add(classes);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        return View(classes);
+    }
 
-        private bool ClassesExists(int id)
+    // GET: CLASSESS/Edit/5
+    public async Task<IActionResult> Edit(int? classesid)
+    {
+        if (classesid == null)
         {
-            return _context.Classes.Any(e => e.ClassesId == id);
+            return NotFound();
         }
+
+        var classes = await _context.Classes.FindAsync(classesid);
+        if (classes == null)
+        {
+            return NotFound();
+        }
+        return View(classes);
+    }
+
+    // POST: CLASSESS/Edit/5
+    // To protect from overposting attacks, enable the specific properties you want to bind to.
+    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Edit(int? classesid, [Bind("ClassesId,blocks,classroom,damages_reports")] Classes classes)
+    {
+        if (classesid != classes.ClassesId)
+        {
+            return NotFound();
+        }
+
+        if (ModelState.IsValid)
+        {
+            try
+            {
+                _context.Update(classes);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ClassesExists(classes.ClassesId))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction(nameof(Index));
+        }
+        return View(classes);
+    }
+
+    // GET: CLASSESS/Delete/5
+    public async Task<IActionResult> Delete(int? classesid)
+    {
+        if (classesid == null)
+        {
+            return NotFound();
+        }
+
+        var classes = await _context.Classes
+            .FirstOrDefaultAsync(m => m.ClassesId == classesid);
+        if (classes == null)
+        {
+            return NotFound();
+        }
+
+        return View(classes);
+    }
+
+    // POST: CLASSESS/Delete/5
+    [HttpPost, ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeleteConfirmed(int? classesid)
+    {
+        var classes = await _context.Classes.FindAsync(classesid);
+        if (classes != null)
+        {
+            _context.Classes.Remove(classes);
+        }
+
+        await _context.SaveChangesAsync();
+        return RedirectToAction(nameof(Index));
+    }
+
+    private bool ClassesExists(int? classesid)
+    {
+        return _context.Classes.Any(e => e.ClassesId == classesid);
     }
 }

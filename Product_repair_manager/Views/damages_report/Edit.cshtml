@@ -1,4 +1,4 @@
-﻿@model Product_repair_manager.Models.damages_report
+@model Product_repair_manager.Models.damages_report
 
 @{
     ViewData["Title"] = "Edit";
@@ -19,6 +19,21 @@
                 <span asp-validation-for="UserId" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="appuser" class="control-label"></label>
+                <input asp-for="appuser" class="form-control" />
+                <span asp-validation-for="appuser" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClassesId" class="control-label"></label>
+                <input asp-for="ClassesId" class="form-control" />
+                <span asp-validation-for="ClassesId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item_damagesId" class="control-label"></label>
+                <input asp-for="Item_damagesId" class="form-control" />
+                <span asp-validation-for="Item_damagesId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="fixed_report" class="control-label"></label>
                 <input asp-for="fixed_report" class="form-control" />
                 <span asp-validation-for="fixed_report" class="text-danger"></span>
@@ -29,19 +44,19 @@
                 <span asp-validation-for="item_status" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ClassesId" class="control-label"></label>
-                <input asp-for="ClassesId" class="form-control" />
-                <span asp-validation-for="ClassesId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Item_date" class="control-label"></label>
                 <input asp-for="Item_date" class="form-control" />
                 <span asp-validation-for="Item_date" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Item_damagesId" class="control-label"></label>
-                <input asp-for="Item_damagesId" class="form-control" />
-                <span asp-validation-for="Item_damagesId" class="text-danger"></span>
+                <label asp-for="classes" class="control-label"></label>
+                <input asp-for="classes" class="form-control" />
+                <span asp-validation-for="classes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="item_damages" class="control-label"></label>
+                <input asp-for="item_damages" class="form-control" />
+                <span asp-validation-for="item_damages" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

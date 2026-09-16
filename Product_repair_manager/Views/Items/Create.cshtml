@@ -1,4 +1,4 @@
-﻿@model Product_repair_manager.Models.Items
+@model Product_repair_manager.Models.Items
 
 @{
     ViewData["Title"] = "Create";
@@ -12,15 +12,29 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="CatagoryId" class="control-label"></label>
+                <input asp-for="CatagoryId" class="form-control" />
+                <span asp-validation-for="CatagoryId" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <label asp-for="items_Name" class="control-label"></label>
                 <input asp-for="items_Name" class="form-control" />
                 <span asp-validation-for="items_Name" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="CatagoryId" class="control-label"></label>
-                <input asp-for="CatagoryId" class="form-control" />
-                <span asp-validation-for="CatagoryId" class="text-danger"></span>
+                <label asp-for="catagory" class="control-label"></label>
+                <input asp-for="catagory" class="form-control" />
+                <span asp-validation-for="catagory" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Item_damages" class="control-label"></label>
+                <input asp-for="Item_damages" class="form-control" />
+                <span asp-validation-for="Item_damages" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -32,7 +46,3 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

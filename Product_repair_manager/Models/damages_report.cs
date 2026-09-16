@@ -29,8 +29,12 @@ namespace Product_repair_manager.Models
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
+
+        [NotMapped]
         public string Item_date { get; set; }
+        [NotMapped]
         public Classes classes { get; set; }
+        [NotMapped]
         public Item_damages item_damages { get; set; }
 
     }

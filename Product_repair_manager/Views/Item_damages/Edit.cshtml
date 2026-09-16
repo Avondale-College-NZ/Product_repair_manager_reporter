@@ -1,4 +1,4 @@
-﻿@model Product_repair_manager.Models.Item_damages
+@model Product_repair_manager.Models.Item_damages
 
 @{
     ViewData["Title"] = "Edit";
@@ -32,6 +32,16 @@
                 <label asp-for="date" class="control-label"></label>
                 <input asp-for="date" class="form-control" />
                 <span asp-validation-for="date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="items" class="control-label"></label>
+                <input asp-for="items" class="form-control" />
+                <span asp-validation-for="items" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="damages_reports" class="control-label"></label>
+                <input asp-for="damages_reports" class="form-control" />
+                <span asp-validation-for="damages_reports" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
