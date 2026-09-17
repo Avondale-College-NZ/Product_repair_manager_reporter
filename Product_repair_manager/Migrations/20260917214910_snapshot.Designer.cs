@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Product_repair_manager.Migrations
 {
     [DbContext(typeof(ProductrepairmanagerContext))]
-    partial class ProductrepairmanagerContextModelSnapshot : ModelSnapshot
+    [Migration("20260917214910_snapshot")]
+    partial class snapshot
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -328,22 +331,19 @@ namespace Product_repair_manager.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("damages_reportId"));
 
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<int>("ClassesId")
                         .HasColumnType("int");
 
                     b.Property<int>("Item_damagesId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Item_date")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("appuserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("fixed_report")
                         .IsRequired()
@@ -357,7 +357,7 @@ namespace Product_repair_manager.Migrations
 
                     b.HasKey("damages_reportId");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.HasIndex("appuserId");
 
                     b.ToTable("damages_report");
                 });
@@ -415,9 +415,13 @@ namespace Product_repair_manager.Migrations
 
             modelBuilder.Entity("Product_repair_manager.Models.damages_report", b =>
                 {
-                    b.HasOne("Product_repair_manager.Data.ApplicationUser", null)
+                    b.HasOne("Product_repair_manager.Data.ApplicationUser", "appuser")
                         .WithMany("damages_reports")
-                        .HasForeignKey("ApplicationUserId");
+                        .HasForeignKey("appuserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("appuser");
                 });
 
             modelBuilder.Entity("Product_repair_manager.Data.ApplicationUser", b =>

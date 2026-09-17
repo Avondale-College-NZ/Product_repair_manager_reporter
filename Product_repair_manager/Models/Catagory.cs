@@ -12,7 +12,7 @@ namespace Product_repair_manager.Models
         //[Display(Name = "enter a Catagory")]
 
 
-        [DataType(DataType.Text)]
+        [Required, DataType(DataType.Text)]
         [StringLength(100, ErrorMessage = "no such as the you wrote dosent exist please try again")]
         [MaxLength(100), MinLength(1)]
         public string Catagory_Name { get; set; }

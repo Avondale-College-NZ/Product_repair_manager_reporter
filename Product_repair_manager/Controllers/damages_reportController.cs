@@ -47,7 +47,7 @@ public class damages_reportController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("damages_reportId,UserId,appuser,ClassesId,Item_damagesId,fixed_report,item_status,Item_date,classes,item_damages")] damages_report damages_report)
+    public async Task<IActionResult> Create([Bind("damages_reportId,UserId,ClassesId,Item_damagesId,fixed_report,item_status,Item_date,appuser,classes,item_damages")] damages_report damages_report)
     {
         if (ModelState.IsValid)
         {
@@ -79,7 +79,7 @@ public class damages_reportController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int? damages_reportid, [Bind("damages_reportId,UserId,appuser,ClassesId,Item_damagesId,fixed_report,item_status,Item_date,classes,item_damages")] damages_report damages_report)
+    public async Task<IActionResult> Edit(int? damages_reportid, [Bind("damages_reportId,UserId,ClassesId,Item_damagesId,fixed_report,item_status,Item_date,appuser,classes,item_damages")] damages_report damages_report)
     {
         if (damages_reportid != damages_report.damages_reportId)
         {

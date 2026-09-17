@@ -47,7 +47,7 @@ public class ItemsController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("CatagoryId,ItemsId,items_Name,catagory,Item_damages")] Items items)
+    public async Task<IActionResult> Create([Bind("CatagoryId,ItemsId,items_Name,Catagory,Item_damages")] Items items)
     {
         if (ModelState.IsValid)
         {
@@ -79,7 +79,7 @@ public class ItemsController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int? itemsid, [Bind("CatagoryId,ItemsId,items_Name,catagory,Item_damages")] Items items)
+    public async Task<IActionResult> Edit(int? itemsid, [Bind("CatagoryId,ItemsId,items_Name,Catagory,Item_damages")] Items items)
     {
         if (itemsid != items.ItemsId)
         {

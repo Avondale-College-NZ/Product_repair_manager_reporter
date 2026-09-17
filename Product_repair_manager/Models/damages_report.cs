@@ -11,7 +11,6 @@ namespace Product_repair_manager.Models
         
         public int damages_reportId { get; set; }
         public string UserId { get; set; }
-        public ApplicationUser appuser { get; set; }
         public int ClassesId { get; set; }
         public int Item_damagesId { get; set; }
 
@@ -29,9 +28,10 @@ namespace Product_repair_manager.Models
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
+        public string Item_date { get; set; }
 
         [NotMapped]
-        public string Item_date { get; set; }
+        public ApplicationUser appuser { get; set; }
         [NotMapped]
         public Classes classes { get; set; }
         [NotMapped]
