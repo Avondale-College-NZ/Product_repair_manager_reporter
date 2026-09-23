@@ -17,9 +17,10 @@ public class Item_damagesController : Controller
     public async Task<IActionResult> Index()    
     {
         var item = _context.Item_damages;
+       
+        ViewBag.items = await _context.Items.ToListAsync();
         return View(await _context.Item_damages.ToListAsync());
-   
-     }
+    }
     private void IssueForeignKeyDropdown(object selected = null)
     {
         var query = from i in _context.Item_damages
@@ -49,6 +50,11 @@ public class Item_damagesController : Controller
     // GET: ITEM_DAMAGESS/Create
     public IActionResult Create()
     {
+        if (ModelState.IsValid)
+        {
+            
+        }
+        ViewData["ItemsId"] = new SelectList(_context.Set<Items>().OrderBy(i=>i.items_Name), "ItemsId", "items_Name");
         IssueForeignKeyDropdown();
         return View();
     }
@@ -66,9 +72,10 @@ public class Item_damagesController : Controller
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        ViewData["ItemsId"] = new SelectList(_context.Set<Items>().OrderBy(i => i.items_Name), "ItemsId", "items_Name");
         IssueForeignKeyDropdown(item_damages.ItemsId);
 
-        ViewData["ItemsId"] = new SelectList(_context.Items, "ItemsId", "ItemsId", item_damages.ItemsId);
+  
         return View(item_damages);
     }
 
@@ -86,6 +93,7 @@ public class Item_damagesController : Controller
             return NotFound();
         }
         IssueForeignKeyDropdown();
+        ViewData["ItemsId"] = new SelectList(_context.Set<Items>().OrderBy(i => i.items_Name), "ItemsId", "items_Name");
         return View(item_damages);
     }
 
@@ -121,7 +129,8 @@ public class Item_damagesController : Controller
             }
             return RedirectToAction(nameof(Index));
         }
-        ViewData["ItemsId"] = new SelectList(_context.Items, "ItemsId", "ItemsId", item_damages.ItemsId);
+        ViewData["ItemsId"] = new SelectList(_context.Set<Items>().OrderBy(i => i.items_Name), "ItemsId", "items_Name");
+
         return View(item_damages);
     }
 
