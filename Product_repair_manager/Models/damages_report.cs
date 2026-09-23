@@ -10,8 +10,11 @@ namespace Product_repair_manager.Models
 
         
         public int damages_reportId { get; set; }
-        public string UserId { get; set; }
+        [ForeignKey("Id")]
+        public string Id { get; set; }
+        [ForeignKey("ClassesId")]
         public int ClassesId { get; set; }
+        [ForeignKey("Item_damagesId")]
         public int Item_damagesId { get; set; }
 
         
@@ -30,11 +33,11 @@ namespace Product_repair_manager.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         public string Item_date { get; set; }
 
-        [NotMapped]
+        
         public ApplicationUser appuser { get; set; }
-        [NotMapped]
+
         public Classes classes { get; set; }
-        [NotMapped]
+
         public Item_damages item_damages { get; set; }
 
     }

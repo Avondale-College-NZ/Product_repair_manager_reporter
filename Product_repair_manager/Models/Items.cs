@@ -5,6 +5,8 @@ namespace Product_repair_manager.Models
 {
     public class Items
     {
+
+        [ForeignKey("CatagoryId")]
         public int CatagoryId { get; set; }
 
         public int ItemsId { get; set; }
@@ -14,10 +16,9 @@ namespace Product_repair_manager.Models
         [MaxLength(100), MinLength(1)]
         public string items_Name { get; set; }
 
-        [NotMapped]
         public Catagory catagory { get; set; }
 
-        [NotMapped]
+     
         public ICollection<Item_damages> Item_damages { get; set; }
 
     }

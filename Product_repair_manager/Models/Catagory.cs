@@ -5,8 +5,10 @@ namespace Product_repair_manager.Models
 {
     public class Catagory
     {
+        [Key]
         public int CatagoryId { get; set; }
-
+        [ForeignKey("ItemsId")]
+        public int ItemsId { get; set; }
         //[DataType(DataType.Text)]
         //[StringLength(1, ErrorMessage = "try again")]
         //[Display(Name = "enter a Catagory")]
@@ -17,7 +19,7 @@ namespace Product_repair_manager.Models
         [MaxLength(100), MinLength(1)]
         public string Catagory_Name { get; set; }
 
-        [NotMapped]
+
         public ICollection<Items> Items { get; set; }
     }
 }

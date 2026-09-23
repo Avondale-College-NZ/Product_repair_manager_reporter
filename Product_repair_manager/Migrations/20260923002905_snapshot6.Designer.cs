@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Product_repair_manager.Migrations
 {
     [DbContext(typeof(ProductrepairmanagerContext))]
-    partial class ProductrepairmanagerContextModelSnapshot : ModelSnapshot
+    [Migration("20260923002905_snapshot6")]
+    partial class snapshot6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -332,8 +335,11 @@ namespace Product_repair_manager.Migrations
 
             modelBuilder.Entity("Product_repair_manager.Models.damages_report", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("damages_reportId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("damages_reportId"));
 
                     b.Property<int>("ClassesId")
                         .HasColumnType("int");
@@ -345,12 +351,13 @@ namespace Product_repair_manager.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("appuserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("damages_reportId")
-                        .HasColumnType("int");
 
                     b.Property<string>("fixed_report")
                         .IsRequired()
@@ -362,7 +369,7 @@ namespace Product_repair_manager.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.HasKey("Id");
+                    b.HasKey("damages_reportId");
 
                     b.HasIndex("ClassesId");
 

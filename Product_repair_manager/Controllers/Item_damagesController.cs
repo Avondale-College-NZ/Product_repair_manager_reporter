@@ -1,5 +1,6 @@
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Product_repair_manager.Models;
 
@@ -15,7 +16,16 @@ public class Item_damagesController : Controller
     // GET: ITEM_DAMAGESS
     public async Task<IActionResult> Index()    
     {
+        var item = _context.Item_damages;
         return View(await _context.Item_damages.ToListAsync());
+   
+     }
+    private void IssueForeignKeyDropdown(object selected = null)
+    {
+        var query = from i in _context.Item_damages
+                    orderby i.ItemsId
+                    select i;
+        ViewBag.IssueID = new SelectList(query.AsNoTracking(), "ItemsId", "ItemsId", selected);
     }
 
     // GET: ITEM_DAMAGESS/Details/5
@@ -39,6 +49,7 @@ public class Item_damagesController : Controller
     // GET: ITEM_DAMAGESS/Create
     public IActionResult Create()
     {
+        IssueForeignKeyDropdown();
         return View();
     }
 
@@ -55,6 +66,9 @@ public class Item_damagesController : Controller
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        IssueForeignKeyDropdown(item_damages.ItemsId);
+
+        ViewData["ItemsId"] = new SelectList(_context.Items, "ItemsId", "ItemsId", item_damages.ItemsId);
         return View(item_damages);
     }
 
@@ -71,6 +85,7 @@ public class Item_damagesController : Controller
         {
             return NotFound();
         }
+        IssueForeignKeyDropdown();
         return View(item_damages);
     }
 
@@ -106,6 +121,7 @@ public class Item_damagesController : Controller
             }
             return RedirectToAction(nameof(Index));
         }
+        ViewData["ItemsId"] = new SelectList(_context.Items, "ItemsId", "ItemsId", item_damages.ItemsId);
         return View(item_damages);
     }
 
@@ -124,6 +140,7 @@ public class Item_damagesController : Controller
             return NotFound();
         }
 
+        IssueForeignKeyDropdown();
         return View(item_damages);
     }
 

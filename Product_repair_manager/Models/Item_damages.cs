@@ -7,7 +7,7 @@ namespace Product_repair_manager.Models
 {
     public class Item_damages
     {
-
+        [ForeignKey("ItemsId")]
         public int ItemsId { get; set; }
         public int Item_damagesId { get; set; }
 
@@ -25,10 +25,10 @@ namespace Product_repair_manager.Models
         [ DataType(DataType.DateTime)]
         public DateTime date { get; set; }
 
-        [NotMapped]
-        public Items items { get; set; }
+   
+        public Items Items { get; set; }
 
-        [NotMapped]
+        
         public ICollection<damages_report> damages_reports { get; set; }
 
     }

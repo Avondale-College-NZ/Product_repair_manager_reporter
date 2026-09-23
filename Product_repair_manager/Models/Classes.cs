@@ -6,7 +6,8 @@ namespace Product_repair_manager.Models
 {
     public class Classes
     {
-
+        [ForeignKey("damages_reportId")]
+        public int damages_reportId { get; set; }
         public int ClassesId { get; set; }
 
 
@@ -20,7 +21,7 @@ namespace Product_repair_manager.Models
         [Range(1, 52, ErrorMessage = "Please enter a valid classroom number")]
         public int classroom { get; set; }
 
-        [NotMapped]
+     
         public ICollection<damages_report> damages_reports { get; set; }
     }
 
