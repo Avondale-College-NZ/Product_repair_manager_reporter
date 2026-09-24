@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Product_repair_manager.Migrations
 {
     [DbContext(typeof(ProductrepairmanagerContext))]
-    [Migration("20260910212739_pendingchanges")]
-    partial class pendingchanges
+    [Migration("20260924220550_resettable")]
+    partial class resettable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -268,6 +268,9 @@ namespace Product_repair_manager.Migrations
                     b.Property<int>("classroom")
                         .HasColumnType("int");
 
+                    b.Property<int>("damages_reportId")
+                        .HasColumnType("int");
+
                     b.HasKey("ClassesId");
 
                     b.ToTable("Classes");
@@ -299,6 +302,8 @@ namespace Product_repair_manager.Migrations
 
                     b.HasKey("Item_damagesId");
 
+                    b.HasIndex("ItemsId");
+
                     b.ToTable("Item_damages");
                 });
 
@@ -320,16 +325,15 @@ namespace Product_repair_manager.Migrations
 
                     b.HasKey("ItemsId");
 
+                    b.HasIndex("CatagoryId");
+
                     b.ToTable("Items");
                 });
 
             modelBuilder.Entity("Product_repair_manager.Models.damages_report", b =>
                 {
-                    b.Property<int>("damages_reportId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("damages_reportId"));
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("ClassesId")
                         .HasColumnType("int");
@@ -341,13 +345,12 @@ namespace Product_repair_manager.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("appuserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("damages_reportId")
+                        .HasColumnType("int");
 
                     b.Property<string>("fixed_report")
                         .IsRequired()
@@ -359,7 +362,11 @@ namespace Product_repair_manager.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.HasKey("damages_reportId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClassesId");
+
+                    b.HasIndex("Item_damagesId");
 
                     b.HasIndex("appuserId");
 
@@ -417,20 +424,78 @@ namespace Product_repair_manager.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Product_repair_manager.Models.Item_damages", b =>
+                {
+                    b.HasOne("Product_repair_manager.Models.Items", "Items")
+                        .WithMany("Item_damages")
+                        .HasForeignKey("ItemsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Items");
+                });
+
+            modelBuilder.Entity("Product_repair_manager.Models.Items", b =>
+                {
+                    b.HasOne("Product_repair_manager.Models.Catagory", "catagory")
+                        .WithMany("Items")
+                        .HasForeignKey("CatagoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("catagory");
+                });
+
             modelBuilder.Entity("Product_repair_manager.Models.damages_report", b =>
                 {
+                    b.HasOne("Product_repair_manager.Models.Classes", "classes")
+                        .WithMany("damages_reports")
+                        .HasForeignKey("ClassesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Product_repair_manager.Models.Item_damages", "item_damages")
+                        .WithMany("damages_reports")
+                        .HasForeignKey("Item_damagesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Product_repair_manager.Data.ApplicationUser", "appuser")
-                        .WithMany("damages_Reports")
+                        .WithMany("damages_reports")
                         .HasForeignKey("appuserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("appuser");
+
+                    b.Navigation("classes");
+
+                    b.Navigation("item_damages");
                 });
 
             modelBuilder.Entity("Product_repair_manager.Data.ApplicationUser", b =>
                 {
-                    b.Navigation("damages_Reports");
+                    b.Navigation("damages_reports");
+                });
+
+            modelBuilder.Entity("Product_repair_manager.Models.Catagory", b =>
+                {
+                    b.Navigation("Items");
+                });
+
+            modelBuilder.Entity("Product_repair_manager.Models.Classes", b =>
+                {
+                    b.Navigation("damages_reports");
+                });
+
+            modelBuilder.Entity("Product_repair_manager.Models.Item_damages", b =>
+                {
+                    b.Navigation("damages_reports");
+                });
+
+            modelBuilder.Entity("Product_repair_manager.Models.Items", b =>
+                {
+                    b.Navigation("Item_damages");
                 });
 #pragma warning restore 612, 618
         }

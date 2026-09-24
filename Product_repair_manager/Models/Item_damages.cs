@@ -7,9 +7,11 @@ namespace Product_repair_manager.Models
 {
     public class Item_damages
     {
+        [Key]
+        public int Item_damagesId { get; set; }
         [ForeignKey("ItemsId")]
         public int ItemsId { get; set; }
-        public int Item_damagesId { get; set; }
+     
 
         [Required, DataType(DataType.Text)] 
         [StringLength(30, ErrorMessage = "no such as the you wrote dosent exist please try again")]
