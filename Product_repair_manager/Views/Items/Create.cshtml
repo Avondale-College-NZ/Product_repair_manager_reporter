@@ -15,7 +15,10 @@
 
             <div class="form-group">
                 <label asp-for="CatagoryId" class="control-label"></label>
-                <input asp-for="CatagoryId" class="form-control" />
+                <select asp-for="CatagoryId" class="form-control" asp-items="ViewBag.CatagoryId">
+                    <option value="">-- Select "catagory" --</option>
+
+                </select>
                 <span asp-validation-for="CatagoryId" class="text-danger"></span>
             </div>
 

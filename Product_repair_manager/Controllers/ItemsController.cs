@@ -1,5 +1,6 @@
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Product_repair_manager.Models;
 
@@ -13,11 +14,21 @@ public class ItemsController : Controller
     }
 
     // GET: ITEMSS
-    public async Task<IActionResult> Index()    
+    public async Task<IActionResult> Index()
     {
-        return View(await _context.Items.ToListAsync());
+        var item = _context.Items;
+
+        ViewBag.items = await _context.Items.ToListAsync();
+        return View(await _context.Catagory.ToListAsync());
     }
 
+    private void IssueForeignKeyDropdown(object selected = null)
+    {
+        var query = from i in _context.Items
+                    orderby i.CatagoryId
+                    select i;
+        ViewBag.IssueID = new SelectList(query.AsNoTracking(), "CatagoryId", "CatagoryId", selected);
+    }
     // GET: ITEMSS/Details/5
     public async Task<IActionResult> Details(int? itemsid)
     {
@@ -39,6 +50,12 @@ public class ItemsController : Controller
     // GET: ITEMSS/Create
     public IActionResult Create()
     {
+        if (ModelState.IsValid)
+        {
+
+        }
+        ViewData["CatagoryId"] = new SelectList(_context.Set<Catagory>().OrderBy(i => i.Catagory_Name), "CatagoryId", "Catagory_Name");
+        IssueForeignKeyDropdown();
         return View();
     }
 
@@ -55,6 +72,8 @@ public class ItemsController : Controller
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        ViewData["CatagoryId"] = new SelectList(_context.Set<Catagory>().OrderBy(i => i.Catagory_Name), "CatagoryId", "Catagory_Name");
+        IssueForeignKeyDropdown(items.CatagoryId);
         return View(items);
     }
 
