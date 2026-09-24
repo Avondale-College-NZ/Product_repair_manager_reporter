@@ -125,6 +125,7 @@ public class ItemsController : Controller
             }
             return RedirectToAction(nameof(Index));
         }
+        ViewData["CatagoryId"] = new SelectList(_context.Set<Catagory>().OrderBy(i => i.Catagory_Name), "CatagoryId", "Catagory_Name");
         return View(items);
     }
 
