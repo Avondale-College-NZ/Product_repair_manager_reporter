@@ -7,8 +7,6 @@ namespace Product_repair_manager.Models
     {
         [Key]
         public int CatagoryId { get; set; }
-        [ForeignKey("ItemsId")]
-        public int ItemsId { get; set; }
         //[DataType(DataType.Text)]
         //[StringLength(1, ErrorMessage = "try again")]
         //[Display(Name = "enter a Catagory")]
