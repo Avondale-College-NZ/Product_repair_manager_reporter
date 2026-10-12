@@ -19,7 +19,7 @@ public class ItemsController : Controller
         var item = _context.Items;
 
         ViewBag.items = await _context.Items.ToListAsync();
-        return View(await _context.Catagory.ToListAsync());
+        return View(await _context.Items.ToListAsync());
     }
 
     private void IssueForeignKeyDropdown(object selected = null)
