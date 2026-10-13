@@ -19,15 +19,15 @@ public class CatagoriesController : Controller
     }
 
     // GET: CATAGORYS/Details/5
-    public async Task<IActionResult> Details(int? catagoryid)
+    public async Task<IActionResult> Details(int? id)
     {
-        if (catagoryid == null)
+        if (id == null)
         {
             return NotFound();
         }
 
         var catagory = await _context.Catagory
-            .FirstOrDefaultAsync(m => m.CatagoryId == catagoryid);
+            .FirstOrDefaultAsync(m => m.CatagoryId == id);
         if (catagory == null)
         {
             return NotFound();
@@ -59,15 +59,15 @@ public class CatagoriesController : Controller
     }
 
     // GET: CATAGORYS/Edit/5
-    public async Task<IActionResult> Edit(int catagoryid)
+    public async Task<IActionResult> Edit(int? id)
     {
-        if (catagoryid == null)
+        if (id == null)
         {
             return NotFound();
         }
 
-        var catagory = await _context.Catagory.FindAsync(catagoryid);
-        if (catagoryid == null)
+        var catagory = await _context.Catagory.FindAsync(id);
+        if (catagory == null)
         {
             return NotFound();
         }
@@ -87,7 +87,7 @@ public class CatagoriesController : Controller
         }
 
         if (ModelState.IsValid)
-        {
+         {
             try
             {
                 _context.Update(catagory);
@@ -110,16 +110,16 @@ public class CatagoriesController : Controller
     }
 
     // GET: CATAGORYS/Delete/5
-    public async Task<IActionResult> Delete(int? catagoryid)
+    public async Task<IActionResult> Delete(int? id)
     {
-        if (catagoryid == null)
+        if (id == null)
         {
             return NotFound();
         }
 
         var catagory = await _context.Catagory
-            .FirstOrDefaultAsync(m => m.CatagoryId == catagoryid);
-        if (catagoryid == null)
+            .FirstOrDefaultAsync(m => m.CatagoryId == id);
+        if (catagory == null)
         {
             return NotFound();
         }
@@ -130,9 +130,9 @@ public class CatagoriesController : Controller
     // POST: CATAGORYS/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(int catagoryid)
+    public async Task<IActionResult> DeleteConfirmed(int? id)
     {
-        var catagory = await _context.Catagory.FindAsync(catagoryid);
+        var catagory = await _context.Catagory.FindAsync(id);
         if (catagory != null)
         {
             _context.Catagory.Remove(catagory);

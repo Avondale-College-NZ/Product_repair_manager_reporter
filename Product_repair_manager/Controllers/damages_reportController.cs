@@ -59,14 +59,14 @@ public class damages_reportController : Controller
     }
 
     // GET: DAMAGES_REPORTS/Edit/5
-    public async Task<IActionResult> Edit(int damages_reportid)
+    public async Task<IActionResult> Edit(int? id)
     {
-        if (damages_reportid == null)
+        if (id == null)
         {
             return NotFound();
         }
 
-        var damages_report = await _context.damages_report.FindAsync(damages_reportid);
+        var damages_report = await _context.damages_report.FindAsync(id);
         if (damages_report == null)
         {
             return NotFound();
@@ -110,15 +110,15 @@ public class damages_reportController : Controller
     }
 
     // GET: DAMAGES_REPORTS/Delete/5
-    public async Task<IActionResult> Delete(int? damages_reportid)
+    public async Task<IActionResult> Delete(int? id)
     {
-        if (damages_reportid == null)
+        if (id == null)
         {
             return NotFound();
         }
 
         var damages_report = await _context.damages_report
-            .FirstOrDefaultAsync(m => m.damages_reportId == damages_reportid);
+            .FirstOrDefaultAsync(m => m.damages_reportId == id);
         if (damages_report == null)
         {
             return NotFound();
@@ -130,9 +130,9 @@ public class damages_reportController : Controller
     // POST: DAMAGES_REPORTS/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(int? damages_reportid)
+    public async Task<IActionResult> DeleteConfirmed(int? id)
     {
-        var damages_report = await _context.damages_report.FindAsync(damages_reportid);
+        var damages_report = await _context.damages_report.FindAsync(id);
         if (damages_report != null)
         {
             _context.damages_report.Remove(damages_report);

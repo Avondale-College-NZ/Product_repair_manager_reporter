@@ -59,15 +59,15 @@ public class ClassesController : Controller
     }
 
     // GET: CLASSESS/Edit/5
-    public async Task<IActionResult> Edit(int classesid)
+    public async Task<IActionResult> Edit(int? id)
     {
-        if (classesid == null)
+        if (id == null)
         {
             return NotFound();
         }
 
-        var classes = await _context.Classes.FindAsync(classesid);
-        if (classesid == null)
+        var classes = await _context.Classes.FindAsync(id);
+        if (classes == null)
         {
             return NotFound();
         }
@@ -110,15 +110,15 @@ public class ClassesController : Controller
     }
 
     // GET: CLASSESS/Delete/5
-    public async Task<IActionResult> Delete(int? classesid)
+    public async Task<IActionResult> Delete(int? id)
     {
-        if (classesid == null)
+        if (id == null)
         {
             return NotFound();
         }
 
         var classes = await _context.Classes
-            .FirstOrDefaultAsync(m => m.ClassesId == classesid);
+            .FirstOrDefaultAsync(m => m.ClassesId == id);
         if (classes == null)
         {
             return NotFound();
@@ -130,9 +130,9 @@ public class ClassesController : Controller
     // POST: CLASSESS/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(int? classesid)
+    public async Task<IActionResult> DeleteConfirmed(int? id)
     {
-        var classes = await _context.Classes.FindAsync(classesid);
+        var classes = await _context.Classes.FindAsync(id);
         if (classes != null)
         {
             _context.Classes.Remove(classes);

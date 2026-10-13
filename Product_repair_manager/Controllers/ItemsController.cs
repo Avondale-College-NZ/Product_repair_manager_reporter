@@ -18,7 +18,7 @@ public class ItemsController : Controller
     {
         var item = _context.Items;
 
-        ViewBag.items = await _context.Items.ToListAsync();
+        ViewBag.Catagory = await _context.Catagory.ToListAsync();
         return View(await _context.Items.ToListAsync());
     }
 
@@ -30,16 +30,16 @@ public class ItemsController : Controller
         ViewBag.IssueID = new SelectList(query.AsNoTracking(), "CatagoryId", "CatagoryId", selected);
     }
     // GET: ITEMSS/Details/5
-    public async Task<IActionResult> Details(int? itemsid)
+    public async Task<IActionResult> Details(int? id)
     {
-        if (itemsid == null)
+        if (id == null)
         {
             return NotFound();
         }
 
         var items = await _context.Items
-            .FirstOrDefaultAsync(m => m.ItemsId == itemsid);
-        if (itemsid == null)
+            .FirstOrDefaultAsync(m => m.ItemsId == id);
+        if (items == null)
         {
             return NotFound();
         }
@@ -90,6 +90,8 @@ public class ItemsController : Controller
         {
             return NotFound();
         }
+        IssueForeignKeyDropdown();
+        ViewData["CatagoryId"] = new SelectList(_context.Set<Catagory>().OrderBy(i => i.Catagory_Name), "CatagoryId", "Catagory_Name");
         return View(items);
     }
 

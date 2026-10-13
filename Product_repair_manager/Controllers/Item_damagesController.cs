@@ -35,15 +35,15 @@ public class Item_damagesController : Controller
     }
 
     // GET: ITEM_DAMAGESS/Details/5
-    public async Task<IActionResult> Details(int? item_damagesid)
+    public async Task<IActionResult> Details(int? id)
     {
-        if (item_damagesid == null)
+        if (id == null)
         {
             return NotFound();
         }
 
         var item_damages = await _context.Item_damages
-            .FirstOrDefaultAsync(m => m.Item_damagesId == item_damagesid);
+            .FirstOrDefaultAsync(m => m.Item_damagesId == id);
         if (item_damages == null)
         {
             return NotFound();
@@ -88,15 +88,15 @@ public class Item_damagesController : Controller
     }
 
     // GET: ITEM_DAMAGESS/Edit/5
-    public async Task<IActionResult> Edit(int item_damagesid)
+    public async Task<IActionResult> Edit(int? id)
     {
-        if (item_damagesid == null)
+        if (id == null)
         {
             return NotFound();
         }
 
-        var item_damages = await _context.Item_damages.FindAsync(item_damagesid);
-        if (item_damagesid == null)
+        var item_damages = await _context.Item_damages.FindAsync(id);
+        if (item_damages == null)
         {
             return NotFound();
         }
@@ -144,15 +144,15 @@ public class Item_damagesController : Controller
     }
 
     // GET: ITEM_DAMAGESS/Delete/5
-    public async Task<IActionResult> Delete(int? item_damagesid)
+    public async Task<IActionResult> Delete(int? id)
     {
-        if (item_damagesid == null)
+        if (id == null)
         {
             return NotFound();
         }
 
         var item_damages = await _context.Item_damages
-            .FirstOrDefaultAsync(m => m.Item_damagesId == item_damagesid);
+            .FirstOrDefaultAsync(m => m.Item_damagesId == id);
         if (item_damages == null)
         {
             return NotFound();
