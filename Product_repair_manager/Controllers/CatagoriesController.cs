@@ -59,7 +59,7 @@ public class CatagoriesController : Controller
     }
 
     // GET: CATAGORYS/Edit/5
-    public async Task<IActionResult> Edit(int? catagoryid)
+    public async Task<IActionResult> Edit(int catagoryid)
     {
         if (catagoryid == null)
         {
@@ -67,7 +67,7 @@ public class CatagoriesController : Controller
         }
 
         var catagory = await _context.Catagory.FindAsync(catagoryid);
-        if (catagory == null)
+        if (catagoryid == null)
         {
             return NotFound();
         }
@@ -79,7 +79,7 @@ public class CatagoriesController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int? catagoryid, [Bind("CatagoryId,Catagory_Name,Items")] Catagory catagory)
+    public async Task<IActionResult> Edit(int catagoryid, [Bind("CatagoryId,Catagory_Name")] Catagory catagory)
     {
         if (catagoryid != catagory.CatagoryId)
         {
@@ -130,7 +130,7 @@ public class CatagoriesController : Controller
     // POST: CATAGORYS/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(int? catagoryid)
+    public async Task<IActionResult> DeleteConfirmed(int catagoryid)
     {
         var catagory = await _context.Catagory.FindAsync(catagoryid);
         if (catagory != null)
