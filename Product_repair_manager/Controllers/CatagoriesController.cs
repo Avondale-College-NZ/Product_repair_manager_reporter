@@ -119,7 +119,7 @@ public class CatagoriesController : Controller
 
         var catagory = await _context.Catagory
             .FirstOrDefaultAsync(m => m.CatagoryId == catagoryid);
-        if (catagory == null)
+        if (catagoryid == null)
         {
             return NotFound();
         }

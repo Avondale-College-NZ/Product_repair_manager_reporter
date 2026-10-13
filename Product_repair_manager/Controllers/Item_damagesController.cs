@@ -88,7 +88,7 @@ public class Item_damagesController : Controller
     }
 
     // GET: ITEM_DAMAGESS/Edit/5
-    public async Task<IActionResult> Edit(int? item_damagesid)
+    public async Task<IActionResult> Edit(int item_damagesid)
     {
         if (item_damagesid == null)
         {
@@ -96,7 +96,7 @@ public class Item_damagesController : Controller
         }
 
         var item_damages = await _context.Item_damages.FindAsync(item_damagesid);
-        if (item_damages == null)
+        if (item_damagesid == null)
         {
             return NotFound();
         }
@@ -111,7 +111,7 @@ public class Item_damagesController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int? item_damagesid, [Bind("ItemsId,Item_damagesId,severity,damage_type,date,items,damages_reports")] Item_damages item_damages)
+    public async Task<IActionResult> Edit(int item_damagesid, [Bind("ItemsId,Item_damagesId,severity,damage_type,date,items,damages_reports")] Item_damages item_damages)
     {
         if (item_damagesid != item_damages.Item_damagesId)
         {

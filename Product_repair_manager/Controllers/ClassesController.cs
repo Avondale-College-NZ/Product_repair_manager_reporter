@@ -28,7 +28,7 @@ public class ClassesController : Controller
 
         var classes = await _context.Classes
             .FirstOrDefaultAsync(m => m.ClassesId == classesid);
-        if (classes == null)
+        if (classesid == null)
         {
             return NotFound();
         }
@@ -59,7 +59,7 @@ public class ClassesController : Controller
     }
 
     // GET: CLASSESS/Edit/5
-    public async Task<IActionResult> Edit(int? classesid)
+    public async Task<IActionResult> Edit(int classesid)
     {
         if (classesid == null)
         {
@@ -67,7 +67,7 @@ public class ClassesController : Controller
         }
 
         var classes = await _context.Classes.FindAsync(classesid);
-        if (classes == null)
+        if (classesid == null)
         {
             return NotFound();
         }
@@ -79,7 +79,7 @@ public class ClassesController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int? classesid, [Bind("ClassesId,blocks,classroom,damages_reports")] Classes classes)
+    public async Task<IActionResult> Edit(int classesid, [Bind("ClassesId,blocks,classroom,damages_reports")] Classes classes)
     {
         if (classesid != classes.ClassesId)
         {

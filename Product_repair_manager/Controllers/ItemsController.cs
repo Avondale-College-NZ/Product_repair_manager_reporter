@@ -39,7 +39,7 @@ public class ItemsController : Controller
 
         var items = await _context.Items
             .FirstOrDefaultAsync(m => m.ItemsId == itemsid);
-        if (items == null)
+        if (itemsid == null)
         {
             return NotFound();
         }
@@ -78,7 +78,7 @@ public class ItemsController : Controller
     }
 
     // GET: ITEMSS/Edit/5
-    public async Task<IActionResult> Edit(int? itemsid)
+    public async Task<IActionResult> Edit(int itemsid)
     {
         if (itemsid == null)
         {
@@ -86,7 +86,7 @@ public class ItemsController : Controller
         }
 
         var items = await _context.Items.FindAsync(itemsid);
-        if (items == null)
+        if (itemsid == null)
         {
             return NotFound();
         }
