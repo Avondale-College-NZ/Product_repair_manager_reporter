@@ -19,15 +19,15 @@ public class CatagoriesController : Controller
     }
 
     // GET: CATAGORYS/Details/5
-    public async Task<IActionResult> Details(int? id)
+    public async Task<IActionResult> Details(int? catagoryid)
     {
-        if (id == null)
+        if (catagoryid == null)
         {
             return NotFound();
         }
 
         var catagory = await _context.Catagory
-            .FirstOrDefaultAsync(m => m.CatagoryId == id);
+            .FirstOrDefaultAsync(m => m.CatagoryId == catagoryid);
         if (catagory == null)
         {
             return NotFound();
@@ -79,7 +79,7 @@ public class CatagoriesController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int catagoryid, [Bind("CatagoryId,Catagory_Name")] Catagory catagory)
+    public async Task<IActionResult> Edit(int? catagoryid, [Bind("CatagoryId,Catagory_Name,Items")] Catagory catagory)
     {
         if (catagoryid != catagory.CatagoryId)
         {
@@ -87,7 +87,7 @@ public class CatagoriesController : Controller
         }
 
         if (ModelState.IsValid)
-         {
+        {
             try
             {
                 _context.Update(catagory);
@@ -110,15 +110,15 @@ public class CatagoriesController : Controller
     }
 
     // GET: CATAGORYS/Delete/5
-    public async Task<IActionResult> Delete(int? id)
+    public async Task<IActionResult> Delete(int? catagoryid)
     {
-        if (id == null)
+        if (catagoryid == null)
         {
             return NotFound();
         }
 
         var catagory = await _context.Catagory
-            .FirstOrDefaultAsync(m => m.CatagoryId == id);
+            .FirstOrDefaultAsync(m => m.CatagoryId == catagoryid);
         if (catagory == null)
         {
             return NotFound();
@@ -130,9 +130,9 @@ public class CatagoriesController : Controller
     // POST: CATAGORYS/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(int? id)
+    public async Task<IActionResult> DeleteConfirmed(int? catagoryid)
     {
-        var catagory = await _context.Catagory.FindAsync(id);
+        var catagory = await _context.Catagory.FindAsync(catagoryid);
         if (catagory != null)
         {
             _context.Catagory.Remove(catagory);

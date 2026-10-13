@@ -1,5 +1,4 @@
 @model Product_repair_manager.Models.Items
-@using Product_repair_manager.Models
 
 @{
     ViewData["Title"] = "Create";
@@ -14,14 +13,10 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-
             <div class="form-group">
-                <label asp-for="CatagoryId" class="form-label">Category</label>
-                <select asp-for="CatagoryId" class="form-control" asp-items="ViewBag.CatagoryId">
-                    <option value="">-- Select Category --</option>
-
-                         </select>
-                    <span asp-validation-for="CatagoryId" class="text-danger"></span>
+                <label asp-for="CatagoryId" class="control-label"></label>
+                <input asp-for="CatagoryId" class="form-control" />
+                <span asp-validation-for="CatagoryId" class="text-danger"></span>
             </div>
 
             <div class="form-group">
@@ -49,5 +44,5 @@
 </div>
 
 <div>
-    <a asp-action="Index" class="button btn btn-secondary pt-2">Back to List</a>
+    <a asp-action="Index">Back to List</a>
 </div>

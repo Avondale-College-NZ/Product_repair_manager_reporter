@@ -14,8 +14,7 @@ namespace Product_repair_manager.Models
         [MaxLength(100), MinLength(1)]
         public string Catagory_Name { get; set; }
 
-
-        public IEnumerable<Items> Items { get; set; }
+        public ICollection<Items>? Items { get; set; }
     }
 }
 //[DataType(DataType.Text)]
