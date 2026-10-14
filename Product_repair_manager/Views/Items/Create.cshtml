@@ -1,4 +1,6 @@
+@using Product_repair_manager.Models
 @model Product_repair_manager.Models.Items
+
 
 @{
     ViewData["Title"] = "Create";
@@ -14,28 +16,21 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="form-group">
-                <label asp-for="CatagoryId" class="control-label"></label>
-                <input asp-for="CatagoryId" class="form-control" />
-                <span asp-validation-for="CatagoryId" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
                 <label asp-for="items_Name" class="control-label"></label>
                 <input asp-for="items_Name" class="form-control" />
                 <span asp-validation-for="items_Name" class="text-danger"></span>
             </div>
 
+            
             <div class="form-group">
-                <label asp-for="Catagory" class="control-label"></label>
-                <input asp-for="Catagory" class="form-control" />
-                <span asp-validation-for="Catagory" class="text-danger"></span>
+                <label asp-for="CatagoryId" class="control-label"> catagory that the item originates from</label>
+                <select asp-for="CatagoryId" class="form-control" asp-items="ViewBag.CatagoryId">
+                    <option value="">-- Select Catagory --</option>
+                </select>
+                <span asp-validation-for="CatagoryId" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Item_damages" class="control-label"></label>
-                <input asp-for="Item_damages" class="form-control" />
-                <span asp-validation-for="Item_damages" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

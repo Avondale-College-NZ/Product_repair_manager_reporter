@@ -28,10 +28,10 @@ namespace Product_repair_manager.Models
         public DateTime date { get; set; }
 
    
-        public Items Items { get; set; }
+        public Items? Items { get; set; }
 
         
-        public ICollection<damages_report> damages_reports { get; set; }
+        public ICollection<damages_report>? damages_reports { get; set; }
 
     }
 

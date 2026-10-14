@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.VisualBasic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Product_repair_manager.Models
@@ -18,7 +19,7 @@ namespace Product_repair_manager.Models
         public string items_Name { get; set; }
 
        
-        public Catagory Catagory { get; set; }
+        public Catagory? Catagory { get; set; }
 
        
         public ICollection<Item_damages>? Item_damages { get; set; }
