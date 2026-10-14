@@ -22,7 +22,7 @@ namespace Product_repair_manager.Models
         public int classroom { get; set; }
 
      
-        public ICollection<damages_report> damages_reports { get; set; }
+        public ICollection<damages_report>? damages_reports { get; set; }
     }
 
 

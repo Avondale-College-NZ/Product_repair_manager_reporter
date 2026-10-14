@@ -110,15 +110,15 @@ public class CatagoriesController : Controller
     }
 
     // GET: CATAGORYS/Delete/5
-    public async Task<IActionResult> Delete(int? catagoryid)
+    public async Task<IActionResult> Delete(int? id)
     {
-        if (catagoryid == null)
+        if (id == null)
         {
             return NotFound();
         }
 
         var catagory = await _context.Catagory
-            .FirstOrDefaultAsync(m => m.CatagoryId == catagoryid);
+            .FirstOrDefaultAsync(m => m.CatagoryId == id);
         if (catagory == null)
         {
             return NotFound();

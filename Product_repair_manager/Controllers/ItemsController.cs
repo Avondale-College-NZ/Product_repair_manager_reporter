@@ -56,7 +56,7 @@ public class ItemsController : Controller
         {
             
         }
-        ViewData["CatagoryId"] = new SelectList(_context.Set<Catagory>().OrderBy(i => i.Catagory_Name), "CatagoryId", "Catagory_Name");
+        ViewData["CatagoryId"] = new SelectList(_context.Set<Catagory>().OrderBy(c => c.Catagory_Name), "CatagoryId", "Catagory_Name");
         CatagoryForeignKeyDropdown();
         return View();
     }
@@ -74,7 +74,7 @@ public class ItemsController : Controller
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        ViewData["CatagoryId"] = new SelectList(_context.Set<Catagory>().OrderBy(i => i.Catagory_Name), "CatagoryId", "Catagory_Name");
+        ViewData["CatagoryId"] = new SelectList(_context.Set<Catagory>().OrderBy(c => c.Catagory_Name), "CatagoryId", "Catagory_Name");
         CatagoryForeignKeyDropdown(items.CatagoryId);
 
 
@@ -133,6 +133,7 @@ public class ItemsController : Controller
             return RedirectToAction(nameof(Index));
         }
         ViewData["CatagoryId"] = new SelectList(_context.Set<Catagory>().OrderBy(c => c.Catagory_Name), "CatagoryId", "Catagory_Name");
+
         return View(items);
     }
 
