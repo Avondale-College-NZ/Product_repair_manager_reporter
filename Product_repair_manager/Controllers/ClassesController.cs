@@ -19,16 +19,16 @@ public class ClassesController : Controller
     }
 
     // GET: CLASSESS/Details/5
-    public async Task<IActionResult> Details(int? classesid)
+    public async Task<IActionResult> Details(int? id)
     {
-        if (classesid == null)
+        if (id == null)
         {
             return NotFound();
         }
 
         var classes = await _context.Classes
-            .FirstOrDefaultAsync(m => m.ClassesId == classesid);
-        if (classesid == null)
+            .FirstOrDefaultAsync(m => m.ClassesId == id);
+        if (classes == null)
         {
             return NotFound();
         }

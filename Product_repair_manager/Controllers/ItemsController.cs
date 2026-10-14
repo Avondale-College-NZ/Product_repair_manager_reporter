@@ -138,15 +138,15 @@ public class ItemsController : Controller
     }
 
     // GET: ITEMSS/Delete/5
-    public async Task<IActionResult> Delete(int? itemsid)
+    public async Task<IActionResult> Delete(int? id)
     {
-        if (itemsid == null)
+        if (id == null)
         {
             return NotFound();
         }
 
         var items = await _context.Items
-            .FirstOrDefaultAsync(m => m.ItemsId == itemsid);
+            .FirstOrDefaultAsync(m => m.ItemsId == id);
         if (items == null)
         {
             return NotFound();
