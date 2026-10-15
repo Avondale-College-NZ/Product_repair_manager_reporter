@@ -8,7 +8,7 @@ namespace Product_repair_manager.Models
     {
 
 
-        
+        [Key]
         public int damages_reportId { get; set; }
         [ForeignKey("Id")]
         public string Id { get; set; }
@@ -36,9 +36,9 @@ namespace Product_repair_manager.Models
         
         public ApplicationUser appuser { get; set; }
 
-        public Classes classes { get; set; }
+        public Classes? classes { get; set; }
 
-        public Item_damages item_damages { get; set; }
+        public Item_damages? item_damages { get; set; }
 
     }
 

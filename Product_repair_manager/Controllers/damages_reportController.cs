@@ -1,5 +1,6 @@
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Product_repair_manager.Models;
 
@@ -15,9 +16,23 @@ public class damages_reportController : Controller
     // GET: DAMAGES_REPORTS
     public async Task<IActionResult> Index()    
     {
+        var damages = _context.damages_report;
+
+        ViewBag.damages = await _context.Classes.ToListAsync();
         return View(await _context.damages_report.ToListAsync());
     }
 
+    private void damagesreportForeignKeyDropdown(object selected = null)
+    {
+        var query = from i in _context.damages_report
+                    orderby i.ClassesId
+                    select i;
+        ViewBag.IssueID = new SelectList(query.AsNoTracking(), "ClassesId", "ClassesId", selected);
+        var querys = from i in _context.damages_report
+                     orderby i.Item_damagesId
+                     select i;
+        ViewBag.IssueID = new SelectList(querys.AsNoTracking(), "Item_damagesId", "Item_damagesId", selected);
+    }
     // GET: DAMAGES_REPORTS/Details/5
     public async Task<IActionResult> Details(int? damages_reportid)
     {
@@ -39,6 +54,13 @@ public class damages_reportController : Controller
     // GET: DAMAGES_REPORTS/Create
     public IActionResult Create()
     {
+        if (ModelState.IsValid)
+        {
+            
+        }
+        ViewData["ClassesId"] = new SelectList(_context.Set<Classes>().OrderBy(i=>i.blocks), "ClassesId", "blocks");
+        ViewData["ClassesId"] = new SelectList(_context.Set<Classes>().OrderBy(i => i.classroom), "ClassesId", "classroom");
+
         return View();
     }
 
