@@ -21,13 +21,13 @@
 
             <div class="form-group">
                 <label asp-for="ClassesId" class="control-label"></label>
-                <input asp-for="ClassesId" class="form-control" />
+                <select asp-for="ClassesId" class="form-control" asp-items="ViewBag.ClassesId"></select>
                 <span asp-validation-for="ClassesId" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="Item_damagesId" class="control-label"></label>
-                <input asp-for="Item_damagesId" class="form-control" />
+                <select asp-for="Item_damagesId" class="form-control" asp-items="ViewBag.Item_damagesId"></select>  
                 <span asp-validation-for="Item_damagesId" class="text-danger"></span>
             </div>
 

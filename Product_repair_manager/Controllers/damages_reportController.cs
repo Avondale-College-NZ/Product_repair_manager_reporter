@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Product_repair_manager.Data;
 using Product_repair_manager.Models;
 
 public class damages_reportController : Controller
@@ -27,11 +28,11 @@ public class damages_reportController : Controller
         var query = from i in _context.damages_report
                     orderby i.ClassesId
                     select i;
-        ViewBag.IssueID = new SelectList(query.AsNoTracking(), "ClassesId", "ClassesId", selected);
+        ViewBag.IssueID = new SelectList(query.AsNoTracking(), "ClassesId", "blocks", selected);
         var querys = from i in _context.damages_report
                      orderby i.Item_damagesId
                      select i;
-        ViewBag.IssueID = new SelectList(querys.AsNoTracking(), "Item_damagesId", "Item_damagesId", selected);
+        ViewBag.IssueID = new SelectList(querys.AsNoTracking(), "Item_damagesId", "severity", selected);
     }
     // GET: DAMAGES_REPORTS/Details/5
     public async Task<IActionResult> Details(int? damages_reportid)
@@ -59,8 +60,8 @@ public class damages_reportController : Controller
             
         }
         ViewData["ClassesId"] = new SelectList(_context.Set<Classes>().OrderBy(i=>i.blocks), "ClassesId", "blocks");
-        ViewData["ClassesId"] = new SelectList(_context.Set<Classes>().OrderBy(i => i.classroom), "ClassesId", "classroom");
-
+        ViewData["Item_damagesId"] = new SelectList(_context.Set<Item_damages>().OrderBy(i => i.severity), "Item_damagesId", "severity");
+  
         return View();
     }
 
@@ -69,7 +70,7 @@ public class damages_reportController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("damages_reportId,UserId,ClassesId,Item_damagesId,fixed_report,item_status,Item_date,appuser,classes,item_damages")] damages_report damages_report)
+    public async Task<IActionResult> Create([Bind("damages_reportId,Id,ClassesId,Item_damagesId,fixed_report,item_status,Item_date,appuser,classes,item_damages")] damages_report damages_report)
     {
         if (ModelState.IsValid)
         {
