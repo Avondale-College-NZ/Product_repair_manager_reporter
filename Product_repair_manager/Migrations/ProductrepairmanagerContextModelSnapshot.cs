@@ -16,7 +16,7 @@ namespace Product_repair_manager.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.11")
+                .HasAnnotation("ProductVersion", "10.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -329,10 +329,16 @@ namespace Product_repair_manager.Migrations
 
             modelBuilder.Entity("Product_repair_manager.Models.damages_report", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("damages_reportId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("damages_reportId"));
 
                     b.Property<int>("ClassesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Id")
                         .HasColumnType("int");
 
                     b.Property<int>("Item_damagesId")
@@ -343,11 +349,7 @@ namespace Product_repair_manager.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("appuserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("damages_reportId")
-                        .HasColumnType("int");
 
                     b.Property<string>("fixed_report")
                         .IsRequired()
@@ -359,7 +361,7 @@ namespace Product_repair_manager.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.HasKey("Id");
+                    b.HasKey("damages_reportId");
 
                     b.HasIndex("ClassesId");
 
@@ -459,9 +461,7 @@ namespace Product_repair_manager.Migrations
 
                     b.HasOne("Product_repair_manager.Data.ApplicationUser", "appuser")
                         .WithMany("damages_reports")
-                        .HasForeignKey("appuserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("appuserId");
 
                     b.Navigation("appuser");
 

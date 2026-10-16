@@ -27,11 +27,6 @@ public class Item_damagesController : Controller
                     orderby i.ItemsId
                     select i;
         ViewBag.IssueID = new SelectList(query.AsNoTracking(), "ItemsId", "ItemsId", selected);
-
-        var querys = from i in _context.Item_damages
-                    orderby i.damages_reports
-                    select i;
-        ViewBag.IssueID = new SelectList(querys.AsNoTracking(), "damages_reports", "damages_reports", selected);
     }
 
     // GET: ITEM_DAMAGESS/Details/5
@@ -60,7 +55,6 @@ public class Item_damagesController : Controller
             
         }
         ViewData["ItemsId"] = new SelectList(_context.Set<Items>().OrderBy(i=>i.items_Name), "ItemsId", "items_Name");
-        ViewData["damages_reports"] = new SelectList(_context.Set<damages_report>(), "damages_reports", "damages_reports ");
         IssueForeignKeyDropdown();
         return View();
     }
@@ -79,9 +73,7 @@ public class Item_damagesController : Controller
             return RedirectToAction(nameof(Index));
         }
         ViewData["ItemsId"] = new SelectList(_context.Set<Items>().OrderBy(i => i.items_Name), "ItemsId", "items_Name");
-        ViewData["damages_reports"] = new SelectList(_context.Set<damages_report>(), "damages_reports", "damages_reports ");
         IssueForeignKeyDropdown(item_damages.ItemsId);
-        IssueForeignKeyDropdown(item_damages.damages_reports);
 
 
         return View(item_damages);
@@ -102,7 +94,6 @@ public class Item_damagesController : Controller
         }
         IssueForeignKeyDropdown();
         ViewData["ItemsId"] = new SelectList(_context.Set<Items>().OrderBy(i => i.items_Name), "ItemsId", "items_Name");
-        ViewData["damages_reports"] = new SelectList(_context.Set<damages_report>(), "damages_reports", "damages_reports ");
         return View(item_damages);
     }
 
@@ -139,7 +130,6 @@ public class Item_damagesController : Controller
             return RedirectToAction(nameof(Index));
         }
         ViewData["ItemsId"] = new SelectList(_context.Set<Items>().OrderBy(i => i.items_Name), "ItemsId", "items_Name");
-
         return View(item_damages);
     }
 

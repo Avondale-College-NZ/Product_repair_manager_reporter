@@ -25,14 +25,18 @@ public class damages_reportController : Controller
 
     private void damagesreportForeignKeyDropdown(object selected = null)
     {
-        var query = from i in _context.damages_report
+        var Classroom = from i in _context.damages_report
                     orderby i.ClassesId
                     select i;
-        ViewBag.IssueID = new SelectList(query.AsNoTracking(), "ClassesId", "blocks", selected);
-        var querys = from i in _context.damages_report
+        ViewBag.damages_report = new SelectList(Classroom.AsNoTracking(), "ClassesId", "blocks", selected);
+        var Item_damages = from i in _context.damages_report
                      orderby i.Item_damagesId
                      select i;
-        ViewBag.IssueID = new SelectList(querys.AsNoTracking(), "Item_damagesId", "severity", selected);
+        ViewBag.damages_report = new SelectList(Item_damages.AsNoTracking(), "Item_damagesId", "severity", selected);
+        var User = from i in _context.damages_report
+                      orderby i.Id
+                      select i;
+        ViewBag.damages_report = new SelectList(User.AsNoTracking(), "Id", "FirstName", selected);
     }
     // GET: DAMAGES_REPORTS/Details/5
     public async Task<IActionResult> Details(int? damages_reportid)
@@ -61,7 +65,7 @@ public class damages_reportController : Controller
         }
         ViewData["ClassesId"] = new SelectList(_context.Set<Classes>().OrderBy(i=>i.blocks), "ClassesId", "blocks");
         ViewData["Item_damagesId"] = new SelectList(_context.Set<Item_damages>().OrderBy(i => i.severity), "Item_damagesId", "severity");
-  
+        ViewData["Id"] = new SelectList(_context.Set<ApplicationUser>().OrderBy(i => i.FirstName), "Id", "FirstName");
         return View();
     }
 
