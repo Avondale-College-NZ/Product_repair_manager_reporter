@@ -82,6 +82,9 @@ public class damages_reportController : Controller
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        ViewData["ClassesId"] = new SelectList(_context.Set<Classes>().OrderBy(i => i.blocks), "ClassesId", "blocks");
+        ViewData["Item_damagesId"] = new SelectList(_context.Set<Item_damages>().OrderBy(i => i.severity), "Item_damagesId", "severity");
+        ViewData["Id"] = new SelectList(_context.Set<ApplicationUser>().OrderBy(i => i.FirstName), "Id", "FirstName");
         return View(damages_report);
     }
 

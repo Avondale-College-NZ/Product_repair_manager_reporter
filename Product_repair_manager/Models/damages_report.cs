@@ -11,7 +11,7 @@ namespace Product_repair_manager.Models
         [Key]
         public int damages_reportId { get; set; }
         [ForeignKey("Id")]
-        public int Id { get; set; }
+        public string Id { get; set; }
         [ForeignKey("ClassesId")]
         public int ClassesId { get; set; }
         [ForeignKey("Item_damagesId")]
