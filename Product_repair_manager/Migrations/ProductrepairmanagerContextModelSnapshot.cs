@@ -338,8 +338,8 @@ namespace Product_repair_manager.Migrations
                     b.Property<int>("ClassesId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Item_damagesId")
                         .HasColumnType("int");

@@ -1,4 +1,5 @@
 
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,8 @@ using Product_repair_manager.Models;
 public class damages_reportController : Controller
 {
     private readonly ProductrepairmanagerContext _context;
+    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly SignInManager<ApplicationUser> _signInManager;
 
     public damages_reportController(ProductrepairmanagerContext context)
     {
@@ -78,7 +81,10 @@ public class damages_reportController : Controller
     {
         if (ModelState.IsValid)
         {
+            var userId = await _userManager.GetUserIdAsync(User);
+            
             _context.Add(damages_report);
+            damages_report.Id = userId;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
