@@ -11,15 +11,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Product_repair_manager.Migrations
 {
     [DbContext(typeof(ProductrepairmanagerContext))]
-    [Migration("20260924212631_snapshot10")]
-    partial class snapshot10
+    [Migration("20261020232924_productdamages")]
+    partial class productdamages
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.11")
+                .HasAnnotation("ProductVersion", "10.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -247,9 +247,6 @@ namespace Product_repair_manager.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("ItemsId")
-                        .HasColumnType("int");
-
                     b.HasKey("CatagoryId");
 
                     b.ToTable("Catagory");
@@ -335,11 +332,17 @@ namespace Product_repair_manager.Migrations
 
             modelBuilder.Entity("Product_repair_manager.Models.damages_report", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("damages_reportId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("damages_reportId"));
 
                     b.Property<int>("ClassesId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Item_damagesId")
                         .HasColumnType("int");
@@ -349,11 +352,7 @@ namespace Product_repair_manager.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("appuserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("damages_reportId")
-                        .HasColumnType("int");
 
                     b.Property<string>("fixed_report")
                         .IsRequired()
@@ -365,7 +364,7 @@ namespace Product_repair_manager.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.HasKey("Id");
+                    b.HasKey("damages_reportId");
 
                     b.HasIndex("ClassesId");
 
@@ -440,13 +439,13 @@ namespace Product_repair_manager.Migrations
 
             modelBuilder.Entity("Product_repair_manager.Models.Items", b =>
                 {
-                    b.HasOne("Product_repair_manager.Models.Catagory", "catagory")
+                    b.HasOne("Product_repair_manager.Models.Catagory", "Catagory")
                         .WithMany("Items")
                         .HasForeignKey("CatagoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("catagory");
+                    b.Navigation("Catagory");
                 });
 
             modelBuilder.Entity("Product_repair_manager.Models.damages_report", b =>
@@ -465,9 +464,7 @@ namespace Product_repair_manager.Migrations
 
                     b.HasOne("Product_repair_manager.Data.ApplicationUser", "appuser")
                         .WithMany("damages_reports")
-                        .HasForeignKey("appuserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("appuserId");
 
                     b.Navigation("appuser");
 

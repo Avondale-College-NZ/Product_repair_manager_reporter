@@ -12,9 +12,14 @@ public class damages_reportController : Controller
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
 
-    public damages_reportController(ProductrepairmanagerContext context)
+    public damages_reportController(
+    ProductrepairmanagerContext context,
+    UserManager<ApplicationUser> userManager,
+    SignInManager<ApplicationUser> signInManager)
     {
         _context = context;
+        _userManager = userManager;
+        _signInManager = signInManager;
     }
 
     // GET: DAMAGES_REPORTS
@@ -77,20 +82,41 @@ public class damages_reportController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("damages_reportId,Id,ClassesId,Item_damagesId,fixed_report,item_status,Item_date,appuser,classes,item_damages")] damages_report damages_report)
+    public async Task<IActionResult> Create(
+    [Bind("damages_reportId,ClassesId,Item_damagesId,fixed_report,item_status,Item_date")]
+    damages_report damages_report)
     {
+        var user = await _userManager.GetUserAsync(User);
+
+        if (user == null)
+        {
+            return Challenge();
+        }
+
+        // Assign the logged-in user's ID before validation
+        damages_report.Id = user.Id;
+        damages_report.appuser = user;
+
+        // Remove validation errors for Id if it wasn't submitted in the form
+        ModelState.Remove(nameof(damages_report.Id));
+        ModelState.Remove(nameof(damages_report.appuser));
+
         if (ModelState.IsValid)
         {
-            var userId = await _userManager.GetUserIdAsync(User);
-            
-            _context.Add(damages_report);
-            damages_report.Id = userId;
+            _context.damages_report.Add(damages_report);
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
-        ViewData["ClassesId"] = new SelectList(_context.Set<Classes>().OrderBy(i => i.blocks), "ClassesId", "blocks");
-        ViewData["Item_damagesId"] = new SelectList(_context.Set<Item_damages>().OrderBy(i => i.severity), "Item_damagesId", "severity");
-        ViewData["Id"] = new SelectList(_context.Set<ApplicationUser>().OrderBy(i => i.FirstName), "Id", "FirstName");
+
+        ViewData["ClassesId"] = new SelectList(
+            _context.Set<Classes>().OrderBy(i => i.blocks),
+            "ClassesId", "blocks", damages_report.ClassesId);
+
+        ViewData["Item_damagesId"] = new SelectList(
+            _context.Set<Item_damages>().OrderBy(i => i.severity),
+            "Item_damagesId", "severity", damages_report.Item_damagesId);
+
         return View(damages_report);
     }
 

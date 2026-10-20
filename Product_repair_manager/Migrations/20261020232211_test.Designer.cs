@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Product_repair_manager.Migrations
 {
     [DbContext(typeof(ProductrepairmanagerContext))]
-    [Migration("20261020005728_plswork")]
-    partial class plswork
+    [Migration("20261020232211_test")]
+    partial class test
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

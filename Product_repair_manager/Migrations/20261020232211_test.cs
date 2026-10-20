@@ -5,7 +5,7 @@
 namespace Product_repair_manager.Migrations
 {
     /// <inheritdoc />
-    public partial class snapshot11 : Migration
+    public partial class test : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
