@@ -13,31 +13,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                 User
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ClassesId)
+                 Class
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Item_damagesId)
+                 Serverity
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.fixed_report)
+                 Fixed
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.item_status)
+                 Status
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Item_date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.appuser)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.classes)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.item_damages)
+                 Date
             </th>
             <th></th>
         </tr>
@@ -49,10 +40,10 @@
                     @Html.DisplayFor(model => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(model => item.ClassesId)
+                    @Html.DisplayFor(model => item.classes.blocks)
             </td>
             <td>
-                @Html.DisplayFor(model => item.Item_damagesId)
+                    @Html.DisplayFor(model => item.item_damages.severity)
             </td>
             <td>
                 @Html.DisplayFor(model => item.fixed_report)
@@ -62,15 +53,6 @@
             </td>
             <td>
                 @Html.DisplayFor(model => item.Item_date)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.appuser)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.classes)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.item_damages)
             </td>
             <td>
 

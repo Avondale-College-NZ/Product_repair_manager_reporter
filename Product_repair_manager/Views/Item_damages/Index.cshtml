@@ -24,20 +24,14 @@
             <th>
                 @Html.DisplayNameFor(model => model.date)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Items)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.damages_reports)
-            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(model => item.ItemsId)
+             <td>
+                    @Html.DisplayFor(model => item.Items.items_Name)
             </td>
             <td>
                 @Html.DisplayFor(model => item.severity)
@@ -48,9 +42,7 @@
             <td>
                 @Html.DisplayFor(model => item.date)
             </td>
-            <td>
-                @Html.DisplayFor(model => item.Items)
-            </td>
+
             <td>
                     <a asp-action="Edit" asp-route-id="@item.Item_damagesId" class="button btn btn-primary pt-2">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.Item_damagesId" class="button btn btn-primary pt-2">Details</a> |

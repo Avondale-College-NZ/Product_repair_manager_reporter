@@ -9,6 +9,8 @@ namespace Product_repair_manager.Models
     {
         [Key]
         public int Item_damagesId { get; set; }
+
+        [Display(Name = "Items")]
         [ForeignKey("ItemsId")]
         public int ItemsId { get; set; }
      
