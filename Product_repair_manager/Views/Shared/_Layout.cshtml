@@ -11,48 +11,49 @@
     <link rel="stylesheet" href="~/Product_repair_manager.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Product repair manager</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Items" asp-action="Index">Item</a>
-                        </li>
+        <header>
+            <nav class="navbar custom-nav">
+                <div class="container-fluid">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Product repair manager</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Catagories" asp-action="Index">Catagory</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Items" asp-action="Index">Item</a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Classes" asp-action="Index">Class</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Catagories" asp-action="Index">Catagory</a>
+                            </li>
 
-                        <div class="dropdown">
-                            <button class="btn text-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                Reporting damages
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Item_damages" asp-action="Index">Item damages</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="damages_report" asp-action="Index">damages report</a>
-                                </li>
-                            </ul>
-                        </div>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Classes" asp-action="Index">Class</a>
+                            </li>
+
+                            <div class="dropdown">
+                                <button class="btn text-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Reporting damages
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Item_damages" asp-action="Index">Item damages</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="damages_report" asp-action="Index">damages report</a>
+                                    </li>
+                                </ul>
+                            </div>
+
                        
-
-                    </ul>
+                        </ul>
                         <partial name="_LoginPartial.cshtml" />
                     </div>
                 </div>
@@ -60,6 +61,7 @@
         </nav>
 
     </header>
+    
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

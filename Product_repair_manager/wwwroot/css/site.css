@@ -29,3 +29,25 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+
+/* Navbar */
+.custom-nav {
+    background-color: #000;
+    width: 100%;
+}
+
+    .custom-nav .navbar-nav {
+        display: flow-root;
+        flex-direction: row;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .custom-nav .navbar-brand {
+        color: white;
+    }
+
+    .custom-nav .nav-link {
+        color: white;
+    }
