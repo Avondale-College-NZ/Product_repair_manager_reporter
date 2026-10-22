@@ -34,7 +34,8 @@ using (var scope = app.Services.CreateScope())
     try
     {
         var context = services.GetRequiredService<ProductrepairmanagerContext>();
-        DbInitializer.Initialize(context);
+        var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+        DbInitializer.Initialize(context, userManager);
     }
     catch (Exception ex)
     {
@@ -58,43 +59,48 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
-
+// Creates an Admin account if one doesn't exist yet, or ensures the existing account has the correct role
 using (var scope = app.Services.CreateScope())
 {
-    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-    var roles = new[] { "Admin", "User", "Staff" };
-    foreach (var role in roles)
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+
+    // Admin account details
+    string adminID = "00000000000";
+    string adminEmail = "BDstaff@org.nz";
+    string adminPassword = "BloodDonation@123";
+
+    // Checks to see if the Admin account already exists using the adminID
+    var existingUser = await userManager.FindByIdAsync(adminID);
+
+    if (existingUser == null)
     {
-        if (!await roleManager.RoleExistsAsync(role))
+        // Sets up a new admin user account with it's details
+        var user = new User
         {
-            await roleManager.CreateAsync(new IdentityRole(role));
+            Id = adminID,
+            UserName = adminEmail,
+            Email = adminEmail,
+            EmailConfirmed = true,
+            FirstName = "System",
+            LastName = "Admin"
+        };
+
+        // Creates the user in the database and gives the user the "Admin" role
+        var result = await userManager.CreateAsync(user, adminPassword);
+        if (result.Succeeded)
+        {
+            await userManager.AddToRoleAsync(user, "Admin");
+        }
+    }
+    else
+    {
+        // If the user exists but lost the Admin role, this gives it back to them
+        if (!await userManager.IsInRoleAsync(existingUser, "Admin"))
+        {
+            await userManager.AddToRoleAsync(existingUser, "Admin");
         }
     }
 }
-
-using (var scope = app.Services.CreateScope())
-{
-    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-
-    string adminemail = "F2@F2.com";
-    string adminpassword = "School123!";
-
-    if (await userManager.FindByEmailAsync(adminemail) == null)
-    {
-        var user = new ApplicationUser();
-        user.FirstName = "F2";
-        user.LastName = "F2";
-        user.Email = adminemail;
-        user.EmailConfirmed = true;
-
-
-        await userManager.CreateAsync(user, "School123!");
-
-        await userManager.AddToRoleAsync(user, "Admin");
-    }
-    ;
-}
-
 
 app.Run();
 

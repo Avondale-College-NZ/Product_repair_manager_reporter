@@ -11,7 +11,7 @@ namespace Product_repair_manager.Data
 {
     public class DbInitializer
     {
-        public static void Initialize(ProductrepairmanagerContext context)
+        public static void Initialize(ProductrepairmanagerContext context, UserManager<ApplicationUser> userManager)
         {
 
 
@@ -53,17 +53,29 @@ namespace Product_repair_manager.Data
                 context.Classes.Add(L);
             }
             context.SaveChanges();
+            //string[] roles = { "Staff" };
 
-
-            //var ApplicationUser = new ApplicationUser[]
-            //    {
-            //    new ApplicationUser { FirstName = "F3", LastName = "F3", Email = "F3@F3.com", PasswordHash = "F3@F3.com" }
-            //    };
-            //foreach (ApplicationUser U in ApplicationUser)
+            //if (!context.Roles.Any())
             //{
-            //    context.ApplicationUser.Add(U);
+            //    context.Roles.AddRange(
+            //        new IdentityRole { Name = "Staff", NormalizedName = "STAFF" },
+            //        new IdentityRole { Name = "User", NormalizedName = "USER" }
+            //    );
+            //    context.SaveChanges();
             //}
-            //context.SaveChanges();
+            //var staff = userManager.FindByEmailAsync("F3@F3.com").Result;
+            //if (staff == null)
+            //{
+            //    staff = new ApplicationUser
+            //   {
+            //      FirstName = "F3", LastName = "F3", Email = "F3@F3.com", PasswordHash = "F3@F3.com" 
+
+            //   };
+            //    userManager.AddToRoleAsync(staff, "Staff").Wait();
+            //}
+           
+           
+           
 
 
             var Catagory = new Catagory[]
