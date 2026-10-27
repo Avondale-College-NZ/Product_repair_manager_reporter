@@ -59,15 +59,29 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var roles = new[] { "Admin", "User", "Staff" };
+    foreach (var role in roles)
+    {
+        if (!await roleManager.RoleExistsAsync(role))
+        {
+            await roleManager.CreateAsync(new IdentityRole(role));
+        }
+    }
+}
+
+
 // Creates an Admin account if one doesn't exist yet, or ensures the existing account has the correct role
 using (var scope = app.Services.CreateScope())
 {
-    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
     // Admin account details
     string adminID = "00000000000";
-    string adminEmail = "BDstaff@org.nz";
-    string adminPassword = "BloodDonation@123";
+    string adminEmail = "R12@R12.com";
+    string adminPassword = "School123!";
 
     // Checks to see if the Admin account already exists using the adminID
     var existingUser = await userManager.FindByIdAsync(adminID);
@@ -75,14 +89,14 @@ using (var scope = app.Services.CreateScope())
     if (existingUser == null)
     {
         // Sets up a new admin user account with it's details
-        var user = new User
+        var user = new ApplicationUser
         {
             Id = adminID,
             UserName = adminEmail,
             Email = adminEmail,
             EmailConfirmed = true,
-            FirstName = "System",
-            LastName = "Admin"
+            FirstName = "R12",
+            LastName = "R12"
         };
 
         // Creates the user in the database and gives the user the "Admin" role
