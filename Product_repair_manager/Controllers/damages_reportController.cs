@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Product_repair_manager.Data;
 using Product_repair_manager.Models;
 
-[Authorize(Roles = "Admin")]
+[Authorize(Roles = "Admin , Staff")]
 public class damages_reportController : Controller
 {
     private readonly ProductrepairmanagerContext _context;

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Product_repair_manager.Models;
 
-[Authorize(Roles = "Admin")]
+[Authorize(Roles = "Admin , Staff")]
 public class CatagoriesController : Controller
 {
 
