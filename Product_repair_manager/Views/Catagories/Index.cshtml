@@ -8,6 +8,9 @@
 <h1>Catagory</h1>
 
 <p>
+    <label>Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" /></label>
+    <input type="submit" value="Search" class="btn btn-default" /> |
+    <a asp-action="Index">Back to Full List</a> |
     <a asp-action="Create" class="button btn btn-success pt-2">Create New</a>
 </p>
 <table class="table">
