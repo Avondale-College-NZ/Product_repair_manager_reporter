@@ -25,19 +25,37 @@
                             <li class="nav-item">
                                 <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
+                        @if (User.Identity != null && User.Identity.IsAuthenticated)
+                        {
+                            @if (User.IsInRole("Admin"))
+                            {
 
                             <li class="nav-item">
                                 <a class="nav-link text-light" asp-area="" asp-controller="Items" asp-action="Index">Item</a>
                             </li>
+                            }
+                        }
 
-                            <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Catagories" asp-action="Index">Catagory</a>
-                            </li>
+                        @if (User.Identity != null && User.Identity.IsAuthenticated)
+                            {
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-area="" asp-controller="Catagories" asp-action="Index">Catagory</a>
+                                    </li>
+                                }
+                            }
+                           
+                        @if (User.Identity != null && User.Identity.IsAuthenticated)
+                            {
+                                @if (User.IsInRole("Admin"))
+                                {
 
-                            <li class="nav-item">
-                                <a class="nav-link text-light" asp-area="" asp-controller="Classes" asp-action="Index">Class</a>
-                            </li>
-
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" asp-area="" asp-controller="Classes" asp-action="Index">Class</a>
+                                    </li>
+                                }
+                            }
                             <div class="dropdown">
                                 <button class="btn text-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                     Reporting damages
@@ -46,9 +64,15 @@
                                     <li class="nav-item">
                                         <a class="nav-link text-dark" asp-area="" asp-controller="Item_damages" asp-action="Index">Item damages</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="damages_report" asp-action="Index">damages report</a>
-                                    </li>
+                                    @if (User.Identity != null && User.Identity.IsAuthenticated)
+                                     {
+                                        @if (User.IsInRole("Admin"))
+                                        {
+                                            <li class="nav-item">
+                                                <a class="nav-link text-dark" asp-area="" asp-controller="damages_report" asp-action="Index">damages report</a>
+                                            </li>
+                                        }
+                                    }
                                 </ul>
                             </div>
 
