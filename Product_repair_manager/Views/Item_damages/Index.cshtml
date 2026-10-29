@@ -44,15 +44,9 @@
             </td>
 
             <td>
-                    @if (User.IsInRole("Admin"))
-                    {
-                    <a asp-action="Edit" asp-route-id="@item.Item_damagesId" class="button btn btn-primary pt-2" >Edit</a> 
-                    }
-                    <a asp-action="Details" asp-route-id="@item.Item_damagesId" class="button btn btn-primary pt-2">Details</a> 
-                    @if (User.IsInRole("Admin"))
-                    {
-                     <a asp-action="Delete" asp-route-id="@item.Item_damagesId" class="button btn btn-danger pt-2">Delete</a>
-                    }
+                    <a asp-action="Edit" asp-route-id="@item.Item_damagesId" class="button btn btn-primary pt-2" [Authorize(Roles = " Admin")]>Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Item_damagesId" class="button btn btn-primary pt-2">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Item_damagesId" class="button btn btn-danger pt-2">Delete</a>
             </td>
         </tr>
 }

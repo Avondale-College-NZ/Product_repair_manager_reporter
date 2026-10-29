@@ -30,25 +30,11 @@
                                 <a class="nav-link text-light" asp-area="" asp-controller="Items" asp-action="Index">Item</a>
                             </li>
                             }
-
-                            @if (User.IsInRole("Staff"))
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link text-light" asp-area="" asp-controller="Items" asp-action="Index">Item</a>
-                                </li>
-                            }
                         }
 
                         @if (User.Identity != null && User.Identity.IsAuthenticated)
                             {
-                                 @if (User.IsInRole("Admin"))
-                                {
-                                    <li class="nav-item">
-                                        <a class="nav-link text-light" asp-area="" asp-controller="Catagories" asp-action="Index">Catagory</a>
-                                    </li>
-                                }
-
-                                @if (User.IsInRole("Staff"))
+                                @if (User.IsInRole("Admin"))
                                 {
                                     <li class="nav-item">
                                         <a class="nav-link text-light" asp-area="" asp-controller="Catagories" asp-action="Index">Catagory</a>
@@ -76,12 +62,6 @@
                                     @if (User.Identity != null && User.Identity.IsAuthenticated)
                                      {
                                         @if (User.IsInRole("Admin"))
-                                        {
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark" asp-area="" asp-controller="damages_report" asp-action="Index">damages report</a>
-                                            </li>
-                                        }
-                                        @if (User.IsInRole("Staff"))
                                         {
                                             <li class="nav-item">
                                                 <a class="nav-link text-dark" asp-area="" asp-controller="damages_report" asp-action="Index">damages report</a>
