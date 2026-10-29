@@ -1,14 +1,56 @@
 ﻿@{
-    ViewData["Title"] = "Home";
+    ViewData["Title"] = "damages report menu";
 }
 <div class="container p-5 my-0 bg-secondary text-white">
-    <h1 class="display-5">Home</h1>
     <div class="d-grid gap-4">
-        <a class="button btn btn-primary pt-2" asp-area="" asp-controller="Classes" asp-action="Index">Classes</a>
-        <a class="button btn btn-primary pt-2" asp-area="" asp-controller="Items" asp-action="Index">Items</a>
-        <a class="button btn btn-primary pt-2" asp-area="" asp-controller="Item_damages" asp-action="Index">Item Damages</a>
-        <a class="button btn btn-primary pt-2" asp-area="" asp-controller="damages_report" asp-action="Index">Damages Report</a>
-        <a class="button btn btn-primary pt-2" asp-area="" asp-controller="Catagories" asp-action="Index">Catagory</a>
+    <h1 class="column-gap-5">damages report menu</h1>
+    </div>
+
+    <div class="d-grid gap-4">
+        @if (User.Identity != null && User.Identity.IsAuthenticated)
+        {
+            @if (User.IsInRole("Admin"))
+            {
+                <a class="button btn btn-primary pt-2" asp-area="" asp-controller="Classes" asp-action="Index">Classes</a>
+            }
+
+            @if (User.IsInRole("Staff"))
+            {
+                <a class="button btn btn-primary pt-2" asp-area="" asp-controller="Classes" asp-action="Index">Classes</a>
+            }
+
+            @if (User.IsInRole("Staff"))
+            {
+                <a class="button btn btn-primary pt-2" asp-area="" asp-controller="Items" asp-action="Index">Items</a>
+            }
+
+            @if (User.IsInRole("Admin"))
+            {
+                <a class="button btn btn-primary pt-2" asp-area="" asp-controller="Items" asp-action="Index">Items</a>
+            }
+
+            <a class="button btn btn-primary pt-2" asp-area="" asp-controller="Item_damages" asp-action="Index">Item Damages</a>
+           
+            @if (User.IsInRole("Admin"))
+            {
+                <a class="button btn btn-primary pt-2" asp-area="" asp-controller="damages_report" asp-action="Index">Damages Report</a>
+            }
+
+            @if (User.IsInRole("Staff"))
+            {
+                <a class="button btn btn-primary pt-2" asp-area="" asp-controller="damages_report" asp-action="Index">Damages Report</a>
+            }
+            
+            @if (User.IsInRole("Admin"))
+            {
+                <a class="button btn btn-primary pt-2" asp-area="" asp-controller="Catagories" asp-action="Index">Catagory</a>
+            }
+
+            @if (User.IsInRole("Staff"))
+            {
+                <a class="button btn btn-primary pt-2" asp-area="" asp-controller="Catagories" asp-action="Index">Catagory</a>
+            }   
+        }
     </div>
     <from class="d-flex">
     <a class="pt-5"><a/>

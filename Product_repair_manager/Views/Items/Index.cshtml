@@ -7,17 +7,26 @@
 <h1>Items</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-action="Create" class="button btn btn-success pt-2">Create New</a>
+    }
+    @if (User.IsInRole("Staff"))
+    {
+        <a asp-action="Create" class="button btn btn-success pt-2">Create New</a>
+    }
 </p>
-<table class="table">
+<table class="table table-bordered table-striped">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.items_Name)
+                 Items
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Catagory.Catagory_Name)
+                 Catagory
             </th>
+
+
             <th></th>
         </tr>
     </thead>
@@ -31,9 +40,17 @@
                     @Html.DisplayFor(model => item.Catagory.Catagory_Name)
                 </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ItemsId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ItemsId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ItemsId">Delete</a>
+               @if (User.IsInRole("Admin"))
+               {
+                        <a asp-action="Edit" asp-route-id="@item.ItemsId" class="button btn btn-primary pt-2">Edit</a> <a>|</a>
+               }
+
+                    <a asp-action="Details" asp-route-id="@item.ItemsId" class="button btn btn-primary pt-2">Details</a> |
+
+               @if (User.IsInRole("Admin"))
+               {
+                        <a asp-action="Delete" asp-route-id="@item.ItemsId" class="button btn btn-danger pt-2">Delete</a> <a>|</a>
+               }
             </td>
         </tr>
 }

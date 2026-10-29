@@ -29,8 +29,6 @@
                             <li class="nav-item">
                                 <a class="nav-link text-light" asp-area="" asp-controller="Items" asp-action="Index">Item</a>
                             </li>
-                            }
-                        }
 
                         @if (User.Identity != null && User.Identity.IsAuthenticated)
                             {
@@ -52,6 +50,7 @@
                                     </li>
                                 }
                             }
+
                             <div class="dropdown">
                                 <button class="btn text-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                     Reporting damages
@@ -60,6 +59,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link text-dark" asp-area="" asp-controller="Item_damages" asp-action="Index">Item damages</a>
                                     </li>
+
                                     @if (User.Identity != null && User.Identity.IsAuthenticated)
                                      {
                                         @if (User.IsInRole("Admin"))

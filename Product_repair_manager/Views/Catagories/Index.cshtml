@@ -33,10 +33,24 @@
                 @Html.DisplayFor(model => item.Catagory_Name)
             </td>
 
-            <td>
-                    <a asp-action="Edit" asp-route-id="@item.CatagoryId" class="button btn btn-primary pt-2">Edit</a> |
+            <td> 
+                    @if (User.Identity != null && User.Identity.IsAuthenticated)
+                    {
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.CatagoryId" class="button btn btn-primary pt-2">Edit</a> <a>|</a>
+                        }
+                    }
+
                     <a asp-action="Details" asp-route-id="@item.CatagoryId" class="button btn btn-primary pt-2">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.CatagoryId" class="button btn btn-danger pt-2">Delete</a>
+                    
+                    @if (User.Identity != null && User.Identity.IsAuthenticated)
+                    {
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Delete" asp-route-id="@item.CatagoryId" class="button btn btn-danger pt-2">Delete</a>
+                        }
+                    }
             </td>
         </tr>
 }
