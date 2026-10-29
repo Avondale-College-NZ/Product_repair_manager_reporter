@@ -1,10 +1,8 @@
 
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Product_repair_manager.Models;
 
-[Authorize(Roles = "Admin")]
 public class ClassesController : Controller
 {
     private readonly ProductrepairmanagerContext _context;

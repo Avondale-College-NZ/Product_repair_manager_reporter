@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Product_repair_manager.Models;
 
-[Authorize(Roles = "Admin")]
 public class ItemsController : Controller
 {
     private readonly ProductrepairmanagerContext _context;
@@ -51,6 +50,8 @@ public class ItemsController : Controller
     }
 
     // GET: ITEMSS/Create
+    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Staff")]
     public IActionResult Create()
     {
 
@@ -68,7 +69,8 @@ public class ItemsController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-
+    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Staff")]
     public async Task<IActionResult> Create([Bind("ItemsId,CatagoryId,items_Name,Catagory,Item_damages")] Items items)
     {
         if (ModelState.IsValid)
@@ -85,7 +87,8 @@ public class ItemsController : Controller
     }
 
     // GET: ITEMSS/Edit/5
-
+    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Staff")]
     public async Task<IActionResult> Edit(int? id)
     {
         if (id == null)
@@ -109,7 +112,8 @@ public class ItemsController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-
+    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Staff")]
     public async Task<IActionResult> Edit(int? itemsid, [Bind("ItemsId,CatagoryId,items_Name,Catagory,Item_damages")] Items items)
     {
         if (itemsid != items.ItemsId)
@@ -143,7 +147,8 @@ public class ItemsController : Controller
     }
 
     // GET: ITEMSS/Delete/5
-
+    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Staff")]
     public async Task<IActionResult> Delete(int? id)
 
     {
@@ -165,7 +170,8 @@ public class ItemsController : Controller
     // POST: ITEMSS/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-
+    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Staff")]
     public async Task<IActionResult> DeleteConfirmed(int? itemsid)
     {
         var items = await _context.Items.FindAsync(itemsid);

@@ -1,5 +1,4 @@
 
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -7,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using Product_repair_manager.Data;
 using Product_repair_manager.Models;
 
-[Authorize(Roles = "Admin")]
 public class damages_reportController : Controller
 {
     private readonly ProductrepairmanagerContext _context;

@@ -4,10 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Product_repair_manager.Models;
 
-[Authorize(Roles = "Admin")]
 public class CatagoriesController : Controller
 {
-
     private readonly ProductrepairmanagerContext _context;
 
     public CatagoriesController(ProductrepairmanagerContext context)
@@ -50,6 +48,8 @@ public class CatagoriesController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Staff")]
     public async Task<IActionResult> Create([Bind("CatagoryId,Catagory_Name,Items")] Catagory catagory)
     {
         if (ModelState.IsValid)
@@ -62,6 +62,8 @@ public class CatagoriesController : Controller
     }
 
     // GET: CATAGORYS/Edit/5
+    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Staff")]
     public async Task<IActionResult> Edit(int? id)
     {
         if (id == null)
@@ -82,6 +84,8 @@ public class CatagoriesController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Staff")]
     public async Task<IActionResult> Edit(int? catagoryid, [Bind("CatagoryId,Catagory_Name,Items")] Catagory catagory)
     {
         if (catagoryid != catagory.CatagoryId)
@@ -113,6 +117,8 @@ public class CatagoriesController : Controller
     }
 
     // GET: CATAGORYS/Delete/5
+    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Staff")]
     public async Task<IActionResult> Delete(int? id)
     {
         if (id == null)
@@ -133,6 +139,8 @@ public class CatagoriesController : Controller
     // POST: CATAGORYS/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
+    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Staff")]
     public async Task<IActionResult> DeleteConfirmed(int? catagoryid)
     {
         var catagory = await _context.Catagory.FindAsync(catagoryid);
