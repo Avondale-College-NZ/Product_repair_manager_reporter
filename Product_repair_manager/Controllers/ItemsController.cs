@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Product_repair_manager.Models;
 
+[Authorize(Roles = "Admin , Staff")]
 public class ItemsController : Controller
 {
     private readonly ProductrepairmanagerContext _context;
