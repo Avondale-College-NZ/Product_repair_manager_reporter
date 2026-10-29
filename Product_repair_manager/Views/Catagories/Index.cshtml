@@ -8,19 +8,16 @@
 <h1>Catagory</h1>
 
 <p>
-    <label>Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" /></label>
-    <input type="submit" value="Search" class="btn btn-default" /> |
-    <a asp-action="Index">Back to Full List</a> |
     <a asp-action="Create" class="button btn btn-success pt-2">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["Catagory_NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">severity</a>
+                
             </th>
             <th>
-                <a asp-action="Index" asp-route-sortOrder="@ViewData["CatagoryNameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">damage_type</a>
+               
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Catagory_Name)
@@ -45,15 +42,3 @@
 }
     </tbody>
 </table>
-@{
-    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-}
-
-<ul class="pagination">
-    <li class="page-item"><a asp-action="Index" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-pageNumber="@(Model.PageIndex - 1)" asp-route-currentFilter="@ViewData["CurrentFilter"]" class="page-link">Previous</a></li>
-    <li class="page-item"><a asp-action="Index" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-pageNumber="@(Model.PageIndex == 0 ? 1 : Model.PageIndex - 1)" asp-route-currentFilter="@ViewData["CurrentFilter"]" class="page-link">1</a></li>
-    <li class="page-item"><a asp-action="Index" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-pageNumber="@(Model.PageIndex == 1 ? 1 : Model.PageIndex - 1)" asp-route-currentFilter="@ViewData["CurrentFilter"]" class="page-link">2</a></li>
-    <li class="page-item"><a asp-action="Index" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-pageNumber="@(Model.PageIndex == 2 ? 1 : Model.PageIndex - 1)" asp-route-currentFilter="@ViewData["CurrentFilter"]" class="page-link">3</a></li>
-    <li class="page-item"><a asp-action="Index" asp-route-sortOrder="@ViewData["CurrentSort"]" asp-route-pageNumber="@(Model.PageIndex + 1)" asp-route-currentFilter="@ViewData["CurrentFilter"]" class="page-link">Next</a> </li>
-</ul>
