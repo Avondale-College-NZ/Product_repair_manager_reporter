@@ -4,3 +4,11 @@ account
 email:R12@R12.com
 password:School123!
 more to add
+
+about the program: 
+the program is a way to
+help everyone in the school
+in deceting damges in equipment
+or error in devics and with this
+program this can give people chances
+to send a report on what damges are there.
