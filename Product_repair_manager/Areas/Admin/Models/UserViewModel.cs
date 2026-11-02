@@ -3,10 +3,9 @@ using Product_repair_manager.Data;
 
 namespace Product_repair_manager.Areas.Admin.Models
 {
-    public class UserView
+    public class UserViewModel
     {
         public IEnumerable<ApplicationUser> Users { get; set; } = null!;
         public IEnumerable<IdentityRole> Roles { get; set; } = null!;
-
     }
 }
