@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Identity.Client;
 using Product_repair_manager.Areas.Admin.Models;
 using Product_repair_manager.Data;
@@ -34,25 +35,9 @@ namespace Product_repair_manager.Areas.Admin.Controllers
             };
             return View(model);
         }
-        [HttpPost]
-        public async Task<IActionResult> Delete(string id)
-        {
-            ApplicationUser user = await _userManager.FindByIdAsync(id);
-            if (user != null)
-            {
-                IdentityResult result = await _userManager.DeleteAsync(user);
-                if (result.Succeeded)
-                {
-                    string errorMessage = "User deleted successfully.";
-                    foreach (IdentityError error in result.Errors)
-                    {
-                        errorMessage += $" {error.Description}";
-                    }
-                    TempData["ErrorMessage"] = errorMessage;
-                }
-            }
-            return RedirectToAction("Index");
-        }
+
+        
+
 
         [HttpPost]
         public async Task<IActionResult> AddUserToRole(string userId, string roleName)

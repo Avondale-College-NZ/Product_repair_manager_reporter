@@ -49,16 +49,16 @@ public class damages_reportController : Controller
         ViewBag.damages_report = new SelectList(User.AsNoTracking(), "Id", "FirstName", selected);
     }
     // GET: DAMAGES_REPORTS/Details/5
-    public async Task<IActionResult> Details(int? damages_reportid)
+    public async Task<IActionResult> Details(int? id)
     {
-        if (damages_reportid == null)
+        if (id == null)
         {
             return NotFound();
         }
 
         var damages_report = await _context.damages_report
-            .FirstOrDefaultAsync(m => m.damages_reportId == damages_reportid);
-        if (damages_reportid == null)
+            .FirstOrDefaultAsync(m => m.damages_reportId == id);
+        if (damages_report == null)
         {
             return NotFound();
         }
@@ -135,6 +135,9 @@ public class damages_reportController : Controller
         {
             return NotFound();
         }
+        ViewData["ClassesId"] = new SelectList(_context.Set<Classes>().OrderBy(i => i.blocks),"ClassesId", "blocks", damages_report.ClassesId);
+        ViewData["Item_damagesId"] = new SelectList( _context.Set<Item_damages>().OrderBy(i => i.severity), "Item_damagesId", "severity", damages_report.Item_damagesId);
+        ViewData["Id"] = new SelectList(_context.Set<ApplicationUser>().OrderBy(i => i.FirstName), "Id", "FirstName");
         return View(damages_report);
     }
 
@@ -170,6 +173,9 @@ public class damages_reportController : Controller
             }
             return RedirectToAction(nameof(Index));
         }
+        ViewData["ClassesId"] = new SelectList(_context.Set<Classes>().OrderBy(i => i.blocks), "ClassesId", "blocks", damages_report.ClassesId);
+        ViewData["Item_damagesId"] = new SelectList(_context.Set<Item_damages>().OrderBy(i => i.severity), "Item_damagesId", "severity", damages_report.Item_damagesId);
+        ViewData["Id"] = new SelectList(_context.Set<ApplicationUser>().OrderBy(i => i.FirstName), "Id", "FirstName");
         return View(damages_report);
     }
 

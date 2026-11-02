@@ -31,11 +31,6 @@
                             <div>@rolename</div>
                         }
                     </td>
-                    <td>
-                        <form method="post" asp-action="DeleteUser" asp-route-id="@user.Id">
-                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                        </form>
-                  </td>
                   @foreach (var role in Model.Roles)
                   {
                         if (!user.rolesnames.Contains(role.Name))

@@ -11,70 +11,58 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
+            user:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Id)
         </dd>
     </dl>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ClassesId)
+            classroom:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.ClassesId)
         </dd>
     </dl>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Item_damagesId)
+            items damges reported:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Item_damagesId)
         </dd>
     </dl>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.fixed_report)
+            fixes:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.fixed_report)
         </dd>
     </dl>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.item_status)
+             current status on item:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.item_status)
         </dd>
     </dl>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Item_date)
+            item reported date:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Item_date)
         </dd>
     </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.appuser)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.appuser)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.classes)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.classes)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.item_damages)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.item_damages)
-        </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.damages_reportId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-action="Edit" class="button btn btn-primary pt-2" asp-route-id="@Model?.damages_reportId">Edit</a> <a>|</a>
+
+    }
+    @if (User.IsInRole("Staff"))
+    {
+        <a asp-action="Edit" class="button btn btn-primary pt-2" asp-route-id="@Model?.damages_reportId">Edit</a> <a>|</a>
+    }
+    <a asp-action="Index" class="button btn btn-primary pt-2" >Back to List</a>
 </div>

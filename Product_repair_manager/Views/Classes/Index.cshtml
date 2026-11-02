@@ -9,14 +9,14 @@
 <p>
     <a asp-action="Create" class="button btn btn-success pt-2">Create New</a>
 </p>
-<table class="table">
+<table class="table table-bordered table-striped">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.blocks)
+                school blocks
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.classroom)
+                classroom number
             </th>
 
             <th></th>
@@ -33,7 +33,7 @@
             </td>
 
             <td>
-                    <a asp-action="Edit" asp-route-id="@item.ClassesId" >Edit</a> |
+                    <a asp-action="Edit" asp-route-id="@item.ClassesId" class="button btn btn-primary pt-2">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.ClassesId" class="button btn btn-primary pt-2">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.ClassesId" class="button btn btn-danger pt-2">Delete</a>
             </td>

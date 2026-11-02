@@ -1,3 +1,4 @@
+
 @model IEnumerable<Product_repair_manager.Models.damages_report>
 
 @{
@@ -7,9 +8,15 @@
 <h1>damge report</h1>
 
 <p>
+    @if (User.Identity != null && User.Identity.IsAuthenticated)
+    {
+        @if (User.IsInRole("Admin"))
+        {
     <a asp-action="Create" class="button btn btn-success pt-2">Create New</a>
+        }
+    }
 </p>
-<table class="table">
+<table class ="table table-bordered table-striped">
     <thead>
         <tr>
             <th>
@@ -56,9 +63,12 @@
             </td>
             <td>
 
-                    <a asp-action="Edit" asp-route-id="@item.damages_reportId" >Edit</a> |
+                    <a asp-action="Edit" asp-route-id="@item.damages_reportId" class="button btn btn-primary pt-2">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.damages_reportId" class="button btn btn-primary pt-2">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.damages_reportId" class="button btn btn-danger pt-2">Delete</a>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.damages_reportId" class="button btn btn-danger pt-2">Delete</a>
+                    }
             </td>
         </tr>
 }

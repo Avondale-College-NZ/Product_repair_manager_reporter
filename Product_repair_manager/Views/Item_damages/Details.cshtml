@@ -11,49 +11,43 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ItemsId)
+            items that were damaged:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.ItemsId)
         </dd>
     </dl>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.severity)
+            severity of damage:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.severity)
         </dd>
     </dl>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.damage_type)
+            what damage was it
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.damage_type)
         </dd>
     </dl>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.date)
+             Date in item was damaged:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.date)
         </dd>
     </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Items)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Items)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.damages_reports)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.damages_reports)
-        </dd>
-    </dl>
+      
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Item_damagesId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    @if (User.IsInRole("Admin"))
+    {
+    <a asp-action="Edit" class="button btn btn-primary pt-2" asp-route-id="@Model?.Item_damagesId">Edit</a> <a>|</a>
+    }
+    @if (User.IsInRole("Staff"))
+    {
+        <a asp-action="Edit" class="button btn btn-primary pt-2" asp-route-id="@Model?.Item_damagesId">Edit</a> <a>|</a>
+    }
+    <a asp-action="Index" class="button btn btn-primary pt-2">Back to List</a>
 </div>

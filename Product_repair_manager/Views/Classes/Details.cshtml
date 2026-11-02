@@ -11,21 +11,27 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.blocks)
+            School blocks:
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.blocks)
         </dd>
-
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.damages_reports)
+        <dt class="col-sm-2">
+            Classroom number:
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.damages_reports)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.classroom)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.ClassesId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model?.ClassesId" class="button btn btn-primary pt-2">Edit</a>  <a>|</a>
+    }
+    @if (User.IsInRole("Staff"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model?.ClassesId" class="button btn btn-primary pt-2">Edit</a>  <a>|</a>
+    }
+    <a asp-action="Index" class="button btn btn-primary pt-2">Back to List</a>
 </div>
