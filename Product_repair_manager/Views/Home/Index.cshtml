@@ -50,6 +50,11 @@
             {
                 <a class="button btn btn-primary pt-2" asp-area="" asp-controller="Catagories" asp-action="Index">Catagory</a>
             }   
+            @if (User.IsInRole("Admin"))
+            {
+                <a class="button btn btn-primary pt-2" asp-area="" asp-controller="User" asp-action="Index">Admin panel</a>
+            }
+
         }
     </div>
     <from class="d-flex">
