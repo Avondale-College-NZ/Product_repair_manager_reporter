@@ -62,13 +62,11 @@
 
                                     @if (User.Identity != null && User.Identity.IsAuthenticated)
                                      {
-                                        @if (User.IsInRole("Admin"))
-                                        {
+
                                             <li class="nav-item">
                                                 <a class="nav-link text-dark" asp-area="" asp-controller="damages_report" asp-action="Index">damages report</a>
                                             </li>
-                                        }
-                                    }
+                                     }
                                 </ul>
                             </div>
 
