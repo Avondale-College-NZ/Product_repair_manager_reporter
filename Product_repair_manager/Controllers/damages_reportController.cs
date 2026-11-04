@@ -80,8 +80,8 @@ public class damages_reportController : Controller
     }
 
     // POST: DAMAGES_REPORTS/Create
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+    //this will create a new damages report and save it to the database if the model state is valid
+    //as well it connects user, items damages, and classes so when creating it will save to the database with the connected tables
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(
@@ -142,8 +142,8 @@ public class damages_reportController : Controller
     }
 
     // POST: DAMAGES_REPORTS/Edit/5
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+    //this will edit a damages report and save it to the database if the model state is valid
+    //as well it connects user, items damages, and classes so when editing it will save to the database with the connected tables
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int damages_reportid, [Bind("damages_reportId,UserId,ClassesId,Item_damagesId,fixed_report,item_status,Item_date,appuser,classes,item_damages")] damages_report damages_report)
@@ -198,6 +198,8 @@ public class damages_reportController : Controller
     }
 
     // POST: DAMAGES_REPORTS/Delete/5
+    //this will delete a damages report and save it to the database if the model state is valid
+    //as well it connects user, items damages, and classes so when its deleted it will delete to the database with the connected tables
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int? id)

@@ -71,22 +71,27 @@
                     }
                     <a asp-action="Edit" asp-route-id="@item.damages_reportId" class="button btn btn-primary pt-2">Edit</a><a>|</a>
                     }
+
                     @if (User.IsInRole("Admin"))
                     }
                     <a asp-action="Edit" asp-route-id="@item.damages_reportId" class="button btn btn-primary pt-2">Edit</a><a>|</a>
                     }
+
                     @if (User.IsInRole("Staff"))
                     }
                     <a asp-action="Edit" asp-route-id="@item.damages_reportId" class="button btn btn-primary pt-2">Edit</a><a>|</a>
                     }
+
                     @if (User.IsInRole("Staff"))
                     }
                     <a asp-action="Edit" asp-route-id="@item.damages_reportId" class="button btn btn-primary pt-2">Edit</a><a>|</a>
                     }
-                    <a asp-action="Details" asp-route-id="@item.damages_reportId" class="button btn btn-primary pt-2">Details</a> |
+
+                    <a asp-action="Details" asp-route-id="@item.damages_reportId" class="button btn btn-primary pt-2">Details</a> <a>|</a>
+
                     @if (User.IsInRole("Admin"))
                     {
-                        <a asp-action="Delete" asp-route-id="@item.damages_reportId" class="button btn btn-danger pt-2">Delete</a>
+                    <a asp-action="Delete" asp-route-id="@item.damages_reportId" class="button btn btn-danger pt-2">Delete</a><a>|</a>
                     }
             </td>
         </tr>

@@ -21,7 +21,7 @@
                 <span asp-validation-for="items_Name" class="text-danger"></span>
             </div>
 
-            
+            @* this is a dropdown for the catagory foreign key table so that they can select the appropriate catagory *@
             <div class="form-group">
                 <label asp-for="CatagoryId" class="control-label"> catagory that the item originates from</label>
                 <select asp-for="CatagoryId" class="form-control" asp-items="ViewBag.CatagoryId">

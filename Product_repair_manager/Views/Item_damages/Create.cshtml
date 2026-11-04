@@ -14,7 +14,7 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            
+            @* this is a dropdown for the items foreign key table so that they can select the appropriate item *@
             <div class="form-group">
                 <label asp-for="ItemsId" class="form-label">Item that is damaged</label>
                 <select asp-for="ItemsId" class="form-control" asp-items="ViewBag.ItemsId">

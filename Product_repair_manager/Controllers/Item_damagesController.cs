@@ -1,8 +1,10 @@
 
+using Humanizer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Product_repair_manager.Models;
+using System.Runtime.Intrinsics.Arm;
 
 public class Item_damagesController : Controller
 {
@@ -60,8 +62,8 @@ public class Item_damagesController : Controller
     }
 
     // POST: ITEM_DAMAGESS/Create
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+    //as well it connects items to item damages so when creating it will save to the database with the connected tables
+    //this will create a new item damage and save it to the database if the model state is valid
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("ItemsId,Item_damagesId,severity,damage_type,date,items,damages_reports")] Item_damages item_damages)
@@ -98,8 +100,8 @@ public class Item_damagesController : Controller
     }
 
     // POST: ITEM_DAMAGESS/Edit/5
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+    //as well it connects items to item damages so when editing it will save to the database with the connected tables
+    //this will edit a item damage and save it to the database if the model state is valid
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int item_damagesid, [Bind("ItemsId,Item_damagesId,severity,damage_type,date,items,damages_reports")] Item_damages item_damages)
@@ -153,6 +155,8 @@ public class Item_damagesController : Controller
     }
 
     // POST: ITEM_DAMAGESS/Delete/5
+    //as well it connects items to item damages so when its deleted it will save to the database with the connected tables
+    //this will delete a item damage and save it to the database if the model state is valid
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int? item_damagesid)

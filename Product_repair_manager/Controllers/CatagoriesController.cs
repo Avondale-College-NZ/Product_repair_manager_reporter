@@ -45,8 +45,7 @@ public class CatagoriesController : Controller
     }
 
     // POST: CATAGORYS/Create
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+    //this will create a new catagory and save it to the database if the model state is valid
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("CatagoryId,Catagory_Name,Items")] Catagory catagory)
@@ -77,8 +76,7 @@ public class CatagoriesController : Controller
     }
 
     // POST: CATAGORYS/Edit/5
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+    //this will edit a catagory and save it to the database if the model state is valid
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int? catagoryid, [Bind("CatagoryId,Catagory_Name,Items")] Catagory catagory)
@@ -130,6 +128,7 @@ public class CatagoriesController : Controller
     }
 
     // POST: CATAGORYS/Delete/5
+    //this will delete a catagory and save it to the database if the model state is valid
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int? catagoryid)

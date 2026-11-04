@@ -64,8 +64,8 @@ public class ItemsController : Controller
     }
 
     // POST: ITEMSS/Create
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+    // as well it connects items to catagory so when creating it will save to the database with the connected tables
+    //this will create a new item and save it to the database if the model state is valid
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("ItemsId,CatagoryId,items_Name,Catagory,Item_damages")] Items items)
@@ -104,8 +104,8 @@ public class ItemsController : Controller
     }
 
     // POST: ITEMSS/Edit/5
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+    // as well it connects items to catagory so when editing it will save to the database with the connected tables
+    //this will edit a item and save it to the database if the model state is valid
     [HttpPost]
     [ValidateAntiForgeryToken]
    
@@ -162,6 +162,8 @@ public class ItemsController : Controller
     }
 
     // POST: ITEMSS/Delete/5
+    // as well it connects items to catagory so when deleting it will delete to the database with the connected tables
+    //this will delete a item and save it to the database if the model state is valid
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
     

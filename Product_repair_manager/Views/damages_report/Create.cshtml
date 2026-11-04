@@ -14,6 +14,7 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
+            @* this is a dropdown for the user foreign key table so that when they select the user dropdown they can put them self or a other user in there *@
             <div class="form-group">
                 <label asp-for="Id" class="form-label">Item that is damaged</label>
                 <select asp-for="Id" class="form-control" asp-items="ViewBag.Id">
@@ -24,6 +25,7 @@
 
             </div>
 
+            @* this is a dropdown for the classes foreign key table so that they can select the appropriate classes *@
             <div class="form-group">
                 <label asp-for="ClassesId" class="control-label"></label>
                 <select asp-for="ClassesId" class="form-control" asp-items="ViewBag.ClassesId">
@@ -31,8 +33,9 @@
 
                 </select>
                 <span asp-validation-for="ClassesId" class="text-danger"></span>
-            </div>
 
+            </div>
+            @* this is a dropdown for the items_damages foreign key table so that they can select the item that was damaged when the report was created *@
             <div class="form-group">
                 <label asp-for="Item_damagesId" class="control-label"></label>
                 <select asp-for="Item_damagesId" class="form-control" asp-items="ViewBag.Item_damagesId">

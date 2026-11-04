@@ -10,6 +10,7 @@
 <hr />
 <div class="row container p-my-5 border border-4">
     <div class ="col-md-4">
+        @* this is a dropdown for the items foreign key table so that they can select the appropriate item *@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Item_damagesId" />

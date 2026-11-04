@@ -36,9 +36,9 @@ namespace Product_repair_manager.Areas.Admin.Controllers
             return View(model);
         }
 
-        
 
 
+        // this method is used to add a user to a role. take make the user able to access the role specific pages.
         [HttpPost]
         public async Task<IActionResult> AddUserToRole(string userId, string roleName)
         {
@@ -58,6 +58,7 @@ namespace Product_repair_manager.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        // this method is used to add a user to a role. take away the user access to the role specific pages.
         [HttpPost]
         public async Task<IActionResult> RemoveUserFromRole(string userId, string roleName)
         {

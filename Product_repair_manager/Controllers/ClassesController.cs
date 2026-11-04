@@ -43,8 +43,7 @@ public class ClassesController : Controller
     }
 
     // POST: CLASSESS/Create
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+    //this will create a new class and save it to the database if the model state is valid
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("ClassesId,blocks,classroom,damages_reports")] Classes classes)
@@ -75,8 +74,7 @@ public class ClassesController : Controller
     }
 
     // POST: CLASSESS/Edit/5
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+    //this will edit a class and save it to the database if the model state is valid
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int classesid, [Bind("ClassesId,blocks,classroom,damages_reports")] Classes classes)
@@ -128,6 +126,7 @@ public class ClassesController : Controller
     }
 
     // POST: CLASSESS/Delete/5
+    //this will delete a class and save it to the database if the model state is valid
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int? id)
